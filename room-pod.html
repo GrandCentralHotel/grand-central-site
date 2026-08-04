@@ -1,0 +1,54 @@
+<!doctype html><html lang="en-NZ"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Backpacker Pod | Grand Central Auckland</title><meta name="description" content="A private pod bunk in an eight-bed shared room at Grand Central, near Spark Arena in Auckland CBD."><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="rooms.css"></head><body>
+<div class="page"><header class="pagehead"><div class="nameplate"><a href="index.html"><strong class="carved">Grand Central</strong></a></div><nav class="wayfind sign"><a href="rooms.html">All rooms</a><a href="index.html#heritage">The Station</a><a href="index.html#location">Location</a></nav><a class="btn btn-brass" href="rooms.html#book">Book now</a></header>
+<main><section class="room-detail-hero"><p class="eyebrow sign">Shared room · Maximum 1 guest</p><h1>Backpacker Pod</h1><div class="detail-lead"><p>A solid timber pod with a full-length privacy curtain and storage of your own—the most affordable way to stay close to Spark Arena and central Auckland.</p><dl class="detail-facts"><div><dt>Bed</dt><dd>Single pod bunk</dd></div><div><dt>Room</dt><dd>Shared with 8 beds</dd></div><div><dt>Guests</dt><dd>1</dd></div><div><dt>Bathroom</dt><dd>Confirm with hotel</dd></div></dl></div></section>
+<section class="room-viewer" data-room-viewer aria-label="Backpacker Pod image viewer" tabindex="0">
+  <div class="room-viewer-stage">
+    <img data-viewer-main src="images/pod-dorm-editorial.png" width="1086" height="1448" alt="Light timber sleeping pods with black privacy curtains.">
+    <button class="room-viewer-arrow room-viewer-prev" type="button" data-viewer-prev aria-label="Previous photograph"><span aria-hidden="true">&#8592;</span></button>
+    <button class="room-viewer-arrow room-viewer-next" type="button" data-viewer-next aria-label="Next photograph"><span aria-hidden="true">&#8594;</span></button>
+  </div>
+  <div class="room-viewer-thumbs" aria-label="Choose a photograph">
+    <button class="is-active" type="button" data-viewer-thumb data-src="images/pod-dorm-editorial.png" data-alt="Light timber sleeping pods with black privacy curtains." aria-label="View light timber pod room" aria-pressed="true"><img src="images/pod-dorm-editorial.png" alt=""></button>
+    <button type="button" data-viewer-thumb data-src="images/pod-dorm2-editorial.png" data-alt="Dark timber pod bunks with grey curtains and bedding." aria-label="View dark timber pod bunks" aria-pressed="false"><img src="images/pod-dorm2-editorial.png" loading="lazy" alt=""></button>
+    <button type="button" data-viewer-thumb data-src="images/podform-11-editorial.png" data-alt="A full view between two rows of light timber pods." aria-label="View full light timber pod room" aria-pressed="false"><img src="images/podform-11-editorial.png" loading="lazy" alt=""></button>
+    <button type="button" data-viewer-thumb data-src="images/podform8-editorial-v2.png" data-alt="A full view along the dark timber pod room." aria-label="View full dark timber pod room" aria-pressed="false"><img src="images/podform8-editorial-v2.png" loading="lazy" alt=""></button>
+    <button type="button" data-viewer-thumb data-src="images/pod-dorm4-editorial.png" data-alt="Pod ladders and personal lockers beside the room window." aria-label="View pod lockers and window" aria-pressed="false"><img src="images/pod-dorm4-editorial.png" loading="lazy" alt=""></button>
+    <button type="button" data-viewer-thumb data-src="images/pod-dorm7-editorial.png" data-alt="The shared kitchenette inside the pod accommodation area." aria-label="View shared kitchenette" aria-pressed="false"><img src="images/pod-dorm7-editorial.png" loading="lazy" alt=""></button>
+    <button type="button" data-viewer-thumb data-src="images/pod-dorm9-editorial.png" data-alt="The bathroom available beside the pod accommodation." aria-label="View bathroom" aria-pressed="false"><img src="images/pod-dorm9-editorial.png" loading="lazy" alt=""></button>
+    <button type="button" data-viewer-thumb data-src="images/pod-dorm11-editorial.png" data-alt="The glass shower with brass fittings." aria-label="View shower" aria-pressed="false"><img src="images/pod-dorm11-editorial.png" loading="lazy" alt=""></button>
+  </div>
+</section>
+<section class="room-section detail-columns"><div><h2>Room features</h2><ul class="feature-list"><li>Full-length privacy curtain</li><li>Personal storage</li><li>Free fibre Wi-Fi</li><li>Electric blanket</li><li>24-hour front desk</li><li>Free luggage storage</li></ul></div><div class="faqs"><h2>Questions</h2><details><summary>Is the room shared?</summary><p>Yes. You book one pod in an eight-bed shared room.</p></details><details><summary>Is bedding included?</summary><p>Please confirm the current bedding and towel arrangements with the front desk before arrival.</p></details><details><summary>What bathroom does the pod use?</summary><p>The bathroom arrangement is being confirmed. Call the hotel before booking if this affects your stay.</p></details></div></section>
+<section class="direct-booking room-section"><p class="eyebrow sign">Book direct</p><h2>Ready to stay?</h2><p>Check your dates or call the front desk with questions.</p><div><a class="btn btn-brass" href="rooms.html#book">Check availability</a><a class="text-link sign" href="tel:+6493651428">Call 09 365 1428</a></div></section></main>
+<footer><div class="foot-base"><span>© 2026 Grand Central Auckland</span></div></footer></div><a class="mobile-book btn btn-brass" href="rooms.html#book">Check availability</a>
+<script>
+  (function () {
+    var viewer = document.querySelector("[data-room-viewer]");
+    if (!viewer) return;
+    var main = viewer.querySelector("[data-viewer-main]");
+    var thumbs = Array.prototype.slice.call(viewer.querySelectorAll("[data-viewer-thumb]"));
+    var index = 0;
+
+    function show(next) {
+      index = (next + thumbs.length) % thumbs.length;
+      var thumb = thumbs[index];
+      main.src = thumb.getAttribute("data-src");
+      main.alt = thumb.getAttribute("data-alt");
+      thumbs.forEach(function (item, itemIndex) {
+        var active = itemIndex === index;
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-pressed", active);
+      });
+      thumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    }
+
+    thumbs.forEach(function (thumb, thumbIndex) { thumb.addEventListener("click", function () { show(thumbIndex); }); });
+    viewer.querySelector("[data-viewer-prev]").addEventListener("click", function () { show(index - 1); });
+    viewer.querySelector("[data-viewer-next]").addEventListener("click", function () { show(index + 1); });
+    viewer.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft") { event.preventDefault(); show(index - 1); }
+      if (event.key === "ArrowRight") { event.preventDefault(); show(index + 1); }
+    });
+  })();
+</script>
+</body></html>
