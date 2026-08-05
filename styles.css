@@ -74,6 +74,17 @@
 
   /* Photographs. Until the files land, the alt text shows on a warm plate. */
   .shot { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  /* The mark over photography. A tight dark halo plus a softer lift separates
+     the linework from the image without resorting to a plate.
+     Pair it with the rules in the identity sheet: over architectural interiors
+     use the arch sub-mark, never the full arcade — a line drawing of the
+     building laid over a photograph of the building reads as scaffolding. */
+  .on-image {
+    filter:
+      drop-shadow(0 0 2px rgba(21, 14, 12, 0.95))
+      drop-shadow(0 1px 6px rgba(21, 14, 12, 0.55));
+  }
   .plate {
     background: var(--ground-lift); border: 1px solid var(--rule); overflow: hidden;
     display: flex; align-items: center; justify-content: center; color: var(--brass);
@@ -104,7 +115,25 @@
     padding: 22px 0 20px; border-bottom: 1px solid rgba(243,234,218,0.22);
   }
   .nameplate { display: flex; align-items: center; gap: 13px; }
+  .brand-building {
+    display: block; width: 104px; height: 29px; overflow: hidden; flex: 0 0 auto;
+    background: currentColor;
+    -webkit-mask: url("images/grand-central-logo-transparent.png") left top / 104px auto no-repeat;
+    mask: url("images/grand-central-logo-transparent.png") left top / 104px auto no-repeat;
+  }
+  .brand-building img {
+    display: block; width: 104px; height: auto;
+    opacity: 0;
+  }
   .nameplate-mark { width: 82px; height: 82px; object-fit: contain; flex: 0 0 auto; }
+  /* Mastheads that sit over hero photography get the halo; the ones on a solid
+     ground do not, since a dark halo on the light theme reads as a smudge. */
+  .hero .nameplate-mark,
+  .story-hero .nameplate-mark {
+    filter:
+      drop-shadow(0 0 2px rgba(21, 14, 12, 0.95))
+      drop-shadow(0 1px 6px rgba(21, 14, 12, 0.55));
+  }
   .nameplate-words { display: grid; gap: 4px; }
   .nameplate strong { font-size: 19px; font-weight: 500; }
   .nameplate-place { font-size: 8px; line-height: 1; color: rgba(243,234,218,.72); letter-spacing: .24em; }
@@ -380,7 +409,15 @@
   --rule: rgba(38,39,32,.22);
   --rule-soft: rgba(38,39,32,.11);
   --face-display: Baskerville, "Baskerville Old Face", "Iowan Old Style", Georgia, serif;
+  /* The clock in the logo. Warm terracotta on the editorial ground; the mark's
+     line work stays currentColor so it inverts with the theme. */
+  --logo-accent: #8a5948;
 }
+
+/* Mastheads sit over photography with the copy forced light, so the terracotta
+   goes muddy against a dark scrim. Brass reads there — and it is the colour the
+   station clock actually is. */
+.hero, .story-hero { --logo-accent: #d9a441; }
 
 body { background: var(--ground); color: var(--cream); font-size: 17px; }
 .page { max-width: 1320px; padding-inline: clamp(22px, 4vw, 64px); }
@@ -981,7 +1018,7 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
 .arts-page footer .foot-grid p { color: rgba(243,234,218,.68); }
 .arts-page footer .foot-grid a:hover { color: #fff; }
 .footer-brand { display: inline-flex !important; align-items: center; gap: 16px; margin-bottom: 20px !important; color: #f3eada !important; }
-.footer-brand img { width: 92px; height: 92px; object-fit: contain; }
+.footer-brand :is(img, svg) { width: 92px; height: 92px; object-fit: contain; }
 .arts-page footer .footer-intro { max-width: 31ch; font-size: 15px; line-height: 1.65; }
 .arts-page footer .foot-base { color: rgba(243,234,218,.48); border-top-color: rgba(243,234,218,.12); }
 

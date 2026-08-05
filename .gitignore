@@ -1,4 +1,6 @@
 .uv-task-cache/
 .pdf-profile/
+.tmp/
+.claude/
 .DS_Store
 Thumbs.db

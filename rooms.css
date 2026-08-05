@@ -1,16 +1,15 @@
 .pagehead {
   display: flex; align-items: center; justify-content: space-between; gap: 22px;
-  padding: 22px 0 20px; border-bottom: 1px solid rgba(243,234,218,.22);
+  padding: 22px 0 20px; border-bottom: 1px solid var(--rule);
 }
-.rooms-hero-header { position: absolute; z-index: 3; inset: 0 0 auto; color: #f3eada; }
-.pagehead .wayfind { color: rgba(243,234,218,.82); }
-.pagehead .wayfind a:hover { color: #fff; }
+.pagehead .wayfind { color: var(--cream-dim); }
+.pagehead .wayfind a:hover { color: var(--cream); }
+/* The mark is inline SVG drawn in currentColor, so it already takes the header's
+   ink colour. No brightness/invert hack — that one crushed the clock accent. */
 .pagehead .nameplate-mark {
   width: 72px; height: 72px; padding: 0; border-radius: 0;
-  background: transparent; filter: none !important; opacity: 1;
+  background: transparent;
 }
-.pagehead .nameplate-place { color: rgba(243,234,218,.72); }
-.pagehead .callnow { color: rgba(243,234,218,.82); }
 
 .rooms-hero { position: relative; min-height: min(78svh, 820px); display: grid; align-items: end; overflow: hidden; }
 .rooms-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -142,7 +141,7 @@
   .pagehead { flex-wrap: wrap; gap: 12px 16px; }
   .pagehead .wayfind {
     order: 3; display: flex; flex-basis: 100%; width: 100%; margin-left: 0;
-    padding-top: 13px; border-top: 1px solid rgba(243,234,218,.16);
+    padding-top: 13px; border-top: 1px solid var(--rule);
     justify-content: space-between; overflow-x: auto; gap: 18px;
   }
   .pagehead .wayfind a { white-space: nowrap; padding: 8px 0; }
