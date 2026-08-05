@@ -106,6 +106,7 @@
   /* ── Masthead over the hero ── */
   .hero { position: relative; min-height: 82vh; display: flex; flex-direction: column; }
   .hero-media { position: absolute; inset: 0; overflow: hidden; background: var(--ground-deep); }
+  .hero-media picture { display: block; width: 100%; height: 100%; }
   .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
   .hero-media::after { content: ""; position: absolute; inset: 0; background: var(--scrim); }
   .hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; flex: 1; color: #F3EADA; }
@@ -750,6 +751,148 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
   .faq-list summary { padding-block: 23px; font-size: 22px; }
 }
 
+/* Shared responsive navigation and narrow-viewport resilience. */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.menu-toggle-icon,
+.menu-toggle-icon::before,
+.menu-toggle-icon::after {
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transition: transform .2s ease, opacity .2s ease;
+}
+.menu-toggle-icon { position: relative; }
+.menu-toggle-icon::before { position: absolute; transform: translateY(-6px); }
+.menu-toggle-icon::after { position: absolute; transform: translateY(6px); }
+.menu-open .menu-toggle-icon { background: transparent; }
+.menu-open .menu-toggle-icon::before { transform: rotate(45deg); }
+.menu-open .menu-toggle-icon::after { transform: rotate(-45deg); }
+.gallery-controls {
+  position: absolute;
+  z-index: 3;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  background: rgba(20,20,17,.82);
+  color: #fff;
+}
+.gallery-controls button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255,255,255,.45);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.gallery-controls button:hover { background: rgba(255,255,255,.16); }
+.gallery-status { min-width: 72px; text-align: center; font-family: var(--face-sign); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+
+@media (max-width: 820px) {
+  .masthead,
+  .pagehead {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px 16px;
+    align-items: center;
+    min-width: 0;
+  }
+  .masthead > *, .pagehead > *,
+  .hero-inner, .story-hero-inner,
+  .hero-copy, .story-hero-copy, .rooms-hero-copy { min-width: 0; }
+  .menu-toggle { display: inline-flex; justify-self: end; }
+  .masthead .wayfind,
+  .pagehead .wayfind {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    order: initial;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    overflow: visible;
+  }
+  .site-nav-ready .masthead .wayfind,
+  .site-nav-ready .pagehead .wayfind { display: none; }
+  .site-nav-ready .masthead.menu-open .wayfind,
+  .site-nav-ready .pagehead.menu-open .wayfind { display: flex; }
+  .masthead .wayfind a,
+  .pagehead .wayfind a {
+    min-height: 44px;
+    padding: 13px 0;
+    border-top: 1px solid rgba(243,234,218,.2);
+    white-space: normal;
+  }
+  .pagehead .wayfind a { border-top-color: var(--rule-soft); }
+  .masthead > .hero-actions,
+  .pagehead > .hero-actions,
+  .masthead > .btn,
+  .pagehead > .btn {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 0;
+  }
+  .masthead > .hero-actions,
+  .pagehead > .hero-actions { justify-content: space-between; }
+  .masthead > .btn,
+  .pagehead > .btn { justify-self: stretch; text-align: center; }
+  .hero-copy h1,
+  .story-hero-copy h1,
+  .rooms-hero-copy h1 {
+    max-width: 100%;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .venue-detail-gallery-grid { grid-template-columns: 1fr; }
+  .venue-detail-gallery-grid figure,
+  .venue-detail-gallery-grid figure.wide,
+  .venue-detail-gallery-grid figure.tall {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .masthead, .pagehead { padding-block: 16px; }
+  .nameplate { min-width: 0; }
+  .nameplate-words { min-width: 0; }
+  .nameplate strong { font-size: clamp(14px, 4.4vw, 17px); }
+  .brand-building { flex: 0 0 auto; }
+  .masthead > .hero-actions .btn,
+  .pagehead > .hero-actions .btn { min-height: 44px; padding: 11px 14px; }
+  .hero-copy h1 { font-size: clamp(42px, 13.5vw, 58px); line-height: .98; }
+  .story-hero-copy h1 { font-size: clamp(42px, 13vw, 58px); }
+  .hero-copy p,
+  .story-hero-copy p,
+  .rooms-hero-copy p { max-width: 100%; }
+  .gallery-controls { right: 8px; bottom: 8px; left: 8px; justify-content: space-between; }
+}
+
 /* Station story — a quiet editorial page within the Grand Central system. */
 .story-hero {
   position: relative; min-height: min(88svh, 920px); display: flex;
@@ -890,7 +1033,7 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
   .masthead .wayfind { gap: 14px; font-size: 11px; }
 }
 
-/* Arts and events — an evergreen bridge between the hotel and art centre. */
+/* Arts and culture — the editorial home of the art centre. */
 .arts-overview {
   padding-top: clamp(100px, 12vw, 172px); display: grid;
   grid-template-columns: .82fr 1.18fr; gap: clamp(50px, 9vw, 130px); align-items: center;
@@ -976,20 +1119,20 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
 .editorial-lightbox img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .editorial-lightbox-close { position: absolute; z-index: 1; top: 12px; right: 14px; padding: 8px 10px; border: 0; background: #f1eee7; color: #171512; font-size: 9px; letter-spacing: .1em; cursor: pointer; }
 
-.wedding-feature {
+.station-story-feature {
   position: relative; z-index: 0; margin-top: clamp(105px, 13vw, 175px);
   padding-top: clamp(85px, 10vw, 130px); padding-bottom: clamp(85px, 10vw, 130px);
   display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(50px, 9vw, 130px); align-items: center;
 }
-.wedding-feature::before {
+.station-story-feature::before {
   content: ""; position: absolute; z-index: -1; inset-block: 0; left: 50%;
   width: 100vw; transform: translateX(-50%); background: #e5ded2;
 }
-.wedding-feature figure { margin: 0; aspect-ratio: 3 / 2; overflow: hidden; }
-.wedding-feature img { width: 100%; height: 100%; object-fit: cover; }
-.wedding-feature h2 { font-size: clamp(42px, 5.2vw, 72px); line-height: 1.02; }
-.wedding-feature > div > p:not(.eyebrow) { margin: 27px 0 0; color: var(--cream-dim); font-size: 17px; line-height: 1.72; }
-.wedding-feature .text-link { margin-top: 31px; }
+.station-story-feature figure { margin: 0; aspect-ratio: 3 / 2; overflow: hidden; }
+.station-story-feature img { width: 100%; height: 100%; object-fit: cover; }
+.station-story-feature h2 { font-size: clamp(42px, 5.2vw, 72px); line-height: 1.02; }
+.station-story-feature > div > p:not(.eyebrow) { margin: 27px 0 0; color: var(--cream-dim); font-size: 17px; line-height: 1.72; }
+.station-story-feature .text-link { margin-top: 31px; }
 
 .arts-programme {
   margin-top: 0; padding: clamp(80px, 10vw, 125px) clamp(38px, 7vw, 92px);
@@ -1002,25 +1145,11 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
 
 /* Quiet editorial rules keep the long-form page visually paced. */
 .creative-legacy,
-.wedding-feature,
+.station-story-feature,
 .arts-programme { border-top: 1px solid rgba(122, 86, 26, .22); }
 
-/* The footer remains dark in both colour modes, like a closing title card. */
-.arts-page > .page:last-of-type { max-width: none; padding: 0; }
-.arts-page > .page:last-of-type footer {
-  margin-top: clamp(82px, 10vw, 132px); padding: 0 max(30px, calc((100vw - 1080px) / 2));
-  border-top: 1px solid rgba(217,164,65,.28); background: #17110f; color: #f3eada;
-}
-.arts-page footer .foot-grid { grid-template-columns: 1.65fr .8fr .9fr 1fr; gap: clamp(34px, 5vw, 76px); padding: clamp(56px, 7vw, 86px) 0 48px; }
-.arts-page footer .foot-grid > div + div { border-left: 1px solid rgba(243,234,218,.12); padding-left: clamp(24px, 3vw, 44px); }
-.arts-page footer .foot-grid h3 { color: #d9a441; }
-.arts-page footer .foot-grid a,
-.arts-page footer .foot-grid p { color: rgba(243,234,218,.68); }
-.arts-page footer .foot-grid a:hover { color: #fff; }
 .footer-brand { display: inline-flex !important; align-items: center; gap: 16px; margin-bottom: 20px !important; color: #f3eada !important; }
 .footer-brand :is(img, svg) { width: 92px; height: 92px; object-fit: contain; }
-.arts-page footer .footer-intro { max-width: 31ch; font-size: 15px; line-height: 1.65; }
-.arts-page footer .foot-base { color: rgba(243,234,218,.48); border-top-color: rgba(243,234,218,.12); }
 
 /* Weddings — a focused subpage within Arts & Events. */
 .wedding-hero .story-hero-media img { object-position: 50% 52%; }
@@ -1054,7 +1183,7 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
 .wedding-enquiry .btn-brass { background: var(--ground-deep); color: #f1eee7; }
 
 @media (max-width: 820px) {
-  .arts-overview, .arts-intro-grid, .venue-spaces-grid, .wedding-feature, .creative-legacy-heading, .film-legacy, .editorial-story-copy, .wedding-intro-grid, .wedding-details-grid { grid-template-columns: 1fr; }
+  .arts-overview, .arts-intro-grid, .venue-spaces-grid, .station-story-feature, .creative-legacy-heading, .film-legacy, .editorial-story-copy, .wedding-intro-grid, .wedding-details-grid { grid-template-columns: 1fr; }
   .arts-overview-image { grid-row: 1; height: min(118vw, 720px); }
   .arts-overview-copy { grid-row: 2; }
   .arts-path-grid { grid-template-columns: 1fr; gap: 35px; }
@@ -1069,17 +1198,17 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
   .arts-path-grid article { grid-template-columns: 1fr; }
   .arts-path-grid figure { aspect-ratio: 4 / 5; }
   .venue-space-list article { grid-template-columns: 28px 1fr; gap: 18px; }
-  .arts-programme { margin-inline: -22px; padding-inline: 22px; text-align: left; }
+  .arts-programme { margin-inline: 0; padding-inline: 22px; text-align: left; }
   .arts-programme h2, .arts-programme > p:not(.eyebrow) { margin-left: 0; margin-right: 0; }
   .arts-programme > div { justify-content: flex-start; }
-  .film-legacy { margin-inline: -22px; }
+  .film-legacy { margin-inline: 0; }
   .film-legacy > div { padding: 38px 22px 46px; }
   .editorial-gallery-feature { margin-right: 0; }
   .editorial-lightbox { width: 94vw; height: 88vh; padding: 34px 12px 12px; }
   .wedding-gallery-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
   .wedding-gallery-grid figure, .wedding-gallery-wide, .wedding-gallery-tall { grid-column: 1; grid-row: auto; aspect-ratio: auto; }
   .wedding-gallery-grid img { height: auto; display: block; }
-  .wedding-enquiry { margin-inline: -22px; padding-inline: 22px; text-align: left; }
+  .wedding-enquiry { margin-inline: 0; padding-inline: 22px; text-align: left; }
   .wedding-enquiry h2, .wedding-enquiry > p:not(.eyebrow) { margin-left: 0; margin-right: 0; }
   .wedding-enquiry > div { justify-content: flex-start; }
 }
@@ -1126,6 +1255,41 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
 .venue-enquiry > div { display: flex; justify-content: center; align-items: center; gap: 28px; flex-wrap: wrap; }
 .venue-enquiry .btn-brass { background: var(--ground-deep); color: #f1eee7; }
 
+.enquiry-form {
+  width: min(100%, 900px); margin: clamp(38px, 6vw, 62px) auto 0;
+  padding: clamp(28px, 5vw, 54px); border: 1px solid rgba(122,86,26,.22);
+  background: rgba(250,247,241,.72); color: #25261f; text-align: left;
+}
+.venue-enquiry .enquiry-handler,
+.wedding-enquiry .enquiry-handler {
+  max-width: 64ch; margin: -18px auto 0; color: #625d53; font-size: 14px; line-height: 1.6;
+}
+.enquiry-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px 28px; }
+.enquiry-field { min-width: 0; }
+.enquiry-field-wide { grid-column: 1 / -1; }
+.enquiry-field label,
+.enquiry-field legend {
+  display: block; margin: 0 0 9px; color: #4d453b;
+  font: 600 10px/1.3 var(--face-sign); letter-spacing: .1em; text-transform: uppercase;
+}
+.enquiry-field input:not([type="checkbox"]),
+.enquiry-field select,
+.enquiry-field textarea {
+  width: 100%; min-height: 48px; padding: 12px 13px; border: 1px solid rgba(69,55,44,.34);
+  border-radius: 0; background: #fffdf9; color: #25261f; font: inherit;
+}
+.enquiry-field textarea { min-height: 132px; resize: vertical; }
+.enquiry-field input:focus-visible,
+.enquiry-field select:focus-visible,
+.enquiry-field textarea:focus-visible,
+.enquiry-check input:focus-visible { outline: 3px solid #9b5a3e; outline-offset: 2px; }
+.enquiry-check { display: flex; align-items: flex-start; gap: 11px; }
+.enquiry-check input { flex: 0 0 auto; width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--cta); }
+.enquiry-check label { margin: 0; font: 15px/1.55 var(--face-body); letter-spacing: 0; text-transform: none; }
+.enquiry-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+.enquiry-note { max-width: 52ch; margin: 0; color: #625d53; font-size: 13px; line-height: 1.55; }
+.enquiry-status { min-height: 1.5em; margin: 18px 0 0; color: #625d53; font-size: 14px; }
+
 @media (max-width: 820px) {
   .venues-intro-grid, .venue-services-grid { grid-template-columns: 1fr; }
   .venue-card-grid { grid-template-columns: 1fr; }
@@ -1134,10 +1298,13 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
 }
 
 @media (max-width: 560px) {
+  .enquiry-grid { grid-template-columns: 1fr; }
+  .enquiry-field-wide { grid-column: auto; }
+  .enquiry-form { padding: 28px 20px; }
   .venue-card { display: flex; }
   .venue-card figure { min-height: 0; aspect-ratio: 4 / 3; }
   .venue-service-list article { grid-template-columns: 28px 1fr; gap: 18px; }
-  .venue-enquiry { margin-inline: -22px; padding-inline: 22px; text-align: left; }
+  .venue-enquiry { margin-inline: 0; padding-inline: 22px; text-align: left; }
   .venue-enquiry h2, .venue-enquiry > p:not(.eyebrow) { margin-left: 0; margin-right: 0; }
   .venue-enquiry > div { justify-content: flex-start; }
 }
@@ -1163,9 +1330,11 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
 .venue-detail-gallery header .eyebrow { grid-column: 1 / -1; }
 .venue-detail-gallery header h2 { max-width: 12em; font-size: clamp(46px, 6vw, 80px); line-height: 1; }
 .venue-detail-gallery-grid { margin-top: clamp(48px, 7vw, 82px); display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.venue-detail-gallery-grid figure { margin: 0; min-height: 430px; overflow: hidden; background: var(--ground-lift); }
-.venue-detail-gallery-grid figure.wide { grid-column: 1 / -1; min-height: clamp(480px, 60vw, 760px); }
-.venue-detail-gallery-grid figure.tall { grid-row: span 2; min-height: 880px; }
+.venue-detail-gallery-grid figure { margin: 0; min-height: 0; aspect-ratio: 4 / 3; overflow: hidden; background: var(--ground-lift); }
+.venue-detail-gallery-grid figure.wide { aspect-ratio: 16 / 9; }
+.venue-detail-gallery-grid figure.tall { aspect-ratio: 3 / 4; }
+.venue-detail-gallery-grid figure.wide { grid-column: 1 / -1; }
+.venue-detail-gallery-grid figure.tall { grid-row: span 2; }
 .venue-detail-gallery-grid img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .venue-detail-enquiry { margin-top: clamp(100px, 14vw, 190px); padding: clamp(75px, 10vw, 125px); background: #ded9cf; color: #241813; text-align: center; }
 .venue-detail-enquiry .eyebrow { color: #7a561a; }
@@ -1183,7 +1352,7 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
 @media (max-width: 560px) {
   .venue-detail-gallery-grid { grid-template-columns: 1fr; gap: 12px; }
   .venue-detail-gallery-grid figure, .venue-detail-gallery-grid figure.wide, .venue-detail-gallery-grid figure.tall { grid-column: 1; grid-row: auto; min-height: 0; aspect-ratio: 4 / 3; }
-  .venue-detail-enquiry { margin-inline: -22px; padding-inline: 22px; text-align: left; }
+  .venue-detail-enquiry { margin-inline: 0; padding-inline: 22px; text-align: left; }
   .venue-detail-enquiry h2, .venue-detail-enquiry > p:not(.eyebrow) { margin-left: 0; margin-right: 0; }
   .venue-detail-enquiry > div { justify-content: flex-start; }
   .venue-detail-footer { flex-direction: column; }
@@ -1247,9 +1416,6 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
   .arts-path-grid article:nth-child(n) figure { min-height: 360px; height: 100%; aspect-ratio: auto; }
   .arts-programme { grid-template-columns: 1fr; gap: 35px; }
   .arts-programme h2 { max-width: 11em; }
-  .arts-page footer .foot-grid { grid-template-columns: 1fr 1fr; }
-  .arts-page footer .foot-grid > div + div { border-left: 0; padding-left: 0; }
-  .arts-page footer .foot-grid > div:nth-child(n+3) { border-top: 1px solid rgba(243,234,218,.12); padding-top: 30px; }
 }
 
 @media (max-width: 560px) {
@@ -1264,10 +1430,7 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
   .arts-path-grid article:nth-child(2),
   .arts-path-grid article:nth-child(3) { display: block; }
   .arts-path-grid article:nth-child(n) figure { min-height: 0; aspect-ratio: 4 / 3; }
-  .arts-programme { margin-inline: -22px; padding: 68px 22px; }
+  .arts-programme { margin-inline: 0; padding: 68px 22px; }
   .creative-legacy-heading { gap: 24px; }
   .creative-legacy-heading h2 { max-width: 10ch; }
-  .arts-page > .page:last-of-type footer { padding-inline: 22px; }
-  .arts-page footer .foot-grid { grid-template-columns: 1fr; gap: 28px; }
-  .arts-page footer .foot-grid > div:nth-child(n+2) { border-top: 1px solid rgba(243,234,218,.12); padding-top: 28px; }
 }

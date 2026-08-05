@@ -50,26 +50,24 @@
 
 <header class="hero">
   <div class="hero-media">
-    <img src="images/grand_hall_2-no-person.png" width="1536" height="1024" fetchpriority="high" alt="The restored Grand Hall at Grand Central, with brick arches, original clocks, chandeliers and patterned terrazzo floors beneath the coffered ceiling.">
+    <picture>
+      <source type="image/avif" srcset="images/grand-hall-hero-480.avif 480w, images/grand-hall-hero-960.avif 960w, images/grand-hall-hero-1536.avif 1536w" sizes="100vw">
+      <source type="image/webp" srcset="images/grand-hall-hero-480.webp 480w, images/grand-hall-hero-960.webp 960w, images/grand-hall-hero-1536.webp 1536w" sizes="100vw">
+      <img src="images/grand_hall_2-no-person.png" width="1536" height="1024" fetchpriority="high" alt="The restored Grand Hall at Grand Central, with brick arches, original clocks, chandeliers and patterned terrazzo floors beneath the coffered ceiling." srcset="images/optimized/site/grand-hall-2-no-person-551f7e0f-480.webp 480w, images/optimized/site/grand-hall-2-no-person-551f7e0f-960.webp 960w, images/optimized/site/grand-hall-2-no-person-551f7e0f-1440.webp 1440w" sizes="100vw" decoding="async">
+    </picture>
   </div>
   <div class="hero-inner page">
     <div class="masthead">
       <div class="nameplate">
         <span class="brand-building" aria-hidden="true">
-          <img src="images/grand-central-logo-transparent.png" width="2075" height="758" alt="">
+          <img src="images/grand-central-logo-transparent.png" width="2075" height="758" alt="" srcset="images/optimized/site/grand-central-logo-transparent-9c6ed58a-480.webp 480w, images/optimized/site/grand-central-logo-transparent-9c6ed58a-960.webp 960w, images/optimized/site/grand-central-logo-transparent-9c6ed58a-1440.webp 1440w" sizes="140px" decoding="async">
         </span>
         <div class="nameplate-words">
           <strong class="carved">Grand Central</strong>
           <span class="nameplate-place sign">Auckland</span>
         </div>
       </div>
-      <nav class="wayfind sign">
-        <a href="#stay">Rooms</a>
-        <a href="station-story.html">The Station</a>
-        <a href="arts-events.html">Arts &amp; events</a>
-        <a href="#dining">Saffron</a>
-        <a href="#location">Location</a>
-      </nav>
+<nav class="wayfind sign" aria-label="Main navigation"><a href="rooms.html">Rooms</a><a href="arts-events.html">Arts &amp; Culture</a><a href="venues.html">Events &amp; Venues</a><a href="weddings.html">Weddings</a><a href="index.html#location">Location</a></nav>
       <span class="hero-actions" style="gap:16px">
         <a class="callnow data" href="tel:+6493651428">09 365 1428</a>
         <a class="btn btn-brass" href="#book">Book direct</a>
@@ -123,63 +121,6 @@
     <button class="btn btn-brass" type="submit">Check rates</button>
   </form>
 
-  <section class="board-wrap" id="legacy-rooms" hidden>
-    <div class="board-head">
-      <div>
-        <h2>Tonight's board</h2>
-        <p>Every room we run, with the lowest rate on each. Book direct and you deal with the front desk itself. Late arrivals, room changes and special requests go to the people who are actually here at 1am, not a call centre offshore.</p>
-        <!-- The strongest direct-booking lever is an incentive that costs less than
-             the 15-18% OTA commission: parking waived, late checkout, a drink at
-             Saffron. That is a commercial decision for the owner, so nothing is
-             claimed here. Add it as one line directly beneath this paragraph. -->
-      </div>
-      <span class="board-note sign">Rates illustrative — to be confirmed</span>
-    </div>
-
-    <table class="board">
-      <caption class="sign">Room types and lowest published rates</caption>
-      <thead>
-        <tr>
-          <th scope="col">Room</th>
-          <th scope="col">Sleeps</th>
-          <th scope="col" class="num">From</th>
-          <th scope="col" class="num"><span class="visually-hidden">Book</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="settle"><span class="room-name">Backpacker Pod</span>
-            <small class="room-desc">Pod bunk in an 8-bed dorm, timber surround and full privacy curtain</small></span></td>
-          <td><span class="settle data">1</span></td>
-          <td class="num"><span class="settle"><span class="rate data">$45</span><small class="sign">NZD / night</small></span></td>
-          <td class="num"><button class="btn btn-line" type="submit" form="book" name="room" value="backpacker-pod">Select<span class="visually-hidden"> Backpacker Pod</span></button></td>
-        </tr>
-        <tr>
-          <td><span class="settle"><span class="room-name">Standard Double</span>
-            <small class="room-desc">Double bed, air conditioning, flat-screen TV</small></span></td>
-          <td><span class="settle data">2</span></td>
-          <td class="num"><span class="settle"><span class="rate data">$149</span><small class="sign">NZD / night</small></span></td>
-          <td class="num"><button class="btn btn-line" type="submit" form="book" name="room" value="standard-double">Select<span class="visually-hidden"> Standard Double</span></button></td>
-        </tr>
-        <tr>
-          <td><span class="settle"><span class="room-name">Deluxe King</span>
-            <small class="room-desc">King bed, minibar, room to work</small></span></td>
-          <td><span class="settle data">2</span></td>
-          <td class="num"><span class="settle"><span class="rate data">$179</span><small class="sign">NZD / night</small></span></td>
-          <td class="num"><button class="btn btn-line" type="submit" form="book" name="room" value="deluxe-king">Select<span class="visually-hidden"> Deluxe King</span></button></td>
-        </tr>
-        <tr>
-          <td><span class="settle"><span class="room-name">Deluxe Twin</span>
-            <small class="room-desc">King plus king single, for two travelling together</small></span></td>
-          <td><span class="settle data">3</span></td>
-          <td class="num"><span class="settle"><span class="rate data">$199</span><small class="sign">NZD / night</small></span></td>
-          <td class="num"><button class="btn btn-line" type="submit" form="book" name="room" value="deluxe-twin">Select<span class="visually-hidden"> Deluxe Twin</span></button></td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="board-credit">The station's original arrivals and departures board stood in the concourse, under the sign for platforms three to seven.</p>
-  </section>
-
   <section class="building" id="legacy-building" hidden>
     <div class="building-lead">
       <div>
@@ -224,14 +165,14 @@
     <div class="rooms-media">
       <figure style="margin:0">
         <div class="plate">
-          <img class="shot" src="images/room-double-editorial.png" width="1156" height="1361" loading="lazy" decoding="async" alt="A Standard Double room with crisp white linen, tall heritage sash windows and warm natural daylight.">
+          <img class="shot" src="images/room-double-editorial.png" width="1156" height="1361" loading="lazy" decoding="async" alt="A Standard Double room with crisp white linen, tall heritage sash windows and warm natural daylight." srcset="images/optimized/site/room-double-editorial-006dd6f8-480.webp 480w, images/optimized/site/room-double-editorial-006dd6f8-960.webp 960w, images/optimized/site/room-double-editorial-006dd6f8-1156.webp 1156w" sizes="(max-width: 820px) 100vw, 50vw">
         </div>
         <figcaption class="caption">Standard Double, with the building's original window height.</figcaption>
       </figure>
       <figure style="margin:0">
         <div class="plate">
           <img class="shot" src="images/pod-dorm-editorial.png" width="1086" height="1448" loading="lazy" decoding="async"
-               alt="Timber pod bunks in the eight-bed dormitory, each with a full-length black privacy curtain, open storage beneath and a tall cabinet alongside.">
+               alt="Timber pod bunks in the eight-bed dormitory, each with a full-length black privacy curtain, open storage beneath and a tall cabinet alongside." srcset="images/optimized/site/pod-dorm-editorial-8572530d-480.webp 480w, images/optimized/site/pod-dorm-editorial-8572530d-960.webp 960w, images/optimized/site/pod-dorm-editorial-8572530d-1086.webp 1086w" sizes="(max-width: 820px) 100vw, 50vw">
         </div>
         <figcaption class="caption">Backpacker Pod. A curtain that actually closes, and somewhere to put your bag.</figcaption>
       </figure>
@@ -308,9 +249,6 @@
       <dt>Pets</dt>
       <dd>Not permitted<em>We're unable to accommodate pets in any room type.</em></dd>
 
-      <dt>Check in / out</dt>
-      <dd>To be confirmed<em>Placeholder — confirm your real times before this page goes live.</em></dd>
-
       <dt>Longer stays</dt>
       <dd>Weekly rates on request<em>Ask the team for a quote on seven nights or more.</em></dd>
     </dl>
@@ -348,7 +286,7 @@
     </header>
     <div class="stay-feature">
       <figure>
-        <img src="images/room-double-editorial.png" width="1156" height="1361" loading="lazy" decoding="async" alt="Standard Double room with white linen and tall heritage windows.">
+        <img src="images/room-double-editorial.png" width="1156" height="1361" loading="lazy" decoding="async" alt="Standard Double room with white linen and tall heritage windows." srcset="images/optimized/site/room-double-editorial-006dd6f8-480.webp 480w, images/optimized/site/room-double-editorial-006dd6f8-960.webp 960w, images/optimized/site/room-double-editorial-006dd6f8-1156.webp 1156w" sizes="(max-width: 820px) 100vw, 50vw">
       </figure>
       <div class="stay-copy">
         <p class="eyebrow sign">Private rooms</p>
@@ -359,7 +297,7 @@
     </div>
     <div class="stay-feature stay-feature-reverse">
       <figure>
-        <img src="images/pod-dorm-editorial.png" width="1086" height="1448" loading="lazy" decoding="async" alt="Timber sleeping pods with individual privacy curtains and storage.">
+        <img src="images/pod-dorm-editorial.png" width="1086" height="1448" loading="lazy" decoding="async" alt="Timber sleeping pods with individual privacy curtains and storage." srcset="images/optimized/site/pod-dorm-editorial-8572530d-480.webp 480w, images/optimized/site/pod-dorm-editorial-8572530d-960.webp 960w, images/optimized/site/pod-dorm-editorial-8572530d-1086.webp 1086w" sizes="(max-width: 820px) 100vw, 50vw">
       </figure>
       <div class="stay-copy">
         <p class="eyebrow sign">Backpacker pods</p>
@@ -376,29 +314,34 @@
     </header>
     <div class="gallery-feature" data-hotel-gallery aria-label="Grand Central photo gallery">
       <div class="gallery-slides">
-        <img class="gallery-slide" src="images/grand_hall3.jpg" width="1920" height="1280" loading="lazy" alt="The Grand Hall inside Grand Central.">
-        <img class="gallery-slide" src="images/grandhall4.jpg" width="1920" height="1280" loading="lazy" alt="The Grand Hall's brick arches, chandeliers and ornate heritage ceiling.">
-        <img class="gallery-slide" src="images/grand_hall_2-no-person.png" width="1536" height="1024" loading="lazy" alt="The terrazzo floor and heritage interior of the Grand Hall.">
-        <img class="gallery-slide" src="images/grand_hall_1.jpg" width="867" height="1300" loading="lazy" alt="The tiled floor, brick arches and ornate ceiling of the Grand Hall.">
-        <img class="gallery-slide" src="images/oldrailway_booking hall.jpg" width="1920" height="1280" loading="lazy" alt="The original Booking Hall.">
-        <img class="gallery-slide" src="images/ceiling_booking_hall.jpg" width="1920" height="1280" loading="lazy" alt="The stained-glass ceiling and clock in the Booking Hall.">
+        <img class="gallery-slide" src="images/grand_hall3.jpg" width="1920" height="1280" loading="lazy" alt="The Grand Hall inside Grand Central." srcset="images/optimized/site/grand-hall3-7c6386b7-480.webp 480w, images/optimized/site/grand-hall3-7c6386b7-960.webp 960w, images/optimized/site/grand-hall3-7c6386b7-1440.webp 1440w" sizes="100vw" decoding="async">
+        <img class="gallery-slide" src="images/grandhall4.jpg" width="1920" height="1280" loading="lazy" alt="The Grand Hall's brick arches, chandeliers and ornate heritage ceiling." srcset="images/optimized/site/grandhall4-d3bcd4b7-480.webp 480w, images/optimized/site/grandhall4-d3bcd4b7-960.webp 960w, images/optimized/site/grandhall4-d3bcd4b7-1440.webp 1440w" sizes="100vw" decoding="async">
+        <img class="gallery-slide" src="images/grand_hall_2-no-person.png" width="1536" height="1024" loading="lazy" alt="The terrazzo floor and heritage interior of the Grand Hall." srcset="images/optimized/site/grand-hall-2-no-person-551f7e0f-480.webp 480w, images/optimized/site/grand-hall-2-no-person-551f7e0f-960.webp 960w, images/optimized/site/grand-hall-2-no-person-551f7e0f-1440.webp 1440w" sizes="100vw" decoding="async">
+        <img class="gallery-slide" src="images/grand_hall_1.jpg" width="867" height="1300" loading="lazy" alt="The tiled floor, brick arches and ornate ceiling of the Grand Hall." srcset="images/optimized/site/grand-hall-1-f5bdbac4-480.webp 480w, images/optimized/site/grand-hall-1-f5bdbac4-867.webp 867w" sizes="100vw" decoding="async">
+        <img class="gallery-slide" src="images/oldrailway_booking hall.jpg" width="1920" height="1280" loading="lazy" alt="The original Booking Hall." srcset="images/optimized/site/oldrailway-booking-hall-a101197c-480.webp 480w, images/optimized/site/oldrailway-booking-hall-a101197c-960.webp 960w, images/optimized/site/oldrailway-booking-hall-a101197c-1440.webp 1440w" sizes="100vw" decoding="async">
+        <img class="gallery-slide" src="images/ceiling_booking_hall.jpg" width="1920" height="1280" loading="lazy" alt="The stained-glass ceiling and clock in the Booking Hall." srcset="images/optimized/site/ceiling-booking-hall-911078ba-480.webp 480w, images/optimized/site/ceiling-booking-hall-911078ba-960.webp 960w, images/optimized/site/ceiling-booking-hall-911078ba-1440.webp 1440w" sizes="100vw" decoding="async">
         <img class="gallery-slide" src="images/venues-source/grand-hall/1280px-Auckland_Railway_Station_Interior_10468838543.jpg" width="1280" height="986" loading="lazy" alt="Historic black-and-white view of the station hall filled with passengers and musicians.">
-        <img class="gallery-slide" src="images/venues-source/grand-hall/aucklandoldrailwaystation-interior0067.jpg" width="1920" height="1280" loading="lazy" alt="Wide contemporary view of the hall's steel arches, heritage windows and tiled walls.">
-        <img class="gallery-slide" src="images/venues-source/waiting-room/aucklandoldrailwaystation-interior0063.jpg" width="1920" height="1280" loading="lazy" alt="The light-filled Waiting Room with its heritage windows and open floor.">
-        <img class="gallery-slide" src="images/venues-source/grand-hall/aucklandoldrailwaystation-interior0066.jpg" width="1920" height="1280" loading="lazy" alt="The Grand Hall's green steel arches and glazed roof above a chequerboard floor and patterned tiled walls.">
+        <img class="gallery-slide" src="images/venues-source/grand-hall/aucklandoldrailwaystation-interior0067.jpg" width="1920" height="1280" loading="lazy" alt="Wide contemporary view of the hall's steel arches, heritage windows and tiled walls." srcset="images/optimized/site/aucklandoldrailwaystation-interior0067-0ed49db7-480.webp 480w, images/optimized/site/aucklandoldrailwaystation-interior0067-0ed49db7-960.webp 960w, images/optimized/site/aucklandoldrailwaystation-interior0067-0ed49db7-1440.webp 1440w" sizes="100vw" decoding="async">
+        <img class="gallery-slide" src="images/venues-source/waiting-room/aucklandoldrailwaystation-interior0063.jpg" width="1920" height="1280" loading="lazy" alt="The light-filled Waiting Room with its heritage windows and open floor." srcset="images/optimized/site/aucklandoldrailwaystation-interior0063-11c21034-480.webp 480w, images/optimized/site/aucklandoldrailwaystation-interior0063-11c21034-960.webp 960w, images/optimized/site/aucklandoldrailwaystation-interior0063-11c21034-1440.webp 1440w" sizes="100vw" decoding="async">
+        <img class="gallery-slide" src="images/venues-source/grand-hall/aucklandoldrailwaystation-interior0066.jpg" width="1920" height="1280" loading="lazy" alt="The Grand Hall's green steel arches and glazed roof above a chequerboard floor and patterned tiled walls." srcset="images/optimized/site/aucklandoldrailwaystation-interior0066-cffbcf0c-480.webp 480w, images/optimized/site/aucklandoldrailwaystation-interior0066-cffbcf0c-960.webp 960w, images/optimized/site/aucklandoldrailwaystation-interior0066-cffbcf0c-1440.webp 1440w" sizes="100vw" decoding="async">
         <img class="gallery-slide" src="images/venues-source/grand-hall/aucklandoldrailwaystation-0072-web-1.jpg" width="980" height="1470" loading="lazy" alt="A riveted steel arch and globe pendant beside the hall's tall multi-paned windows and provincial crests.">
         <img class="gallery-slide" src="images/venues-source/grand-hall/aucklandoldrailwaystation-0049-web.jpg" width="1470" height="980" loading="lazy" alt="Looking up into the Grand Hall's riveted steel arches, glazed roof and hanging globe lights.">
-        <img class="gallery-slide" src="images/venues-source/waiting-room/aucklandoldrailwaystation-interior0037.jpg" width="1920" height="1280" loading="lazy" alt="Tall timber-framed windows with red damask curtains above glazed tiles and cast-iron radiator covers.">
-        <img class="gallery-slide" src="images/venues-source/waiting-room/aucklandoldrailwaystation-interior0042.jpg" width="1920" height="1280" loading="lazy" alt="Polished timber columns framing a meeting table, with afternoon light across the tiled walls.">
+        <img class="gallery-slide" src="images/venues-source/waiting-room/aucklandoldrailwaystation-interior0037.jpg" width="1920" height="1280" loading="lazy" alt="Tall timber-framed windows with red damask curtains above glazed tiles and cast-iron radiator covers." srcset="images/optimized/site/aucklandoldrailwaystation-interior0037-3e151cd7-480.webp 480w, images/optimized/site/aucklandoldrailwaystation-interior0037-3e151cd7-960.webp 960w, images/optimized/site/aucklandoldrailwaystation-interior0037-3e151cd7-1440.webp 1440w" sizes="100vw" decoding="async">
+        <img class="gallery-slide" src="images/venues-source/waiting-room/aucklandoldrailwaystation-interior0042.jpg" width="1920" height="1280" loading="lazy" alt="Polished timber columns framing a meeting table, with afternoon light across the tiled walls." srcset="images/optimized/site/aucklandoldrailwaystation-interior0042-1536cc20-480.webp 480w, images/optimized/site/aucklandoldrailwaystation-interior0042-1536cc20-960.webp 960w, images/optimized/site/aucklandoldrailwaystation-interior0042-1536cc20-1440.webp 1440w" sizes="100vw" decoding="async">
         <img class="gallery-slide" src="images/venues-source/meeting-room/aucklandoldrailwaystation-interior0027.jpg" width="1920" height="1280" loading="lazy" alt="A dark timber-panelled room with an upright piano, leather armchairs and a marble fireplace.">
         <img class="gallery-slide" src="images/venues-source/grand-hall/aucklandoldrailwaystation-0034-web.jpg" width="1650" height="1100" loading="lazy" alt="A painted Wanganui provincial coat of arms mounted on the hall wall beneath a heritage window.">
       </div>
-      <button class="gallery-next-small" type="button" data-gallery-next aria-label="Next image"><span aria-hidden="true">&#8594;</span></button>
+      <div class="gallery-controls">
+        <button type="button" data-gallery-prev aria-label="Previous image"><span aria-hidden="true">&#8592;</span></button>
+        <button type="button" data-gallery-pause aria-label="Pause gallery">Pause</button>
+        <span class="gallery-status" data-gallery-status aria-live="polite"></span>
+        <button type="button" data-gallery-next aria-label="Next image"><span aria-hidden="true">&#8594;</span></button>
+      </div>
     </div>
   </section>
 
   <section class="heritage-overview" id="heritage" aria-labelledby="heritage-title">
-    <div class="heritage-image"><img src="images/oldrailway_booking hall.jpg" width="1920" height="1280" loading="lazy" alt="The old Booking Hall with its original clock, brick walls, timber seating and chandeliers."></div>
+    <div class="heritage-image"><img src="images/oldrailway_booking hall.jpg" width="1920" height="1280" loading="lazy" alt="The old Booking Hall with its original clock, brick walls, timber seating and chandeliers." srcset="images/optimized/site/oldrailway-booking-hall-a101197c-480.webp 480w, images/optimized/site/oldrailway-booking-hall-a101197c-960.webp 960w, images/optimized/site/oldrailway-booking-hall-a101197c-1440.webp 1440w" sizes="(max-width: 820px) 100vw, 50vw" decoding="async"></div>
     <div class="heritage-copy">
       <p class="eyebrow sign">Auckland railway heritage</p>
       <h2 id="heritage-title">The ticket hall is still the front desk</h2>
@@ -410,13 +353,13 @@
 
   <section class="arts-overview" id="art-events" aria-labelledby="arts-overview-title">
     <div class="arts-overview-copy">
-      <p class="eyebrow sign">Arts &amp; events</p>
+            <p class="eyebrow sign">Arts &amp; Culture</p>
       <h2 id="arts-overview-title">The station is still a place to gather</h2>
       <p>Exhibitions, creative projects and private occasions bring new life to the former concourse and waiting halls. Historic architecture and generous spaces give every gathering a character of its own.</p>
-      <a class="text-link sign" href="arts-events.html">Explore arts &amp; events <span aria-hidden="true">→</span></a>
+            <a class="text-link sign" href="arts-events.html">Explore arts &amp; culture <span aria-hidden="true">→</span></a>
     </div>
     <figure class="arts-overview-image">
-      <img src="images/stationstory_4.jpg" width="1280" height="1920" loading="lazy" alt="An art exhibition arranged beneath the steel arches and skylights of the former station concourse.">
+      <img src="images/stationstory_4.jpg" width="1333" height="2000" loading="lazy" alt="An art exhibition arranged beneath the steel arches and skylights of the former station concourse." srcset="images/optimized/site/stationstory-4-7fc73d02-480.webp 480w, images/optimized/site/stationstory-4-7fc73d02-960.webp 960w, images/optimized/site/stationstory-4-7fc73d02-1333.webp 1333w" sizes="(max-width: 820px) 100vw, 50vw" decoding="async">
     </figure>
   </section>
 
@@ -429,10 +372,15 @@
     <div class="dining-carousel" data-dining-carousel tabindex="0" aria-label="Saffron image gallery">
       <div class="dining-slides">
         <img class="dining-slide" src="images/platfomr8_lights.jpg" width="2880" height="1620" loading="lazy" alt="Warm pendant lights and greenery above the Saffron dining room.">
-        <img class="dining-slide" src="images/platform8_1.jpg" width="2880" height="1620" loading="lazy" alt="Saffron set within the brick arches and chandeliers of the Grand Hall.">
-        <img class="dining-slide" src="images/platform8 restaruatn.avif" loading="lazy" alt="Saffron restaurant within the heritage railway station.">
+        <img class="dining-slide" src="images/platform8_1.jpg" width="2880" height="1620" loading="lazy" alt="Saffron set within the brick arches and chandeliers of the Grand Hall." srcset="images/optimized/site/platform8-1-7d458351-480.webp 480w, images/optimized/site/platform8-1-7d458351-960.webp 960w, images/optimized/site/platform8-1-7d458351-1440.webp 1440w" sizes="(max-width: 820px) 100vw, 50vw" decoding="async">
+        <img class="dining-slide" src="images/platform8 restaruatn.avif" loading="lazy" alt="Saffron restaurant within the heritage railway station." width="1440" height="810">
       </div>
-      <button class="dining-next-small" type="button" data-dining-next aria-label="Next Saffron image"><span aria-hidden="true">&#8594;</span></button>
+      <div class="gallery-controls">
+        <button type="button" data-dining-prev aria-label="Previous Saffron image"><span aria-hidden="true">&#8592;</span></button>
+        <button type="button" data-dining-pause aria-label="Pause Saffron gallery">Pause</button>
+        <span class="gallery-status" data-dining-status aria-live="polite"></span>
+        <button type="button" data-dining-next aria-label="Next Saffron image"><span aria-hidden="true">&#8594;</span></button>
+      </div>
     </div>
   </section>
 
@@ -578,7 +526,7 @@
       <div>
         <h3>Here</h3>
         <a href="station-story.html">The Station</a>
-        <a href="arts-events.html">Arts &amp; events</a>
+        <a href="arts-events.html">Arts &amp; Culture</a>
         <a href="#dining">Saffron</a>
         <a href="#getting-here">Getting here</a>
         <a href="#property-details">Property details</a>
@@ -602,13 +550,16 @@
     var inEl = document.getElementById("in"), outEl = document.getElementById("out");
     if (!inEl || !outEl) return;
     var today = new Date().toISOString().slice(0, 10);
-    inEl.min = today; outEl.min = today;
+    function followingDay(value) {
+      var date = new Date(value + "T12:00:00");
+      date.setDate(date.getDate() + 1);
+      return date.toISOString().slice(0, 10);
+    }
+    inEl.min = today; outEl.min = followingDay(today);
     inEl.addEventListener("change", function () {
-      outEl.min = inEl.value || today;
+      outEl.min = inEl.value ? followingDay(inEl.value) : followingDay(today);
       if (outEl.value && outEl.value <= inEl.value) {
-        var next = new Date(inEl.value);
-        next.setDate(next.getDate() + 1);
-        outEl.value = next.toISOString().slice(0, 10);
+        outEl.value = followingDay(inEl.value);
       }
     });
   })();
@@ -633,25 +584,41 @@
     if (!gallery) return;
     var track = gallery.querySelector(".gallery-slides");
     var slides = Array.prototype.slice.call(gallery.querySelectorAll(".gallery-slide"));
-    var index = 0, timer;
+    var index = 0, timer, paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var pauseButton = gallery.querySelector("[data-gallery-pause]");
+    var status = gallery.querySelector("[data-gallery-status]");
 
     function show(next) {
       index = (next + slides.length) % slides.length;
       track.style.transform = "translateX(-" + (index * 100) + "%)";
+      slides.forEach(function (slide, slideIndex) { slide.setAttribute("aria-hidden", String(slideIndex !== index)); });
+      status.textContent = "Image " + (index + 1) + " of " + slides.length;
     }
 
     function start() {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (paused) return;
       clearInterval(timer);
       timer = setInterval(function () { show(index + 1); }, 4500);
     }
 
     gallery.addEventListener("mouseenter", function () { clearInterval(timer); });
     gallery.addEventListener("mouseleave", start);
+    gallery.addEventListener("focusin", function () { clearInterval(timer); });
+    gallery.addEventListener("focusout", start);
+    gallery.querySelector("[data-gallery-prev]").addEventListener("click", function () {
+      show(index - 1);
+    });
     gallery.querySelector("[data-gallery-next]").addEventListener("click", function () {
       show(index + 1);
+    });
+    pauseButton.addEventListener("click", function () {
+      paused = !paused;
+      pauseButton.textContent = paused ? "Play" : "Pause";
+      pauseButton.setAttribute("aria-label", paused ? "Play gallery" : "Pause gallery");
+      clearInterval(timer);
       start();
     });
+    show(0);
     start();
   })();
 
@@ -661,21 +628,34 @@
     if (!carousel) return;
     var track = carousel.querySelector(".dining-slides");
     var slides = Array.prototype.slice.call(track.querySelectorAll(".dining-slide"));
-    var index = 0, timer;
+    var index = 0, timer, paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var pauseButton = carousel.querySelector("[data-dining-pause]");
+    var status = carousel.querySelector("[data-dining-status]");
 
     function show(next) {
       index = (next + slides.length) % slides.length;
       track.style.transform = "translateX(-" + (index * 100) + "%)";
+      slides.forEach(function (slide, slideIndex) { slide.setAttribute("aria-hidden", String(slideIndex !== index)); });
+      status.textContent = "Image " + (index + 1) + " of " + slides.length;
     }
 
     function start() {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (paused) return;
       clearInterval(timer);
       timer = setInterval(function () { show(index + 1); }, 4500);
     }
 
+    carousel.querySelector("[data-dining-prev]").addEventListener("click", function () {
+      show(index - 1);
+    });
     carousel.querySelector("[data-dining-next]").addEventListener("click", function () {
       show(index + 1);
+    });
+    pauseButton.addEventListener("click", function () {
+      paused = !paused;
+      pauseButton.textContent = paused ? "Play" : "Pause";
+      pauseButton.setAttribute("aria-label", paused ? "Play Saffron gallery" : "Pause Saffron gallery");
+      clearInterval(timer);
       start();
     });
     carousel.addEventListener("keydown", function (event) {
@@ -684,9 +664,12 @@
     });
     carousel.addEventListener("mouseenter", function () { clearInterval(timer); });
     carousel.addEventListener("mouseleave", start);
+    carousel.addEventListener("focusin", function () { clearInterval(timer); });
+    carousel.addEventListener("focusout", start);
+    show(0);
     start();
   })();
 </script>
 
-</body>
+<script src="site.js" defer></script></body>
 </html>
