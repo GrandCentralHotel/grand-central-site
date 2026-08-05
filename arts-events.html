@@ -34,14 +34,14 @@
       </a>
       <nav class="wayfind sign" aria-label="Main navigation">
         <a href="index.html#stay">Rooms</a>
-        <a href="index.html#heritage">The Station</a>
+        <a href="station-story.html">The Station</a>
         <a href="arts-events.html" aria-current="page">Arts &amp; events</a>
         <a href="index.html#dining">Saffron</a>
         <a href="index.html#location">Location</a>
       </nav>
       <span class="hero-actions" style="gap:16px">
         <a class="callnow" href="tel:+6493651428">09 365 1428</a>
-        <a class="btn btn-brass" href="index.html#book">Book direct</a>
+        <a class="btn btn-brass" href="mailto:info@ahrsac.org.nz?subject=Arts%20and%20events%20enquiry">Make an enquiry</a>
       </span>
     </div>
 
@@ -49,6 +49,10 @@
       <p class="hero-kicker sign">Auckland Heritage Art Centre</p>
       <h1>Arts &amp; events at the station</h1>
       <p>Historic halls made active again through exhibitions, creative work and memorable gatherings</p>
+      <div class="hero-actions arts-hero-actions">
+        <a class="btn btn-brass" href="venues.html">Explore venues</a>
+        <a class="btn btn-line" href="#programme">See what’s on</a>
+      </div>
     </div>
   </div>
 </header>
@@ -91,7 +95,7 @@
         <p class="eyebrow sign">Venue hire</p>
         <h2 id="venue-spaces-title">A room for every kind of gathering</h2>
         <p>Each space has its own proportions and heritage details. The arts team can help identify the right setting and arrange a viewing before plans are confirmed.</p>
-        <a class="text-link sign" href="mailto:info@ahrsac.org.nz?subject=Grand%20Central%20venue%20enquiry">Arrange a venue tour <span aria-hidden="true">→</span></a>
+        <a class="btn btn-brass" href="mailto:info@ahrsac.org.nz?subject=Grand%20Central%20venue%20enquiry">Arrange a venue tour</a>
       </div>
       <div class="venue-space-list">
         <article><span class="sign">01</span><div><h3>Grand Hall</h3><p>A monumental room for exhibitions, ceremonies, performances and larger occasions.</p></div></article>
@@ -153,13 +157,17 @@
     </div>
   </section>
 
-  <section class="arts-programme page" aria-labelledby="programme-title">
-    <p class="eyebrow sign">What's on</p>
-    <h2 id="programme-title">See what is taking shape</h2>
-    <p>Exhibitions and creative events are programmed throughout the year. For current dates, visiting information or an opportunity to present your work, contact the Auckland Heritage Art Centre team directly.</p>
-    <div>
-      <a class="btn btn-brass" href="mailto:info@ahrsac.org.nz?subject=Arts%20and%20events%20enquiry">Email the arts team</a>
-      <a class="text-link sign" href="tel:+6493651428">Call 09 365 1428</a>
+  <section class="arts-programme page" id="programme" aria-labelledby="programme-title">
+    <div class="arts-programme-heading">
+      <p class="eyebrow sign">What's on</p>
+      <h2 id="programme-title">See what is taking shape</h2>
+    </div>
+    <div class="arts-programme-action">
+      <p>Exhibitions and creative events are programmed throughout the year. For current dates, visiting information or an opportunity to present your work, contact the Auckland Heritage Art Centre team directly.</p>
+      <div>
+        <a class="btn btn-brass" href="mailto:info@ahrsac.org.nz?subject=Arts%20and%20events%20enquiry">Email the arts team</a>
+        <a class="text-link sign" href="tel:+6493651428">Call 09 365 1428</a>
+      </div>
     </div>
   </section>
 </main>
@@ -168,8 +176,10 @@
   <footer>
     <div class="foot-grid">
       <div>
-        <h3 class="carved" style="font-size:11px">Grand Central</h3>
-        <p>A restored railway building in the Auckland CBD, three minutes from Spark Arena.</p>
+        <a class="footer-brand" href="index.html" aria-label="Grand Central Auckland home">
+          <img src="images/grand-central-auckland-logo-transparent.png" width="484" height="484" alt="">
+        </a>
+        <p class="footer-intro">A landmark restored for stays, celebrations and creative life in the heart of Auckland.</p>
       </div>
       <div>
         <h3>Stay</h3>
