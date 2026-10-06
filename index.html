@@ -88,15 +88,10 @@
 
 <main class="page" id="content">
 
-  <!-- ============================================================
-       BOOKING ENGINE: replace the action URL below with your live
-       Staah Max booking URL. Everything else already works: the form
-       submits arriving/departing/guests as query params, and each
-       "Select" button on the board submits this same form with an
-       extra room=<slug> param. No JavaScript required.
-       ============================================================ -->
+  <!-- Cloudbeds handles availability, room selection and payment. -->
   <form class="ticket-window" id="book" method="get"
-        action="https://REPLACE-WITH-YOUR-STAAH-MAX-BOOKING-URL">
+        action="https://us2.cloudbeds.com/en/reservation/1hynWi" data-booking-form>
+    <input type="hidden" name="currency" value="nzd">
     <div class="field">
       <label class="sign" for="in">Arriving</label>
       <input id="in" name="checkin" type="date" required>
@@ -120,6 +115,7 @@
     </div>
     <button class="btn btn-brass" type="submit">Check rates</button>
   </form>
+    <p class="booking-handoff">Continue to Cloudbeds to book Grand Central Serviced Apartments in NZD. Choose your room and confirm guest details there.</p>
 
   <section class="building" id="legacy-building" hidden>
     <div class="building-lead">
@@ -545,25 +541,6 @@
 </div>
 
 <script>
-  // Dates cannot be in the past, and departure cannot precede arrival.
-  (function () {
-    var inEl = document.getElementById("in"), outEl = document.getElementById("out");
-    if (!inEl || !outEl) return;
-    var today = new Date().toISOString().slice(0, 10);
-    function followingDay(value) {
-      var date = new Date(value + "T12:00:00");
-      date.setDate(date.getDate() + 1);
-      return date.toISOString().slice(0, 10);
-    }
-    inEl.min = today; outEl.min = followingDay(today);
-    inEl.addEventListener("change", function () {
-      outEl.min = inEl.value ? followingDay(inEl.value) : followingDay(today);
-      if (outEl.value && outEl.value <= inEl.value) {
-        outEl.value = followingDay(inEl.value);
-      }
-    });
-  })();
-
   // Play the board settle when it is reached, not on page load.
   (function () {
     var board = document.querySelector(".board");

@@ -79,7 +79,6 @@
 .bookstrip { padding-top: clamp(90px, 11vw, 150px); }
 .bookstrip h2 { font-size: clamp(36px, 4.5vw, 62px); margin-bottom: 14px; }
 .bookstrip > p { color: var(--cream-dim); max-width: 58ch; margin: 0 0 30px; }
-.mobile-book { display: none; }
 
 /* Individual room pages */
 .room-detail-hero { padding-top: clamp(60px, 8vw, 100px); }
@@ -183,14 +182,12 @@
 }
 
 @media (max-width: 650px) {
-  body { padding-bottom: 72px; }
   .rooms-hero { min-height: 72svh; }
   .rooms-hero-copy h1 { font-size: clamp(50px, 16vw, 72px); }
   .roomlist, .inclusions { grid-template-columns: 1fr; }
   .inclusions div:nth-child(n) { border-left: 0; padding-left: 0; }
   .roomactions { flex-direction: column; }
   .accessibility { margin-inline: -22px; padding-inline: 22px; }
-  .mobile-book { display: block; position: fixed; z-index: 30; left: 12px; right: 12px; bottom: 10px; text-align: center; box-shadow: 0 10px 35px rgba(0,0,0,.25); }
   .room-gallery { grid-template-columns: 1fr; }
   .room-gallery figure:first-child { grid-row: auto; }
   .room-gallery figure:first-child img, .room-gallery figure:not(:first-child) img { min-height: 0; aspect-ratio: 4/3; }

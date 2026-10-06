@@ -61,7 +61,7 @@
           <ul class="room-amenities"><li>Privacy curtain</li><li>Personal storage</li><li>Free Wi-Fi</li></ul>
           <div class="roomactions">
             <a class="btn btn-line" href="room-pod.html">View room</a>
-            <button class="btn btn-brass" type="submit" form="booking-form" name="room" value="backpacker-pod">Book now</button>
+            <button class="btn btn-brass" type="submit" form="booking-form">Book now</button>
           </div>
         </div>
       </article>
@@ -79,7 +79,7 @@
           <ul class="room-amenities"><li>Air conditioning</li><li>Television</li><li>Free Wi-Fi</li></ul>
           <div class="roomactions">
             <a class="btn btn-line" href="room-standard-double.html">View room</a>
-            <button class="btn btn-brass" type="submit" form="booking-form" name="room" value="standard-double">Book now</button>
+            <button class="btn btn-brass" type="submit" form="booking-form">Book now</button>
           </div>
         </div>
       </article>
@@ -97,7 +97,7 @@
           <ul class="room-amenities"><li>Air conditioning</li><li>Minibar</li><li>Workspace</li></ul>
           <div class="roomactions">
             <a class="btn btn-line" href="room-deluxe-king.html">View room</a>
-            <button class="btn btn-brass" type="submit" form="booking-form" name="room" value="deluxe-king">Book now</button>
+            <button class="btn btn-brass" type="submit" form="booking-form">Book now</button>
           </div>
         </div>
       </article>
@@ -115,7 +115,7 @@
           <ul class="room-amenities"><li>Two beds</li><li>Air conditioning</li><li>Free Wi-Fi</li></ul>
           <div class="roomactions">
             <a class="btn btn-line" href="room-deluxe-twin.html">View room</a>
-            <button class="btn btn-brass" type="submit" form="booking-form" name="room" value="deluxe-twin">Book now</button>
+            <button class="btn btn-brass" type="submit" form="booking-form">Book now</button>
           </div>
         </div>
       </article>
@@ -162,12 +162,14 @@
   <section class="bookstrip" id="book" aria-labelledby="book-title">
     <h2 id="book-title">Check your dates</h2>
     <p>Book direct or speak with the front desk about room suitability, family stays and accessibility needs.</p>
-    <form class="ticket-window" id="booking-form" method="get" action="https://REPLACE-WITH-YOUR-STAAH-MAX-BOOKING-URL">
+    <form class="ticket-window" id="booking-form" method="get" action="https://us2.cloudbeds.com/en/reservation/1hynWi" data-booking-form>
+    <input type="hidden" name="currency" value="nzd">
       <div class="field"><label class="sign" for="in">Arriving</label><input id="in" name="checkin" type="date" required></div>
       <div class="field"><label class="sign" for="out">Departing</label><input id="out" name="checkout" type="date" required></div>
       <div class="field"><label class="sign" for="guests">Guests</label><select id="guests" name="guests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option><option value="7">7 guests</option><option value="8">8 guests</option></select></div>
       <button class="btn btn-brass" type="submit">Check availability</button>
     </form>
+    <p class="booking-handoff">Continue to Cloudbeds to book Grand Central Serviced Apartments in NZD. Choose your room and confirm guest details there.</p>
   </section>
 </main>
 
@@ -204,20 +206,6 @@
       });
     });
 
-    var inEl = document.getElementById("in"), outEl = document.getElementById("out");
-    var today = new Date().toISOString().slice(0, 10);
-    function followingDay(value) {
-      var date = new Date(value + "T12:00:00");
-      date.setDate(date.getDate() + 1);
-      return date.toISOString().slice(0, 10);
-    }
-    inEl.min = today; outEl.min = followingDay(today);
-    inEl.addEventListener("change", function () {
-      outEl.min = inEl.value ? followingDay(inEl.value) : followingDay(today);
-      if (outEl.value && outEl.value <= inEl.value) {
-        outEl.value = followingDay(inEl.value);
-      }
-    });
   })();
 </script>
 <script src="site.js" defer></script></body>

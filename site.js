@@ -82,6 +82,59 @@
   Array.prototype.forEach.call(document.querySelectorAll(".masthead, .pagehead"), enhanceHeader);
   window.addEventListener("hashchange", syncCurrentNavigation);
 
+  // Reuse the page's booking destination; enquiry pages keep their own actions.
+  var bookingLink = document.querySelector('.masthead .btn[href$="#book"], .pagehead .btn[href$="#booking-form"]');
+  var mobileBooking = document.querySelector(".mobile-book");
+  if (bookingLink || mobileBooking) {
+    if (!mobileBooking) {
+      mobileBooking = document.createElement("a");
+      mobileBooking.className = "mobile-book btn btn-brass";
+      mobileBooking.href = bookingLink.getAttribute("href");
+      document.body.appendChild(mobileBooking);
+    }
+    mobileBooking.textContent = "Check availability";
+    document.body.classList.add("has-mobile-booking");
+
+    var bookingDestination = new URL(mobileBooking.href, location.href);
+    var bookingTarget = bookingDestination.pathname === location.pathname && bookingDestination.hash
+      ? document.getElementById(bookingDestination.hash.slice(1)) : null;
+    if (bookingTarget && "IntersectionObserver" in window) {
+      // Let the real form take over when it is on screen.
+      new IntersectionObserver(function (entries) {
+        mobileBooking.classList.toggle("is-at-booking", entries[0].isIntersecting);
+      }, { threshold: 0.8 }).observe(bookingTarget.querySelector('button[type="submit"]') || bookingTarget);
+    }
+  }
+
+  // Keep date-only values in the guest's local calendar, including NZ daylight time.
+  function calendarDate(date) {
+    return date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate()).padStart(2, "0");
+  }
+
+  function followingDay(value) {
+    var parts = value.split("-").map(Number);
+    return calendarDate(new Date(parts[0], parts[1] - 1, parts[2] + 1, 12));
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-booking-form]"), function (form) {
+    var arrival = form.querySelector('[name="checkin"]');
+    var departure = form.querySelector('[name="checkout"]');
+    function updateDates() {
+      var today = calendarDate(new Date());
+      arrival.min = today;
+      departure.min = followingDay(arrival.value && arrival.value >= today ? arrival.value : today);
+    }
+    updateDates();
+    arrival.addEventListener("change", function () {
+      updateDates();
+      if (departure.value && departure.value < departure.min) departure.value = departure.min;
+    });
+    form.addEventListener("submit", function (event) {
+      updateDates();
+      if (!form.reportValidity()) event.preventDefault();
+    });
+  });
+
   Array.prototype.forEach.call(document.querySelectorAll("[data-enquiry-form]"), function (form) {
     var dateField = form.querySelector('input[type="date"]');
     if (dateField && !dateField.min) {

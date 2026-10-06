@@ -451,6 +451,8 @@ h1, h2, h3 {
 .hero-kicker { font-weight: 400; letter-spacing: .12em; }
 .wayfind { text-transform: none; font-size: 12px; letter-spacing: .045em; }
 .wayfind a[aria-current="page"] { color: #fff; border-bottom: 1px solid rgba(255,255,255,.62); }
+.pagehead .wayfind a[aria-current="page"] { color: var(--cream); border-bottom-color: var(--cream); }
+.pagehead .nameplate-place { color: var(--cream-dim); }
 .btn { border-radius: 0; padding: 14px 24px; font-size: 10px; letter-spacing: .10em; }
 .hero-copy { max-width: 780px; padding-bottom: clamp(70px, 10vh, 120px); }
 .hero-copy h1 { font-size: clamp(58px, 7.5vw, 108px); line-height: .94; max-width: 9.5em; margin-bottom: 30px; }
@@ -469,6 +471,7 @@ h1, h2, h3 {
   background: #ded9cf; gap: 28px;
 }
 .field label { color: #5f594d; }
+.booking-handoff, .bookstrip > .booking-handoff { max-width: 72ch; margin: 14px 0 0; color: var(--cream-dim); font-size: 14px; line-height: 1.6; }
 .board-wrap, .building, .thennow, .rooms-detail, .platform8, .line-section, .notice, .concierge {
   padding-top: clamp(96px, 12vw, 170px);
 }
@@ -761,8 +764,7 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
   border: 1px solid currentColor;
   background: transparent;
   color: inherit;
-  font: inherit;
-  font-size: 10px;
+  font: 500 11px/1.2 var(--face-sign);
   letter-spacing: .1em;
   text-transform: uppercase;
   cursor: pointer;
@@ -1433,4 +1435,43 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
   .arts-programme { margin-inline: 0; padding: 68px 22px; }
   .creative-legacy-heading { gap: 24px; }
   .creative-legacy-heading h2 { max-width: 10ch; }
+}
+
+/* One mobile booking action, with space for phone safe areas and the page footer. */
+.mobile-book { display: none; }
+@media (max-width: 650px) {
+  .masthead, .pagehead { column-gap: 12px; padding-block: 16px; }
+  .masthead .nameplate, .pagehead .nameplate { gap: 8px; min-width: 0; }
+  .masthead .nameplate strong, .pagehead .nameplate strong {
+    font-size: clamp(14px, 4vw, 17px); line-height: 1.3; letter-spacing: .08em;
+  }
+  .nameplate .brand-building {
+    width: 64px; height: 18px;
+    -webkit-mask-size: 64px auto; mask-size: 64px auto;
+  }
+  .nameplate .brand-building img { width: 64px; }
+  .nameplate-place { font-size: 9px; }
+  .menu-toggle { min-width: 80px; min-height: 44px; padding: 10px; }
+  .masthead .wayfind { background: rgba(21,14,12,.92); padding: 0 14px; }
+  .masthead .wayfind a, .pagehead .wayfind a { min-height: 48px; }
+  .masthead > .hero-actions .btn, .pagehead > .hero-actions .btn { font-size: 11px; }
+  .btn { min-height: 48px; font-size: 11px; }
+  .text-link, footer a, main a[href^="tel:"]:not(.btn) {
+    display: inline-flex; align-items: center; min-height: 44px; padding-block: 6px;
+  }
+  body.has-mobile-booking, body:has(> .mobile-book) {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+  .has-mobile-booking .masthead > .hero-actions,
+  .has-mobile-booking .pagehead > .hero-actions,
+  .has-mobile-booking .pagehead > .btn,
+  .has-mobile-booking .rooms-hero-copy > .btn-brass { display: none; }
+  .mobile-book {
+    display: flex; position: fixed; z-index: 30; justify-content: center;
+    left: max(12px, env(safe-area-inset-left, 0px));
+    right: max(12px, env(safe-area-inset-right, 0px));
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    min-height: 48px; text-align: center; box-shadow: 0 5px 24px rgba(0,0,0,.22);
+  }
+  .mobile-book.is-at-booking { visibility: hidden; }
 }
