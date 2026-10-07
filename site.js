@@ -82,6 +82,55 @@
   Array.prototype.forEach.call(document.querySelectorAll(".masthead, .pagehead"), enhanceHeader);
   window.addEventListener("hashchange", syncCurrentNavigation);
 
+  // Native horizontal scrolling also works without JavaScript or on touch screens.
+  Array.prototype.forEach.call(document.querySelectorAll(".room-gallery"), function (gallery) {
+    var photos = Array.prototype.slice.call(gallery.querySelectorAll("figure"));
+    if (photos.length < 2) return;
+    gallery.tabIndex = 0;
+    var controls = document.createElement("div");
+    controls.className = "room-photo-controls";
+    var previous = document.createElement("button");
+    previous.type = "button";
+    previous.textContent = "Previous photo";
+    var status = document.createElement("span");
+    status.setAttribute("aria-live", "polite");
+    status.setAttribute("aria-atomic", "true");
+    var next = document.createElement("button");
+    next.type = "button";
+    next.textContent = "Next photo";
+    controls.append(previous, status, next);
+    gallery.insertAdjacentElement("afterend", controls);
+    var current = 0, scrollTimer;
+    function position(index) { return photos[index].offsetLeft - photos[0].offsetLeft; }
+    function update() {
+      var nearest = 0;
+      photos.forEach(function (photo, index) {
+        if (Math.abs(position(index) - gallery.scrollLeft) < Math.abs(position(nearest) - gallery.scrollLeft)) nearest = index;
+      });
+      current = nearest;
+      status.textContent = "Photo " + (current + 1) + " of " + photos.length;
+      previous.disabled = current === 0;
+      next.disabled = current === photos.length - 1;
+    }
+    function move(direction) {
+      current = Math.max(0, Math.min(photos.length - 1, current + direction));
+      gallery.scrollTo({ left: position(current), behavior: "auto" });
+      update();
+    }
+    previous.addEventListener("click", function () { move(-1); });
+    next.addEventListener("click", function () { move(1); });
+    gallery.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault(); move(event.key === "ArrowLeft" ? -1 : 1);
+      }
+    });
+    gallery.addEventListener("scroll", function () {
+      clearTimeout(scrollTimer); scrollTimer = setTimeout(update, 100);
+    }, { passive: true });
+    window.addEventListener("resize", function () { gallery.scrollLeft = position(current); update(); });
+    update();
+  });
+
   // Reuse the page's booking destination; enquiry pages keep their own actions.
   var bookingLink = document.querySelector('.masthead .btn[href$="#book"], .pagehead .btn[href$="#booking-form"]');
   var mobileBooking = document.querySelector(".mobile-book");
