@@ -591,15 +591,17 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
 .heritage-copy .text-link { margin-top: 31px; }
 .dining-overview { display: block; }
 .dining-copy {
-  display: grid; grid-template-columns: 1fr .82fr; gap: clamp(50px, 9vw, 130px);
+  display: grid; grid-template-columns: 1fr .82fr; column-gap: clamp(50px, 9vw, 130px); row-gap: 16px;
   align-items: end; margin-bottom: clamp(54px, 8vw, 100px);
 }
 .dining-copy .eyebrow { grid-column: 1; }
 .dining-copy h2 { grid-column: 1; }
-.dining-copy > p:not(.eyebrow) {
+.dining-description {
   grid-column: 2; grid-row: 1 / span 2; align-self: end;
   color: var(--cream-dim); font-size: 18px; margin: 0;
 }
+.dining-description p { margin: 0; }
+.dining-description p + p { margin-top: 18px; }
 .dining-carousel {
   position: relative; min-width: 0; aspect-ratio: 16 / 9;
   outline: none; overflow: hidden; background: var(--ground-lift);
@@ -716,8 +718,8 @@ footer { margin-top: clamp(100px, 14vw, 190px); }
 @media (max-width: 820px) {
   .overview-grid, .heritage-overview { grid-template-columns: 1fr; }
   .dining-copy { grid-template-columns: 1fr; }
-  .dining-copy .eyebrow, .dining-copy h2, .dining-copy > p:not(.eyebrow) { grid-column: 1; grid-row: auto; }
-  .dining-copy > p:not(.eyebrow) { margin-top: 22px; }
+  .dining-copy .eyebrow, .dining-copy h2, .dining-description { grid-column: 1; grid-row: auto; }
+  .dining-description { margin-top: 22px; }
   .quick-facts { grid-template-columns: 1fr 1fr; }
   .quick-facts div:nth-child(3) { border-left: 0; border-top: 1px solid var(--rule); }
   .quick-facts div:nth-child(4) { border-top: 1px solid var(--rule); }
@@ -1544,3 +1546,6 @@ footer .hotel-email { display: block; padding-block: 8px; font-size: 14px; line-
   .masthead .wayfind, .pagehead .wayfind { gap: 0; margin: 0; padding-inline: 14px; }
   .masthead .wayfind a, .pagehead .wayfind a { min-height: 48px; padding-block: 13px; }
 }
+
+/* Keep pre-booking guest information visibly linked. */
+.booking-handoff a, .direct-booking > p a { text-decoration: underline; text-underline-offset: 3px; }
