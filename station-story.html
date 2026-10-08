@@ -15,6 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="typography.css">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 </head>
 <body class="station-story-page site-typography">
 
@@ -141,14 +142,14 @@
 
   <section class="story-chronology page" aria-labelledby="chronology-title">
     <header><h2 id="chronology-title">The station in brief</h2></header>
-    <ol>
+    <details class="story-chronology-details"><summary>View the station timeline</summary><ol>
       <li><time>1930</time><p>The new Auckland Railway Station opens as the city's grand rail gateway.</p></li>
       <li><time>1982</time><p>David Bowie and Ryuichi Sakamoto film <em>Merry Christmas, Mr. Lawrence</em> inside.</p></li>
       <li><time>1993</time><p>A casino consortium backed by Donald Trump unsuccessfully seeks the railway land.</p></li>
       <li><time>1999</time><p>The building becomes the University of Auckland's Railway Campus.</p></li>
       <li><time>2003–11</time><p>Main services move to Britomart; two former platforms later reopen as The Strand.</p></li>
       <li><time>2023–today</time><p>Accommodation, art, hospitality and events animate the landmark again.</p></li>
-    </ol>
+    </ol></details>
   </section>
 
   <section class="story-closing page" aria-labelledby="story-closing-title">
@@ -163,39 +164,19 @@
 </main>
 
 <div class="page">
-  <footer>
-    <div class="foot-grid">
-      <div>
-        <h3 class="carved">Grand Central Hotel</h3>
-        <p>A restored railway building in the Auckland CBD, three minutes from Spark Arena.</p>
-      </div>
-      <div>
-        <h3>Stay</h3>
-        <a href="rooms.html">Rooms &amp; rates</a>
-        <a href="index.html#stay">Rooms overview</a>
-        <a href="index.html#book">Check availability</a>
-      </div>
-      <div>
-        <h3>Here</h3>
-        <a href="station-story.html">The Station</a>
-        <a href="arts-events.html">Arts &amp; Culture</a>
-        <a href="index.html#dining">Saffron</a>
-        <a href="index.html#getting-here">Getting here</a>
-        <a href="guest-information.html#property-details">Property details</a>
-        <a href="guest-information.html#faq">FAQs</a>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <p>26 Te Taou Crescent<br>Auckland CBD 1010</p>
-        <a href="tel:+6493651428">09 365 1428</a>
+  <footer class="site-footer page">
+  <div class="foot-grid">
+    <div class="footer-about"><h3 class="carved">Grand Central Hotel</h3><p>A stay inside Auckland's former railway station, three minutes from Spark Arena.</p></div>
+    <div><h3>Stay</h3><a href="rooms.html">Rooms</a><a href="rooms.html#booking-form">Check availability</a><a href="guest-information.html">Guest information</a></div>
+    <div><h3>Explore</h3><a href="arts-events.html">Arts &amp; Culture</a><a href="venues.html">Events &amp; Venues</a><a href="weddings.html">Weddings</a><a href="station-story.html">The station story</a><a href="index.html#dining">Saffron dining</a><a href="guest-information.html#getting-here">Getting here</a></div>
+    <div class="footer-contact"><h3>Contact</h3><p>26 Te Taou Crescent<br>Auckland CBD 1010</p><a class="footer-phone" href="tel:+6493651428">09 365 1428</a>
       <a class="hotel-email" href="mailto:reservation@grandcentralhotel.co.nz"><span class="email-label">Reservations</span><span>reservation@grandcentralhotel.co.nz</span></a>
-<a class="hotel-email" href="mailto:Info@grandcentralhotel.co.nz"><span class="email-label">General hotel enquiries</span><span>Info@grandcentralhotel.co.nz</span></a>
-</div>
+      <a class="hotel-email" href="mailto:Info@grandcentralhotel.co.nz"><span class="email-label">General hotel enquiries</span><span>Info@grandcentralhotel.co.nz</span></a>
+      <a class="hotel-email" href="mailto:bm.cityaparts@gmail.com"><span class="email-label">Arts, weddings &amp; venue enquiries</span><span>bm.cityaparts@gmail.com</span></a>
     </div>
-    <div class="foot-base">
-      <span>© 2026 Grand Central Hotel Auckland</span>
-    </div>
-  </footer>
+  </div>
+  <div class="foot-base"><span>© 2026 Grand Central Hotel Auckland</span></div>
+</footer>
 </div>
 
 <script src="site.js" defer></script></body>

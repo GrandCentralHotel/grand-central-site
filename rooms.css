@@ -242,3 +242,32 @@
   .rooms-hero-copy p { font-size: 16px; line-height: 1.6; margin-bottom: 22px; }
   .rooms-hero-copy > p:last-of-type { margin-bottom: 0; }
 }
+
+/* A balanced room selection, a fitted photo frame and direct photo choices. */
+@media (min-width: 1100px) {
+  .roomlist { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .roomcard-body { padding: 24px; }
+  .roomactions .btn { padding: 12px 10px; min-width: 0; }
+}
+.room-detail-hero > .room-gallery { width: auto; height: min(58vw, 620px); aspect-ratio: 4 / 3; max-width: 100%; align-self: center; }
+.room-detail-hero > .room-photo-thumbnails { order: 3; }
+.room-detail-hero > .room-photo-controls { order: 4; }
+.room-photo-thumbnails { display: flex; gap: 8px; padding: 12px 2px 6px; overflow-x: auto; max-width: 100%; }
+.room-photo-thumbnails button { flex: 0 0 auto; padding: 3px; border: 1px solid var(--rule); background: var(--ground-lift); cursor: pointer; }
+.room-photo-thumbnails button[aria-pressed="true"] { border-color: var(--cta); outline: 1px solid var(--cta); }
+.room-photo-thumbnails button:focus-visible { outline: 2px solid var(--cta); outline-offset: 2px; }
+.room-photo-thumbnails img { display: block; width: 80px; height: 60px; object-fit: cover; }
+@media (max-width: 820px) {
+  .room-detail-hero > .room-gallery { width: 100%; height: auto; max-height: min(54svh, 420px); }
+  .room-detail-hero > .detail-lead { order: 5; }
+}
+@media (max-width: 650px) {
+  .comparison { width: 100%; min-width: 0; }
+  .comparison thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .comparison tbody { display: grid; gap: 16px; }
+  .comparison tbody tr { display: block; padding: 16px; background: var(--ground-lift); border: 1px solid var(--rule); }
+  .comparison tbody th { display: block; border: 0; padding: 0 0 12px; font-size: 22px; }
+  .comparison td { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 16px; padding: 10px 0; font-size: 16px; }
+  .comparison td::before { content: attr(data-label); font: 12px/1.5 var(--face-sign); color: var(--cream-dim); }
+  .comparison td:last-child { border-bottom: 0; }
+}

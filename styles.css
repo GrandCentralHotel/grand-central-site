@@ -1628,14 +1628,16 @@ footer .hotel-email { display: block; padding-block: 8px; font-size: 14px; line-
 .home-review-heading h3 { font-size: 28px; line-height: 1.15; margin: 0 0 20px; }
 .home-review-heading .eyebrow { margin-bottom: 12px; }
 .home-review-score { display: flex; align-items: center; gap: 14px; margin: 0; }
-.home-review-score strong { font-size: 32px; font-weight: 500; }
+.home-review-score strong { font-family: var(--face-display); font-size: 40px; font-weight: 400; font-variant-numeric: lining-nums proportional-nums; }
 .home-review-score strong span { font-size: 16px; }
 .home-review-score > span { color: var(--cream-dim); font-size: 14px; line-height: 1.6; }
 .home-review-quote { margin: 0; padding-left: 28px; border-left: 1px solid var(--rule); }
 .home-review-quote blockquote { margin: 0 0 18px; }
 .home-review-quote blockquote p { margin: 0; font-size: clamp(22px, 2vw, 28px); line-height: 1.4; }
-.home-review-rating { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin: 0 0 16px; color: var(--brass); font-size: 18px; }
-.home-review-rating span { color: var(--cream-dim); font-size: 12px; }
+.home-review-rating { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin: 0 0 16px; color: var(--cream); }
+.home-review-rating strong { font-family: var(--face-display); font-size: 22px; font-weight: 400; font-variant-numeric: lining-nums proportional-nums; }
+.home-review-rating strong span { font-size: 14px; }
+.home-review-rating > span { color: var(--cream-dim); font-size: 14px; font-family: var(--face-read); }
 .home-review-quote blockquote .home-review-excerpt { margin-top: 14px; font-size: 16px; line-height: 1.6; color: var(--cream-dim); }
 .home-review-quote figcaption { color: var(--cream-dim); font-size: 14px; line-height: 1.6; }
 .home-review-source { grid-column: 1 / -1; margin: 0; color: var(--cream-dim); font-size: 13px; line-height: 1.7; }
@@ -1728,3 +1730,184 @@ footer .hotel-email { display: block; padding-block: 8px; font-size: 14px; line-
   .masthead .wayfind, .pagehead .wayfind { font-size: 14px; }
   .arts-hero .masthead > .hero-actions .btn { display: none; }
 }
+
+/* Group arrival information and make practical links easier to identify. */
+.guest-information-page .property-grid article:first-child {
+  background: var(--ground-lift); padding: 28px;
+  border-top: 2px solid var(--cta);
+}
+.guest-info-navigation { gap: 12px; }
+.guest-info-navigation .text-link {
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: 10px 16px; border: 1px solid var(--rule);
+}
+.guest-info-navigation .text-link:hover { background: var(--ground-lift); }
+.inclusions a { display: inline-block; }
+.venue-detail-use li { color: rgba(241,238,231,.9); }
+
+/* Balance individual modern photographs without changing archival images or hero shading. */
+main img:is([src$="240903154006.jpg"], [src$="240903155311.jpg"], [src$="20250824railwaystation-0097.jpg"]) {
+  filter: brightness(1.12) saturate(.94);
+}
+main img:is([src$="20250824railwaystation-0011.jpg"], [src$="20250906xiaobaodress-b0137-web.jpg"], [src$="20250906xiaobaodress-c0211-web.jpg"], [src$="20250906xiaobaodress-b0214-web.jpg"]) {
+  filter: brightness(1.08) saturate(.94);
+}
+main img:is([src$="stationstory_4.jpg"], [src$="SGP09029.jpg"]) {
+  filter: brightness(.98) saturate(.9) sepia(.04);
+}
+.editorial-slide-button img, .editorial-lightbox img,
+.arts-path-grid img[src*="old_hk_vibe"] {
+  filter: brightness(1.06) saturate(.92);
+}
+
+/* Keep long-form mobile pages compact while retaining their complete content. */
+@media (max-width: 820px) {
+  .arts-intro { padding-block: 48px; }
+  .arts-intro-grid { gap: 28px; }
+  .arts-paths { padding-block: 48px; }
+  .arts-paths-heading { margin-bottom: 28px; }
+  .arts-path-grid { gap: 28px; }
+  .creative-legacy { padding-top: 48px; }
+  .creative-legacy-heading h2 { max-width: none; }
+  .film-legacy { margin-top: 28px; gap: 0; }
+  .film-legacy > div { padding: 28px 22px; }
+  .editorial-story { margin-top: 48px; }
+  .editorial-story-copy { gap: 24px; }
+  .editorial-gallery-feature { margin-top: 28px; height: min(100vw, 520px); }
+  .station-story-feature { margin-top: 48px; padding-block: 48px; gap: 28px; }
+  .arts-programme { padding-block: 48px; gap: 24px; }
+  .story-intro { padding-block: 48px; }
+  .story-intro > p:last-child { margin-top: 24px; }
+  .story-origins { padding-block: 48px; gap: 28px; }
+  .story-credentials { margin-bottom: 40px; }
+  .story-credential-grid > div { padding-block: 24px; }
+  .story-chapters { gap: 48px; padding-block: 24px; }
+  .story-chapter, .story-chapter-reverse { gap: 24px; }
+  .story-image-tall { width: 100%; aspect-ratio: 4 / 3; }
+  .story-image-tall img { height: 100%; object-fit: cover; object-position: 50% 28%; }
+  .story-chapter-copy > p:not(.story-year) { margin-top: 20px; }
+  .story-casino { margin-block: 0; padding: 28px; }
+  .story-screen { margin-top: 48px; padding-top: 40px; }
+  .story-screen-grid { margin-top: 28px; }
+  .story-chronology { padding-top: 48px; }
+  .story-chronology header { margin-bottom: 28px; }
+  .story-closing { margin-top: 48px; padding-block: 48px; }
+}
+
+/* Shared navigation and compact, complete footer on every public page. */
+.site-footer.page { margin-inline: auto; }
+.page > .site-footer.page { padding-inline: 0; width: 100%; }
+.site-footer .foot-grid { gap: 28px 36px; }
+.site-footer .foot-grid > div { min-width: 0; }
+.site-footer .foot-grid > div > a { padding-block: 7px; }
+.site-footer .hotel-email { overflow-wrap: anywhere; }
+.site-footer .footer-phone { font-family: var(--face-read); font-size: 17px; }
+.site-footer .foot-base { margin-top: 28px; }
+.venue-planning { display: flex; align-items: center; gap: 24px; padding-block: 28px; border-top: 1px solid var(--rule); }
+.venue-planning p { margin: 0; max-width: 72ch; color: var(--cream-dim); }
+.venue-planning .text-link { flex: 0 0 auto; }
+.venue-shortlist, .faq-jumps { display: flex; flex-wrap: wrap; gap: 8px 12px; margin: 0 0 28px; }
+.venue-shortlist a, .faq-jumps a { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 14px; border: 1px solid var(--rule); font: 14px/1.4 var(--face-read); }
+.venue-shortlist a:hover, .faq-jumps a:hover { background: var(--ground-lift); }
+.venue-card[id], .faq-group { scroll-margin-top: 24px; }
+.venue-gallery-more { margin-top: 24px; }
+.venue-gallery-more > summary, .story-chronology-details > summary { cursor: pointer; width: fit-content; min-height: 44px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 17px; }
+.venue-gallery-more .venue-detail-gallery-grid { margin-top: 24px; }
+.venue-detail-hero .story-hero-media::after { background: linear-gradient(90deg, rgba(18,17,14,.45), rgba(18,17,14,.08) 85%), linear-gradient(180deg, rgba(18,17,14,.38), transparent 35%, rgba(18,17,14,.72)); }
+.wedding-gallery-grid > figure:first-child img { object-position: 50% 64%; }
+.faq-groups { display: grid; gap: 32px; }
+body.site-typography .faq-group > h3:not(.carved) {
+  width: fit-content; max-width: 100%; margin-bottom: 20px;
+  padding: 8px 12px; border-left: 3px solid var(--cta);
+  background: var(--ground-lift); color: var(--cta);
+  font: 600 14px/1.5 var(--face-sign);
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.walk-time { display: inline-block; margin-bottom: 12px; color: var(--cream-dim); font: 17px/1.4 var(--face-read); }
+.enquiry-actions button.text-link { background: transparent; border-top: 0; border-left: 0; border-right: 0; cursor: pointer; color: inherit; padding: 12px 0; min-height: 44px; }
+@media (max-width: 820px) {
+  .site-nav-ready :is(.masthead, .pagehead) > .hero-actions,
+  .site-nav-ready :is(.masthead, .pagehead) > .btn { display: none; }
+  .site-footer .foot-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .site-footer .footer-about, .site-footer .footer-contact { grid-column: 1 / -1; }
+  .site-footer .footer-about p { max-width: 48ch; }
+  .site-footer .foot-grid > div > a { min-height: 44px; padding-block: 10px; }
+  .site-footer .footer-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+  .site-footer .footer-contact h3, .site-footer .footer-contact .hotel-email { grid-column: 1 / -1; }
+  .site-footer .footer-contact p { margin: 0; }
+  .venue-planning { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .venue-detail-intro { padding-block: 48px; gap: 28px; }
+  .venue-detail-use { padding-block: 48px; }
+  .venue-detail-use-grid { gap: 28px; }
+  .venue-detail-gallery { padding-top: 48px; }
+  .venue-detail-gallery-grid { margin-top: 28px; }
+  body.site-typography .faq-group > h3:not(.carved) { font-size: 13px; }
+}
+
+/* Keep practical photographs clear and extra material available on demand. */
+.venue-card img[src*="/meeting-room/"],
+.venue-detail-gallery-grid img[src*="/meeting-room/"] {
+  filter: brightness(1.18) contrast(.96) saturate(.94);
+}
+.venue-detail-hero .story-hero-media img[src*="/meeting-room/"] {
+  filter: brightness(1.12) contrast(.96) saturate(.94);
+}
+.venue-detail-hero .story-hero-media::after {
+  background: linear-gradient(90deg, rgba(18,17,14,.36), rgba(18,17,14,.06) 85%),
+    linear-gradient(180deg, rgba(18,17,14,.38), transparent 35%, rgba(18,17,14,.58));
+}
+.venue-card-uses { margin-top: 20px; border-top: 1px solid var(--rule); }
+.venue-card-uses > summary, .arts-feature-more > summary {
+  cursor: pointer; min-height: 44px; padding: 12px 0;
+  color: var(--cream-dim); font: 17px/1.5 var(--face-read);
+}
+.venue-card .venue-card-uses ul { margin-top: 0; padding-top: 4px; border-top: 0; padding-bottom: 12px; }
+.arts-feature-more { margin-top: 24px; border-top: 1px solid var(--rule); }
+.arts-feature-more > summary { width: fit-content; border-bottom: 1px solid var(--rule); }
+.arts-feature-more .film-legacy { margin-top: 28px; }
+.venue-gallery-more > summary:focus-visible, .venue-card-uses > summary:focus-visible,
+.arts-feature-more > summary:focus-visible { outline: 2px solid var(--cta); outline-offset: 4px; }
+@media (max-width: 820px) {
+  .venue-catalogue { padding-bottom: 48px; }
+  .venue-card-grid { gap: 24px; }
+  .venue-card figure { aspect-ratio: 16 / 10; }
+  .venue-card > div { padding: 24px; }
+  .venue-card > div > p:not(.eyebrow) { margin-top: 16px; }
+  .venue-card .text-link { padding-top: 16px; }
+  .venue-services { padding-block: 48px; }
+  .venue-detail-gallery-grid figure,
+  .venue-detail-gallery-grid figure.wide,
+  .venue-detail-gallery-grid figure.tall { aspect-ratio: 4 / 3; min-height: 0; }
+  .venue-detail-enquiry { margin-top: 48px; padding-block: 48px; }
+  .arts-path-grid { gap: 24px; }
+  .arts-path-grid article > div { padding: 24px; }
+  .arts-path-grid article > div > p:not(.eyebrow) { margin-top: 16px; }
+  .creative-legacy { padding-top: 40px; }
+  .editorial-story { margin-top: 32px; }
+  .station-story-feature { margin-top: 40px; padding-block: 40px; }
+}
+@media (max-width: 560px) {
+  .arts-path-grid article:nth-child(n) figure { height: auto; aspect-ratio: 16 / 10; }
+  .wedding-gallery-grid > figure { aspect-ratio: 4 / 3; }
+  .wedding-gallery-grid > figure > img { height: 100%; object-fit: cover; }
+}
+
+/* Email handoff stays on the page until the visitor chooses an email service. */
+.email-handoff {
+  width: min(560px, calc(100vw - 32px)); max-height: calc(100svh - 32px);
+  padding: 32px; border: 1px solid var(--rule); background: var(--ground);
+  color: var(--cream); overflow-y: auto; font-family: var(--face-read);
+}
+.email-handoff::backdrop { background: rgba(18,17,14,.65); }
+body.site-typography .email-handoff h2:not(.carved) { font-size: 30px; margin: 8px 0 16px; }
+.email-handoff-close { display: block; margin-left: auto; padding: 10px 0; border: 0; background: transparent; color: inherit; cursor: pointer; min-height: 44px; }
+.email-handoff p { margin: 0 0 20px; }
+.email-handoff-address { font-weight: 600; overflow-wrap: anywhere; user-select: text; }
+.email-handoff-message { display: block; font-size: 14px; margin-bottom: 20px; }
+.email-handoff-message[hidden] { display: none; }
+.email-handoff textarea { display: block; width: 100%; margin-top: 8px; padding: 12px; font: 16px/1.5 var(--face-read); background: var(--ground-lift); color: inherit; border: 1px solid var(--rule); }
+.email-handoff-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.email-handoff-actions .text-link { min-height: 44px; padding: 12px 0; }
+.email-handoff-actions button { background: transparent; border: 0; border-bottom: 1px solid var(--rule); color: inherit; cursor: pointer; }
+.email-handoff .email-handoff-status { font-size: 14px; margin-top: 20px; margin-bottom: 0; color: var(--cream-dim); }
+@media (max-width: 560px) { .email-handoff { padding: 20px; } }

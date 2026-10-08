@@ -5,10 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rooms in Auckland CBD | Grand Central Hotel</title>
 <meta name="description" content="Compare rooms at Grand Central Hotel in Auckland CBD, inside the former Auckland Railway Station and three minutes from Spark Arena.">
-<link rel="canonical" href="https://www.grandcentralhotel.co.nz/rooms">
+<link rel="canonical" href="https://www.grandcentralhotel.co.nz/rooms.html">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="rooms.css">
 <link rel="stylesheet" href="typography.css">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rooms in Auckland CBD | Grand Central Hotel">
+<meta property="og:description" content="Compare rooms at Grand Central Hotel in Auckland CBD, inside the former Auckland Railway Station and three minutes from Spark Arena.">
+<meta property="og:url" content="https://www.grandcentralhotel.co.nz/rooms.html">
+<meta property="og:image" content="https://www.grandcentralhotel.co.nz/images/room-double-editorial.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="rooms-page site-typography">
 <a class="skiplink" href="#rooms">Skip to the rooms</a>
@@ -18,7 +25,7 @@
     <a class="nameplate" href="index.html" aria-label="Grand Central Hotel Auckland home"><span class="brand-building" aria-hidden="true"><img src="images/grand-central-logo-web.png" width="320" height="117" alt="" decoding="async"></span><span class="nameplate-words"><strong class="carved">Grand Central Hotel</strong><span class="nameplate-place sign">Auckland</span></span></a>
     <nav class="wayfind sign" aria-label="Main navigation"><a href="rooms.html" aria-current="page">Rooms</a><a href="arts-events.html">Arts &amp; Culture</a><a href="venues.html">Events &amp; Venues</a><a href="weddings.html">Weddings</a><a href="index.html#location">Location</a></nav>
     <span class="hero-actions">
-      <a class="callnow data" href="tel:+6493651428">09 365 1428</a>
+      <a class="callnow" href="tel:+6493651428">09 365 1428</a>
       <a class="btn btn-brass" href="#booking-form">Check availability</a>
     </span>
   </header>
@@ -52,7 +59,6 @@
           <dl class="room-specs">
             <div><dt>Bed</dt><dd>1 double bed</dd></div>
             <div><dt>Guests</dt><dd>2</dd></div>
-            <div><dt>View</dt><dd>Varies by room</dd></div>
           </dl>
           <ul class="room-amenities"><li>Air conditioning</li><li>Television</li><li>Free Wi-Fi</li></ul>
           <div class="roomactions">
@@ -70,7 +76,6 @@
           <dl class="room-specs">
             <div><dt>Bed</dt><dd>1 king bed</dd></div>
             <div><dt>Guests</dt><dd>2</dd></div>
-            <div><dt>View</dt><dd>Varies by room</dd></div>
           </dl>
           <ul class="room-amenities"><li>Air conditioning</li><li>Fridge and kitchenette</li><li>Workspace</li></ul>
           <div class="roomactions">
@@ -88,7 +93,6 @@
           <dl class="room-specs">
             <div><dt>Bed</dt><dd>King + king single</dd></div>
             <div><dt>Guests</dt><dd>3</dd></div>
-            <div><dt>View</dt><dd>Varies by room</dd></div>
           </dl>
           <ul class="room-amenities"><li>Two beds</li><li>Air conditioning</li><li>Free Wi-Fi</li></ul>
           <div class="roomactions">
@@ -123,9 +127,9 @@
       <table class="comparison">
         <thead><tr><th>Room</th><th>Bed</th><th>Guests with standard beds</th><th>Room style</th><th>Best for</th></tr></thead>
         <tbody>
-          <tr><th>Standard Double</th><td>Double</td><td>2</td><td>Private room</td><td>Short city stays</td></tr>
-          <tr><th>Deluxe King</th><td>King</td><td>2</td><td>Private room</td><td>Extra space and work</td></tr>
-          <tr><th>Deluxe Twin</th><td>King + king single</td><td>3</td><td>Private room</td><td>Friends and small families</td></tr>
+          <tr><th scope="row">Standard Double</th><td data-label="Bed">Double</td><td data-label="Guests with standard beds">2</td><td data-label="Room style">Private room</td><td data-label="Best for">Short city stays</td></tr>
+          <tr><th scope="row">Deluxe King</th><td data-label="Bed">King</td><td data-label="Guests with standard beds">2</td><td data-label="Room style">Private room</td><td data-label="Best for">Extra space and work</td></tr>
+          <tr><th scope="row">Deluxe Twin</th><td data-label="Bed">King + king single</td><td data-label="Guests with standard beds">3</td><td data-label="Room style">Private room</td><td data-label="Best for">Friends and small families</td></tr>
         </tbody>
       </table>
     </div>
@@ -154,17 +158,19 @@
 </main>
 
 <div class="page">
-  <footer>
-    <div class="foot-grid">
-      <div><h3 class="carved">Grand Central Hotel</h3><p>A restored railway building in Auckland CBD, three minutes from Spark Arena.</p></div>
-      <div><h3>Stay</h3><a href="rooms.html">Rooms</a><a href="#booking-form">Check availability</a><a href="guest-information.html#faq">Guest information &amp; fees</a></div>
-      <div><h3>Here</h3><a href="station-story.html">The Station</a><a href="arts-events.html">Arts &amp; Culture</a><a href="index.html#dining">Saffron</a><a href="index.html#location">Location</a></div>
-      <div><h3>Contact</h3><p>26 Te Taou Crescent<br>Auckland CBD 1010</p><a class="data" href="tel:+6493651428">09 365 1428</a><a class="hotel-email" href="mailto:reservation@grandcentralhotel.co.nz"><span class="email-label">Reservations</span><span>reservation@grandcentralhotel.co.nz</span></a>
-<a class="hotel-email" href="mailto:Info@grandcentralhotel.co.nz"><span class="email-label">General hotel enquiries</span><span>Info@grandcentralhotel.co.nz</span></a>
-</div>
+  <footer class="site-footer page">
+  <div class="foot-grid">
+    <div class="footer-about"><h3 class="carved">Grand Central Hotel</h3><p>A stay inside Auckland's former railway station, three minutes from Spark Arena.</p></div>
+    <div><h3>Stay</h3><a href="rooms.html">Rooms</a><a href="rooms.html#booking-form">Check availability</a><a href="guest-information.html">Guest information</a></div>
+    <div><h3>Explore</h3><a href="arts-events.html">Arts &amp; Culture</a><a href="venues.html">Events &amp; Venues</a><a href="weddings.html">Weddings</a><a href="station-story.html">The station story</a><a href="index.html#dining">Saffron dining</a><a href="guest-information.html#getting-here">Getting here</a></div>
+    <div class="footer-contact"><h3>Contact</h3><p>26 Te Taou Crescent<br>Auckland CBD 1010</p><a class="footer-phone" href="tel:+6493651428">09 365 1428</a>
+      <a class="hotel-email" href="mailto:reservation@grandcentralhotel.co.nz"><span class="email-label">Reservations</span><span>reservation@grandcentralhotel.co.nz</span></a>
+      <a class="hotel-email" href="mailto:Info@grandcentralhotel.co.nz"><span class="email-label">General hotel enquiries</span><span>Info@grandcentralhotel.co.nz</span></a>
+      <a class="hotel-email" href="mailto:bm.cityaparts@gmail.com"><span class="email-label">Arts, weddings &amp; venue enquiries</span><span>bm.cityaparts@gmail.com</span></a>
     </div>
-    <div class="foot-base"><span>© 2026 Grand Central Hotel Auckland</span></div>
-  </footer>
+  </div>
+  <div class="foot-base"><span>© 2026 Grand Central Hotel Auckland</span></div>
+</footer>
 </div>
 
 <a class="mobile-book btn btn-brass" href="#booking-form">Check availability</a>

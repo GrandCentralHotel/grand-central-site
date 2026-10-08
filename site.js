@@ -1,6 +1,59 @@
 (function () {
   "use strict";
 
+  // Offer a webmail fallback before asking the browser to launch an email app.
+  var emailOptions;
+  function showEmailOptions(recipient, subject, body) {
+    if (!emailOptions) {
+      emailOptions = document.createElement("dialog");
+      emailOptions.className = "email-handoff";
+      emailOptions.setAttribute("aria-labelledby", "email-handoff-title");
+      emailOptions.innerHTML = '<button type="button" class="email-handoff-close sign">Close</button>' +
+        '<h2 id="email-handoff-title">Email the team</h2>' +
+        '<p>Choose how to write to us. Review your message and press Send in your email service.</p>' +
+        '<p class="email-handoff-address"></p>' +
+        '<label class="email-handoff-message">Your prepared message<textarea readonly rows="6"></textarea></label>' +
+        '<div class="email-handoff-actions"><a class="btn btn-brass" data-email-gmail target="_blank" rel="noopener noreferrer">Open Gmail</a>' +
+        '<a class="text-link sign" data-email-app>Open email app</a>' +
+        '<button class="text-link sign" type="button" data-email-copy>Copy email address</button></div>' +
+        '<p class="email-handoff-status" role="status"></p>';
+      document.body.appendChild(emailOptions);
+      emailOptions.querySelector(".email-handoff-close").addEventListener("click", function () { emailOptions.close(); });
+      emailOptions.addEventListener("click", function (event) {
+        if (event.target !== emailOptions) return;
+        var bounds = emailOptions.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) emailOptions.close();
+      });
+      emailOptions.querySelector("[data-email-copy]").addEventListener("click", function () {
+        var status = emailOptions.querySelector(".email-handoff-status");
+        function fallback() { status.textContent = "Select and copy the email address or prepared message above."; }
+        if (!navigator.clipboard) { fallback(); return; }
+        navigator.clipboard.writeText(emailOptions.copyText).then(function () {
+          status.textContent = "Copied. Paste it into your email service to write to the team.";
+        }, fallback);
+      });
+    }
+    subject = subject || "";
+    body = body || "";
+    emailOptions.querySelector(".email-handoff-address").textContent = recipient;
+    emailOptions.querySelector("[data-email-gmail]").href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(recipient) + "&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    emailOptions.querySelector("[data-email-app]").href = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    emailOptions.querySelector(".email-handoff-message").hidden = !body;
+    emailOptions.querySelector("textarea").value = body ? "To: " + recipient + "\nSubject: " + subject + "\n\n" + body : "";
+    emailOptions.copyText = body ? emailOptions.querySelector("textarea").value : recipient;
+    emailOptions.querySelector("[data-email-copy]").textContent = body ? "Copy enquiry" : "Copy email address";
+    emailOptions.querySelector(".email-handoff-status").textContent = "Nothing has been sent. Gmail may ask you to sign in.";
+    if (!emailOptions.open) emailOptions.showModal();
+    emailOptions.querySelector("[data-email-gmail]").focus();
+  }
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest('a[href^="mailto:"]');
+    if (!link || link.hasAttribute("data-email-app") || event.defaultPrevented) return;
+    event.preventDefault();
+    var email = new URL(link.href);
+    showEmailOptions(decodeURIComponent(email.pathname), email.searchParams.get("subject"), email.searchParams.get("body"));
+  });
+
   var links = [
     { key: "rooms", href: "rooms.html", label: "Rooms" },
     { key: "arts", href: "arts-events.html", label: "Arts & Culture" },
@@ -101,6 +154,30 @@
     controls.append(previous, status, next);
     gallery.insertAdjacentElement("afterend", controls);
     var current = 0, scrollTimer;
+    var thumbnails = document.createElement("div");
+    thumbnails.className = "room-photo-thumbnails";
+    thumbnails.setAttribute("role", "group");
+    thumbnails.setAttribute("aria-label", "Choose a room photograph");
+    var thumbnailButtons = photos.map(function (photo, index) {
+      var image = photo.querySelector("img");
+      var button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("aria-label", "View photo " + (index + 1) + ": " + image.alt);
+      var thumbnail = document.createElement("img");
+      thumbnail.src = image.currentSrc || image.src;
+      thumbnail.alt = "";
+      thumbnail.width = 80; thumbnail.height = 60;
+      thumbnail.loading = "lazy";
+      button.appendChild(thumbnail);
+      button.addEventListener("click", function () {
+        current = index;
+        gallery.scrollTo({ left: position(index), behavior: "auto" });
+        update();
+      });
+      thumbnails.appendChild(button);
+      return button;
+    });
+    controls.insertAdjacentElement("beforebegin", thumbnails);
     function position(index) { return photos[index].offsetLeft - photos[0].offsetLeft; }
     function update() {
       var nearest = 0;
@@ -111,6 +188,9 @@
       status.textContent = "Photo " + (current + 1) + " of " + photos.length;
       previous.disabled = current === 0;
       next.disabled = current === photos.length - 1;
+      thumbnailButtons.forEach(function (button, index) {
+        button.setAttribute("aria-pressed", String(index === current));
+      });
     }
     function move(direction) {
       current = Math.max(0, Math.min(photos.length - 1, current + direction));
@@ -246,9 +326,8 @@
       dateField.min = localToday.toISOString().slice(0, 10);
     }
 
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-
+    function openEnquiryDraft(useGmail) {
+      if (!form.reportValidity()) return;
       var lines = [];
       Array.prototype.forEach.call(form.elements, function (field) {
         if (!field.name || field.disabled || field.type === "submit") return;
@@ -265,8 +344,24 @@
       var subject = form.getAttribute("data-subject");
       var body = "Hello Grand Central team,\n\nI would like to make an enquiry.\n\n" + lines.join("\n") + "\n\nKind regards";
       var status = form.querySelector("[data-enquiry-status]");
-      if (status) status.textContent = "Your email app should open now. Review the enquiry, then press Send.";
-      window.location.href = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      if (useGmail) {
+        window.open("https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(recipient) + "&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body), "_blank", "noopener,noreferrer");
+        if (status) status.textContent = "A Gmail draft should open in a new tab. Review it and press Send to submit your enquiry.";
+      } else {
+        showEmailOptions(recipient, subject, body);
+        if (status) status.textContent = "Choose Gmail, your email app, or copy your prepared enquiry. Review it and press Send in your email service.";
+      }
+    }
+    var gmailButton = document.createElement("button");
+    gmailButton.type = "button";
+    gmailButton.className = "text-link sign";
+    gmailButton.textContent = "Use Gmail";
+    gmailButton.addEventListener("click", function () { openEnquiryDraft(true); });
+    var actions = form.querySelector(".enquiry-actions");
+    if (actions) actions.insertBefore(gmailButton, actions.querySelector(".enquiry-note"));
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      openEnquiryDraft(false);
     });
   });
 }());

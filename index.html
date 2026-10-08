@@ -47,6 +47,7 @@
 </script>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="typography.css">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 </head>
 <body class="home-page site-typography">
 
@@ -73,14 +74,14 @@
       </div>
 <nav class="wayfind sign" aria-label="Main navigation"><a href="rooms.html">Rooms</a><a href="arts-events.html">Arts &amp; Culture</a><a href="venues.html">Events &amp; Venues</a><a href="weddings.html">Weddings</a><a href="index.html#location">Location</a></nav>
       <span class="hero-actions" style="gap:16px">
-        <a class="callnow data" href="tel:+6493651428">09 365 1428</a>
+        <a class="callnow" href="tel:+6493651428">09 365 1428</a>
         <a class="btn btn-brass" href="#book">Check availability</a>
       </span>
     </div>
 
     <div class="hero-copy">
       <h1>Stay where Auckland once <em>arrived</em></h1>
-      <p>Private double, king and twin rooms inside the former Auckland Railway Station. Simple comfort, with the city on your doorstep.</p>
+      <p>Just a three-minute walk from Spark Arena. Simple comfort in private double, king and twin rooms inside Auckland’s historic railway station.</p>
       <div class="hero-actions">
         <a class="btn btn-brass" href="#stay">Explore the rooms</a>
         <a class="btn btn-line" href="station-story.html">Discover the station</a>
@@ -160,15 +161,13 @@
       <div class="home-review-heading">
         <p class="eyebrow sign">Guest reviews</p>
         <h3 id="guest-reviews-title">In guests' own words</h3>
-        <p class="home-review-score"><strong class="data">7.9<span>/10</span></strong><span>Good<br>Booking.com overall score</span></p>
+        <p class="home-review-score"><strong>7.9<span>/10</span></strong><span>Good<br>Booking.com overall score</span></p>
       </div>
       <figure class="home-review-quote">
-        <p class="home-review-rating data">10/10 <span>Individual guest score</span></p>
         <blockquote><p>“Great stay at a historic building”</p><p class="home-review-excerpt">“The room was well equipped and well sized.”</p></blockquote>
         <figcaption><strong>Kinga</strong> · Booking.com<br>Standard Double Room · Reviewed <time datetime="2026-06-03">3 June 2026</time></figcaption>
       </figure>
       <figure class="home-review-quote">
-        <p class="home-review-rating data">10/10 <span>Individual guest score</span></p>
         <blockquote><p>“Absolutely stunned with the building itself and its central location. Brilliant!”</p><p class="home-review-excerpt">“Very clean units and easy to access.”</p></blockquote>
         <figcaption><strong>Newwilbe</strong> · Booking.com<br>Deluxe Twin Room · Reviewed <time datetime="2026-03-02">2 March 2026</time></figcaption>
       </figure>
@@ -388,9 +387,9 @@
       <p>26 Te Taou Crescent<br>Auckland CBD 1010</p>
     </header>
     <div class="location-grid">
-      <article><span class="data">03</span><h3>Spark Arena</h3><p>Minutes away on foot for concerts, sport and live events.</p></article>
-      <article><span class="data">15</span><h3>Queen Street</h3><p>Approximately 15 minutes on foot to central-city shopping, dining and nightlife.</p></article>
-      <article><span class="data">11</span><h3>Britomart</h3><p>Train and bus connections across Auckland.</p></article>
+      <article><span class="walk-time">3 min walk</span><h3>Spark Arena</h3><p>Minutes away on foot for concerts, sport and live events.</p></article>
+      <article><span class="walk-time">15 min walk</span><h3>Queen Street</h3><p>Approximately 15 minutes on foot to central-city shopping, dining and nightlife.</p></article>
+      <article><span class="walk-time">11 min walk</span><h3>Britomart</h3><p>Train and bus connections across Auckland.</p></article>
     </div>
     <figure class="location-art">
       <img src="images/watercolourmap.jpg" width="1306" height="950" loading="lazy" alt="Watercolour view showing Grand Central Hotel beside Spark Arena and the Auckland waterfront.">
@@ -442,40 +441,19 @@
 </main>
 
 <div class="page">
-  <footer>
-    <div class="foot-grid">
-      <div>
-        <h3 class="carved">Grand Central Hotel</h3>
-        <p>A restored railway building in the Auckland CBD, three minutes from Spark Arena.</p>
-      </div>
-      <div>
-        <h3>Stay</h3>
-        <a href="rooms.html">Rooms &amp; rates</a>
-        <a href="#stay">Rooms overview</a>
-        <a href="#book">Check availability</a>
-        <a href="guest-information.html#faq">Guest information &amp; fees</a>
-      </div>
-      <div>
-        <h3>Here</h3>
-        <a href="station-story.html">The Station</a>
-        <a href="arts-events.html">Arts &amp; Culture</a>
-        <a href="#dining">Saffron</a>
-        <a href="#getting-here">Getting here</a>
-        <a href="guest-information.html#property-details">Property details</a>
-        <a href="#faq">FAQs</a>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <p>26 Te Taou Crescent<br>Auckland CBD 1010</p>
-        <a href="tel:+6493651428" class="data">09 365 1428</a>
+  <footer class="site-footer page">
+  <div class="foot-grid">
+    <div class="footer-about"><h3 class="carved">Grand Central Hotel</h3><p>A stay inside Auckland's former railway station, three minutes from Spark Arena.</p></div>
+    <div><h3>Stay</h3><a href="rooms.html">Rooms</a><a href="rooms.html#booking-form">Check availability</a><a href="guest-information.html">Guest information</a></div>
+    <div><h3>Explore</h3><a href="arts-events.html">Arts &amp; Culture</a><a href="venues.html">Events &amp; Venues</a><a href="weddings.html">Weddings</a><a href="station-story.html">The station story</a><a href="index.html#dining">Saffron dining</a><a href="guest-information.html#getting-here">Getting here</a></div>
+    <div class="footer-contact"><h3>Contact</h3><p>26 Te Taou Crescent<br>Auckland CBD 1010</p><a class="footer-phone" href="tel:+6493651428">09 365 1428</a>
       <a class="hotel-email" href="mailto:reservation@grandcentralhotel.co.nz"><span class="email-label">Reservations</span><span>reservation@grandcentralhotel.co.nz</span></a>
-<a class="hotel-email" href="mailto:Info@grandcentralhotel.co.nz"><span class="email-label">General hotel enquiries</span><span>Info@grandcentralhotel.co.nz</span></a>
-</div>
+      <a class="hotel-email" href="mailto:Info@grandcentralhotel.co.nz"><span class="email-label">General hotel enquiries</span><span>Info@grandcentralhotel.co.nz</span></a>
+      <a class="hotel-email" href="mailto:bm.cityaparts@gmail.com"><span class="email-label">Arts, weddings &amp; venue enquiries</span><span>bm.cityaparts@gmail.com</span></a>
     </div>
-    <div class="foot-base">
-      <span>© 2026 Grand Central Hotel Auckland</span>
-    </div>
-  </footer>
+  </div>
+  <div class="foot-base"><span>© 2026 Grand Central Hotel Auckland</span></div>
+</footer>
 </div>
 
 <script>
