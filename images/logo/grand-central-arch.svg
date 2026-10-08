@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 14 112 94" role="img" aria-label="Grand Central">
+  <title>Grand Central</title>
+  <!-- Sub-mark: one arch, one clock. The reduction of the primary mark for
+       small sizes, app icons and stamping. An arch with a clock in it reads
+       as a doorway as readily as a station. -->
+  <g fill="none" stroke="currentColor" stroke-linecap="butt">
+    <path d="M0 100h100" stroke-width="4.6"/>
+    <path d="M16 98V56a34 34 0 0 1 68 0v42" stroke-width="4.2"/>
+    <g stroke="var(--logo-accent, currentColor)">
+      <circle cx="50" cy="58" r="17" stroke-width="3.6"/>
+      <path d="M50 58l9.5-5.5M50 58l-6.9-4" stroke-width="2.4" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

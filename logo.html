@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grand Central — identity sheet</title>
+<link rel="icon" href="images/logo/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .sheet { max-width: 1140px; margin: 0 auto; padding: 60px 30px 120px; }
+  .sheet h1 { font-family: var(--face-carved); text-transform: uppercase; letter-spacing: .14em; font-size: 26px; }
+  .sheet h2 {
+    font-family: var(--face-sign); text-transform: uppercase; letter-spacing: .16em;
+    font-size: 11px; font-weight: 600; color: var(--brass);
+    padding-bottom: 10px; border-bottom: 1px solid var(--rule); margin: 70px 0 26px;
+  }
+  .note { color: var(--cream-dim); font-size: 15px; max-width: 64ch; }
+  .row  { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end; }
+  .cell { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  .cap  { font-family: var(--face-data); font-size: 10px; color: var(--cream-dim); letter-spacing: .05em; }
+  .swatch { padding: 30px 40px; display: flex; align-items: center; justify-content: center; }
+  .on-ground { background: #150E0C; color: #F3EADA; }
+  .on-cream  { background: #F3EADA; color: #241813; }
+  .on-brick  { background: #8A4A33; color: #F7EFE3; }
+  .on-brass  { background: #D9A441; color: #1E1512; --brass: #1E1512; }
+  .on-photo  { background: #2A1E19 url(images/great-hall.jpg) center/cover; color: #F3EADA; }
+  svg { display: block; width: 100%; height: auto; }
+  .tiles { display: flex; gap: 26px; align-items: center; }
+  .tile  { border-radius: 22%; overflow: hidden; }
+  .photo-demo {
+    width: 380px; height: 250px; display: flex; color: #F3EADA;
+    background: url(images/great-hall.jpg) center/cover;
+  }
+  .photo-demo.bad  { align-items: center; justify-content: center; }
+  .photo-demo.good {
+    align-items: flex-start; justify-content: flex-start; padding: 16px;
+    background-image:
+      linear-gradient(180deg, rgba(21,14,12,.72) 0%, rgba(21,14,12,.10) 45%, rgba(21,14,12,0) 70%),
+      url(images/great-hall.jpg);
+  }
+</style>
+</head>
+<body>
+<main class="sheet">
+  <h1>Grand Central</h1>
+  <p class="note">The mark is the Beach&nbsp;Road elevation reduced to what the eye
+    actually keeps: three round arches, the spandrel oculi, the dentil cornice, and
+    the clock rising through the parapet. Line work follows the page's text colour,
+    so it inverts with the theme; the clock alone carries brass.</p>
+
+  <h2>Primary mark — at size</h2>
+  <div class="row">
+    <div class="cell"><object data="images/logo/grand-central-mark.svg" type="image/svg+xml" style="width:340px"></object><span class="cap">340</span></div>
+    <div class="cell"><object data="images/logo/grand-central-mark.svg" type="image/svg+xml" style="width:180px"></object><span class="cap">180</span></div>
+    <div class="cell"><object data="images/logo/grand-central-mark.svg" type="image/svg+xml" style="width:104px"></object><span class="cap">104</span></div>
+    <div class="cell"><object data="images/logo/grand-central-mark.svg" type="image/svg+xml" style="width:64px"></object><span class="cap">64</span></div>
+  </div>
+
+  <h2>Sub-mark — the reduction</h2>
+  <div class="row">
+    <div class="cell"><object data="images/logo/grand-central-arch.svg" type="image/svg+xml" style="width:130px"></object><span class="cap">130</span></div>
+    <div class="cell"><object data="images/logo/grand-central-arch.svg" type="image/svg+xml" style="width:72px"></object><span class="cap">72</span></div>
+    <div class="cell"><object data="images/logo/grand-central-arch.svg" type="image/svg+xml" style="width:44px"></object><span class="cap">44</span></div>
+    <div class="cell"><object data="images/logo/grand-central-arch.svg" type="image/svg+xml" style="width:28px"></object><span class="cap">28</span></div>
+    <div class="cell tiles">
+      <div class="tile" style="width:76px"><object data="images/logo/app-icon.svg" type="image/svg+xml" style="width:76px"></object></div>
+      <div class="tile" style="width:44px"><object data="images/logo/app-icon.svg" type="image/svg+xml" style="width:44px"></object></div>
+      <object data="images/logo/favicon.svg" type="image/svg+xml" style="width:32px"></object>
+      <object data="images/logo/favicon.svg" type="image/svg+xml" style="width:16px"></object>
+    </div>
+  </div>
+
+  <h2>Lockups</h2>
+  <div class="row" style="align-items:center">
+    <div class="cell"><object data="images/logo/grand-central-lockup-stacked.svg" type="image/svg+xml" style="width:260px"></object><span class="cap">stacked — primary</span></div>
+    <div class="cell"><object data="images/logo/grand-central-roundel.svg" type="image/svg+xml" style="width:200px"></object><span class="cap">roundel</span></div>
+  </div>
+  <div class="row" style="margin-top:40px">
+    <div class="cell"><object data="images/logo/grand-central-lockup-horizontal.svg" type="image/svg+xml" style="width:420px"></object><span class="cap">horizontal — masthead</span></div>
+  </div>
+
+  <h2>Two weights</h2>
+  <p class="note">The hero cut carries the dentil course, keystones, imposts, pilaster
+    capitals and a twelve-tick clock at roughly half the stroke weight. Above ~180px use
+    the hero; below it use the sturdy cut, which survives.</p>
+  <div class="row" style="align-items:flex-end">
+    <div class="cell"><object data="images/logo/grand-central-mark-hero.svg" type="image/svg+xml" style="width:320px"></object><span class="cap">hero — above 180px</span></div>
+    <div class="cell"><object data="images/logo/grand-central-mark.svg" type="image/svg+xml" style="width:170px"></object><span class="cap">sturdy — below 180px</span></div>
+  </div>
+
+  <h2>One institution, two entities</h2>
+  <p class="note">Identical frame, mark and rule; only the wordmark tier changes. The
+    heritage body keeps its descriptor, the hospitality business gets its own — and
+    neither has to pretend to be the other.</p>
+  <div class="row" style="align-items:flex-start">
+    <div class="cell"><object data="images/logo/ahrsac-lockup-stacked.svg" type="image/svg+xml" style="width:270px"></object><span class="cap">art centre</span></div>
+    <div class="cell"><object data="images/logo/grand-central-lockup-stacked.svg" type="image/svg+xml" style="width:270px"></object><span class="cap">grand central</span></div>
+  </div>
+
+  <h2>Over photography</h2>
+  <p class="note">A line drawing of the building laid over a photograph of the building
+    reads as scaffolding, not a mark — the logo's arches land on the real ones. Over
+    architectural interiors use the arch sub-mark, keep it small, place it where the
+    image is quiet, and add <code>.on-image</code>.</p>
+  <div class="row">
+    <div class="cell">
+      <div class="photo-demo bad">
+        <object data="images/logo/grand-central-mark.svg" type="image/svg+xml" style="width:250px"></object>
+      </div>
+      <span class="cap">don't — arcade over arcade</span>
+    </div>
+    <div class="cell">
+      <div class="photo-demo good">
+        <object class="on-image" data="images/logo/grand-central-arch.svg" type="image/svg+xml" style="width:56px"></object>
+      </div>
+      <span class="cap">do — arch, quiet area, haloed</span>
+    </div>
+  </div>
+
+  <h2>Grounds</h2>
+  <div class="row">
+    <div class="cell"><div class="swatch on-ground"><object data="images/logo/grand-central-mark.svg" type="image/svg+xml" style="width:150px"></object></div><span class="cap">ground</span></div>
+    <div class="cell"><div class="swatch on-cream"><object data="images/logo/grand-central-mark.svg" type="image/svg+xml" style="width:150px"></object></div><span class="cap">cream</span></div>
+    <div class="cell"><div class="swatch on-brick"><object data="images/logo/grand-central-mark.svg" type="image/svg+xml" style="width:150px"></object></div><span class="cap">brick</span></div>
+    <div class="cell"><div class="swatch on-brass"><object data="images/logo/grand-central-mark.svg" type="image/svg+xml" style="width:150px"></object></div><span class="cap">brass</span></div>
+    <div class="cell"><div class="swatch on-photo"><object data="images/logo/grand-central-mark.svg" type="image/svg+xml" style="width:150px"></object></div><span class="cap">photography</span></div>
+  </div>
+</main>
+
+<script>
+// Inline the SVGs so currentColor follows each ground, exactly as it will on the site.
+const files = [...document.querySelectorAll('object')].map(o => o.getAttribute('data'));
+Promise.all([...new Set(files)].map(f => fetch(f).then(r => r.text()).then(t => [f, t])))
+  .then(pairs => {
+    const src = Object.fromEntries(pairs);
+    document.querySelectorAll('object').forEach(o => {
+      const wrap = document.createElement('span');
+      wrap.style.width = o.style.width;
+      wrap.style.display = 'block';
+      wrap.innerHTML = src[o.getAttribute('data')];
+      o.replaceWith(wrap);
+    });
+  });
+</script>
+</body>
+</html>

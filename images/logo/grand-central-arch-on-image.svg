@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-14 6 128 110" role="img" aria-label="Grand Central">
+  <title>Grand Central</title>
+  <!-- Standalone variant for placing over photography: a tight dark halo plus a
+       softer lift, so the linework separates from the image without a plate.
+       viewBox is padded so the filter region is not clipped.
+       For inline use prefer the plain mark with the .on-image class. -->
+  <defs>
+    <filter id="gc-lift" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="1.4" flood-color="#150E0C" flood-opacity="0.95"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="4.5" flood-color="#150E0C" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-linecap="butt" filter="url(#gc-lift)">
+    <path d="M0 100h100" stroke-width="4.6"/>
+    <path d="M16 98V56a34 34 0 0 1 68 0v42" stroke-width="4.2"/>
+    <g stroke="var(--logo-accent, currentColor)">
+      <circle cx="50" cy="58" r="17" stroke-width="3.6"/>
+      <path d="M50 58l9.5-5.5M50 58l-6.9-4" stroke-width="2.4" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

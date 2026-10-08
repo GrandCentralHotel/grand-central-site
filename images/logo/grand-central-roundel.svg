@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Grand Central, Auckland">
+  <title>Grand Central, Auckland</title>
+  <!-- HERO ROUNDEL. Single fine ring rather than a double, the hero cut of the
+       facade in the upper half, and the permanent way running out of the
+       building to fill the lower half. Brass on the clock, brick on the ring
+       stops. Use above ~140px; below that use grand-central-arch.svg. -->
+  <defs>
+    <!-- Top caps grow outward from their baseline, bottom caps grow inward,
+         so the two radii differ in order to share one radial band. -->
+    <path id="gc-arc-top" d="M28 120a92 92 0 0 1 184 0" fill="none"/>
+    <path id="gc-arc-bot" d="M21 120a99 99 0 0 0 198 0" fill="none"/>
+  </defs>
+
+  <circle cx="120" cy="120" r="114" fill="none" stroke="currentColor" stroke-width="1"/>
+
+  <!-- the facade, hero cut, upper half -->
+  <g fill="none" stroke="currentColor" stroke-linecap="butt"
+     transform="translate(120 82.5) scale(0.75) translate(-80 -86)">
+    <path d="M0 140h160" stroke-width="2"/>
+    <path d="M6 132h148" stroke-width="1.2"/>
+    <path d="M8 44v88M152 44v88" stroke-width="1.3"/>
+    <path d="M4 64h8M148 64h8M4 128h8M148 128h8" stroke-width="0.9"/>
+    <path d="M18 132v-32a18 18 0 0 1 36 0v32" stroke-width="1.5"/>
+    <path d="M62 132v-32a18 18 0 0 1 36 0v32" stroke-width="1.5"/>
+    <path d="M106 132v-32a18 18 0 0 1 36 0v32" stroke-width="1.5"/>
+    <path d="M36 78v8M80 78v8M124 78v8" stroke-width="1.3"/>
+    <path d="M15 100h6M51 100h6M59 100h6M95 100h6M103 100h6M139 100h6" stroke-width="0.8"/>
+    <circle cx="58" cy="90" r="2.5" stroke-width="1"/>
+    <circle cx="102" cy="90" r="2.5" stroke-width="1"/>
+    <path d="M14 61v3M20 61v3M26 61v3M32 61v3M38 61v3M44 61v3M50 61v3M56 61v3M62 61v3M68 61v3M74 61v3M80 61v3M86 61v3M92 61v3M98 61v3M104 61v3M110 61v3M116 61v3M122 61v3M128 61v3M134 61v3M140 61v3M146 61v3" stroke-width="0.7"/>
+    <path d="M4 60h152" stroke-width="2"/>
+    <path d="M8 44h56M96 44h56" stroke-width="1.3"/>
+    <rect x="22" y="49" width="5" height="5" stroke-width="0.8"/>
+    <rect x="133" y="49" width="5" height="5" stroke-width="0.8"/>
+    <g stroke="var(--logo-accent, currentColor)">
+      <circle cx="80" cy="46" r="14" stroke-width="1.6"/>
+      <path d="M80 34.5V33M85.8 36V34.7M90 40.3l1.3-.8M91.5 46H93M90 51.8l1.3.7M85.8 56l.7 1.3M80 57.5V59M74.3 56l-.8 1.3M70 51.8l-1.3.7M68.5 46H67M70 40.3l-1.3-.8M74.3 36l-.8-1.3" stroke-width="0.8"/>
+      <path d="M80 46l8.7-5M80 46l-6.1-3.5" stroke-width="1.1" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- the permanent way, running out of the building toward the viewer -->
+  <g fill="none" stroke="currentColor" stroke-linecap="butt">
+    <path d="M42 130h64M134 130h64" stroke-width="0.9"/>
+    <!-- Track stops at y=184: any further and the widest sleeper fouls the
+         cap heights of AUCKLAND on the lower arc. -->
+    <path d="M90 184l22-52M150 184l-22-52" stroke-width="1.1"/>
+    <path d="M107.5 137.2h25M103.4 145.5h33.2M98.8 154.9h42.4M93.7 165.3h52.6M88.1 176.7h63.8" stroke-width="0.9"/>
+  </g>
+
+  <text fill="currentColor" font-family="Cinzel, 'Trajan Pro', Georgia, serif"
+        font-weight="500" font-size="14" letter-spacing="3.4">
+    <textPath href="#gc-arc-top" startOffset="50%" text-anchor="middle">GRAND CENTRAL</textPath>
+  </text>
+  <text fill="currentColor" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-weight="600" font-size="10" letter-spacing="4.4">
+    <textPath href="#gc-arc-bot" startOffset="50%" text-anchor="middle">AUCKLAND</textPath>
+  </text>
+
+  <circle cx="25" cy="120" r="2.2" fill="var(--brick, #C87A57)"/>
+  <circle cx="215" cy="120" r="2.2" fill="var(--brick, #C87A57)"/>
+</svg>

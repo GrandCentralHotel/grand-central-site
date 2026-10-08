@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 24 172 124" role="img" aria-label="Grand Central">
+  <title>Grand Central</title>
+  <!-- The Beach Road facade, 1930, Gummer & Ford, reduced to what the eye
+       remembers: three round arches, the spandrel oculi, the dentil cornice,
+       and the clock rising through the parapet.
+       Line work follows currentColor. The clock carries the brass accent. -->
+  <g fill="none" stroke="currentColor" stroke-linecap="butt">
+
+    <!-- granite podium and concourse floor -->
+    <path d="M0 140h160" stroke-width="3.4"/>
+    <path d="M6 132h148" stroke-width="2.2"/>
+
+    <!-- corner piers, rising the full height to close the attic storey -->
+    <path d="M8 44v88M152 44v88" stroke-width="2.2"/>
+
+    <!-- the three great arches -->
+    <path d="M18 132v-32a18 18 0 0 1 36 0v32" stroke-width="2.8"/>
+    <path d="M62 132v-32a18 18 0 0 1 36 0v32" stroke-width="2.8"/>
+    <path d="M106 132v-32a18 18 0 0 1 36 0v32" stroke-width="2.8"/>
+
+    <!-- oculi in the spandrels -->
+    <circle cx="58" cy="90" r="2.5" stroke-width="1.7"/>
+    <circle cx="102" cy="90" r="2.5" stroke-width="1.7"/>
+
+    <!-- dentil cornice, then the carved frieze: RAILWAY | STATION -->
+    <path d="M4 60h152" stroke-width="3.4"/>
+    <path d="M8 44h56M96 44h56" stroke-width="2.2"/>
+    <rect x="22" y="49" width="5" height="5" stroke-width="1.3"/>
+    <rect x="133" y="49" width="5" height="5" stroke-width="1.3"/>
+
+    <!-- the station clock, seated on the cornice, breaking the parapet -->
+    <g stroke="var(--logo-accent, currentColor)">
+      <circle cx="80" cy="46" r="14" stroke-width="2.8"/>
+      <path d="M80 34.5v2.5M92.5 46h-2.5M80 57.5v-2.5M67.5 46h2.5" stroke-width="1.5"/>
+      <path d="M80 46l8.7-5M80 46l-6.1-3.5" stroke-width="1.9" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ivy Deluxe Twin — Editorial V2</title>
+  <style>
+    :root { color-scheme: dark; font-family: Arial, sans-serif; }
+    body { margin: 0; background: #171613; color: #f4efe4; }
+    header { position: sticky; top: 0; z-index: 2; padding: 20px 4vw; background: rgba(23,22,19,.94); border-bottom: 1px solid #554c3d; backdrop-filter: blur(12px); }
+    h1 { margin: 0 0 6px; font: 600 clamp(24px,4vw,44px)/1.1 Georgia,serif; }
+    p { margin: 0; color: #c9bfad; }
+    main { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,420px),1fr)); gap: 28px; padding: 32px 4vw 64px; }
+    figure { margin: 0; background: #23211c; border: 1px solid #554c3d; }
+    img { display: block; width: 100%; height: auto; background: #111; }
+    figcaption { padding: 12px 14px; color: #d8cdbb; overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <header><h1>Ivy’s Deluxe Twin editorial photos</h1><p>18 classified Deluxe Twin retouches · click an image to open it at full resolution</p></header>
+  <main id="gallery"></main>
+  <script>
+    const base = 'images/edited/private-rooms/deluxe-twin/ivy-editorial-v2/';
+    const files = [
+      '135-bathroom-editorial-v2.png', '135-toiletries-editorial-v2.png',
+      '139-bathroom-editorial-v2.png', '139-kitchen-editorial-v2.png',
+      '142-bathroom-editorial-v2.png', '142-chairs-editorial-v2.png',
+      'weixin-image-20241226155625-editorial-v3.png', 'weixin-image-20241226155629-editorial-v2.png',
+      'weixin-image-20241226155634-editorial-v2.png', 'weixin-image-20241226155638-editorial-v2.png',
+      'weixin-image-20241226155643-editorial-v2.png', 'weixin-image-20241226155647-editorial-v2.png',
+      'weixin-image-20241226155656-editorial-v2.png',
+      'weixin-image-20241226155742-editorial-v2.png',
+      'weixin-image-20241226155757-editorial-v2.png', 'weixin-image-20241226155807-editorial-v2.png',
+      'weixin-image-20241226155826-editorial-v2.png', 'weixin-image-20241227182031-editorial-v2.png'
+    ];
+    document.querySelector('#gallery').innerHTML = files.map(file =>
+      `<figure><a href="${base + file}" target="_blank"><img src="${base + file}" loading="lazy" alt="${file}"></a><figcaption>${file}</figcaption></figure>`
+    ).join('');
+  </script>
+</body>
+</html>

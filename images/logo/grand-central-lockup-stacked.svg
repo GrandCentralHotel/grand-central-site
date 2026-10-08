@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 212" role="img" aria-label="Grand Central, Auckland">
+  <title>Grand Central, Auckland</title>
+  <!-- Primary lockup. Wordmark is live text in the brand's carved face;
+       convert to outlines once Cinzel is self-hosted (see FONTS.md). -->
+  <g fill="none" stroke="currentColor" stroke-linecap="butt"
+     transform="translate(150 71.5) scale(1.023) translate(-80 -86)">
+    <path d="M0 140h160" stroke-width="3.4"/>
+    <path d="M6 132h148" stroke-width="2.2"/>
+    <path d="M8 44v88M152 44v88" stroke-width="2.2"/>
+    <path d="M18 132v-32a18 18 0 0 1 36 0v32" stroke-width="2.8"/>
+    <path d="M62 132v-32a18 18 0 0 1 36 0v32" stroke-width="2.8"/>
+    <path d="M106 132v-32a18 18 0 0 1 36 0v32" stroke-width="2.8"/>
+    <circle cx="58" cy="90" r="2.5" stroke-width="1.7"/>
+    <circle cx="102" cy="90" r="2.5" stroke-width="1.7"/>
+    <path d="M4 60h152" stroke-width="3.4"/>
+    <path d="M8 44h56M96 44h56" stroke-width="2.2"/>
+    <rect x="22" y="49" width="5" height="5" stroke-width="1.3"/>
+    <rect x="133" y="49" width="5" height="5" stroke-width="1.3"/>
+    <g stroke="var(--logo-accent, currentColor)">
+      <circle cx="80" cy="46" r="14" stroke-width="2.8"/>
+      <path d="M80 34.5v2.5M92.5 46h-2.5M80 57.5v-2.5M67.5 46h2.5" stroke-width="1.5"/>
+      <path d="M80 46l8.7-5M80 46l-6.1-3.5" stroke-width="1.9" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <text x="150" y="172" text-anchor="middle" fill="currentColor"
+        font-family="Cinzel, 'Trajan Pro', Georgia, serif" font-weight="500"
+        font-size="24" letter-spacing="3.4">GRAND CENTRAL</text>
+
+  <path d="M62 184h176" stroke="var(--logo-accent, currentColor)" stroke-width="0.9" opacity="0.75"/>
+
+  <text x="150" y="200" text-anchor="middle" fill="var(--logo-accent, currentColor)"
+        font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="600"
+        font-size="10" letter-spacing="4.8">AUCKLAND</text>
+</svg>
