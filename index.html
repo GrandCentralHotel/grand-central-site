@@ -46,8 +46,9 @@
 }
 </script>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="typography.css">
 </head>
-<body class="home-page">
+<body class="home-page site-typography">
 
 <a class="skiplink" href="#book">Skip to booking</a>
 
@@ -73,14 +74,13 @@
 <nav class="wayfind sign" aria-label="Main navigation"><a href="rooms.html">Rooms</a><a href="arts-events.html">Arts &amp; Culture</a><a href="venues.html">Events &amp; Venues</a><a href="weddings.html">Weddings</a><a href="index.html#location">Location</a></nav>
       <span class="hero-actions" style="gap:16px">
         <a class="callnow data" href="tel:+6493651428">09 365 1428</a>
-        <a class="btn btn-brass" href="#book">Book direct</a>
+        <a class="btn btn-brass" href="#book">Check availability</a>
       </span>
     </div>
 
     <div class="hero-copy">
-      <p class="hero-kicker sign">The former Auckland Railway Station</p>
       <h1>Stay where Auckland once <em>arrived</em></h1>
-      <p>Simple, comfortable rooms inside one of the city's great heritage buildings, three minutes on foot from Spark Arena.</p>
+      <p>Private double, king and twin rooms inside the former Auckland Railway Station. Simple comfort, with the city on your doorstep.</p>
       <div class="hero-actions">
         <a class="btn btn-brass" href="#stay">Explore the rooms</a>
         <a class="btn btn-line" href="station-story.html">Discover the station</a>
@@ -116,11 +116,65 @@
         <option value="8">8 guests</option>
       </select>
     </div>
-    <button class="btn btn-brass" type="submit">Check rates</button>
+    <button class="btn btn-brass" type="submit">Check availability</button>
   </form>
-    <p class="booking-handoff">Book Grand Central Hotel through Cloudbeds in NZD. The booking page may still display our previous name, Grand Central Serviced Apartments. Choose your room and confirm guest details there.</p>
-    <p class="booking-handoff">Check-in from 2 p.m. &middot; Check-out by 10 a.m. <a href="#faq">Guest information, fees and check-in requirements</a>.</p>
-    <p class="booking-handoff">Cancellation terms depend on your selected rate. Non-refundable rates do not include free cancellation. Check the rate terms in Cloudbeds before booking. <a href="#cancellation-policy">Cancellation policy</a>.</p>
+
+  <section class="stay-overview" id="stay" aria-labelledby="stay-title">
+    <header class="section-heading">
+      <div><h2 id="stay-title">A room for the way you travel</h2></div>
+      <a class="text-link sign" href="rooms.html">Compare all rooms <span aria-hidden="true">→</span></a>
+    </header>
+    <ul class="home-room-benefits" aria-label="Included in every private room">
+      <li>Private bathroom</li>
+      <li>Kitchenette</li>
+      <li>Air conditioning</li>
+      <li>Free Wi-Fi</li>
+    </ul>
+    <div class="home-room-grid">
+      <article class="home-room-card">
+        <figure><picture class="room-picture"><source type="image/webp" srcset="images/optimized/rooms/room-double-editorial-006dd6f8-480.webp 480w, images/optimized/rooms/room-double-editorial-006dd6f8-960.webp 960w" sizes="(max-width: 820px) calc(100vw - 44px), (max-width: 1280px) 30vw, 400px"><img width="1156" height="1361" src="images/room-double-editorial.png" loading="lazy" alt="Standard Double room with white linen and tall heritage windows."></picture></figure>
+        <div class="home-room-copy">
+          <p class="eyebrow sign">Up to 2 guests &middot; 1 double bed</p>
+          <h3>Standard Double</h3>
+          <a class="btn btn-line" href="room-standard-double.html" aria-label="View Standard Double room">View room</a>
+        </div>
+      </article>
+      <article class="home-room-card">
+        <figure><picture class="room-picture"><source type="image/webp" srcset="images/optimized/rooms/deluxe-king-room-120-1-editorial-2f183103-480.webp 480w, images/optimized/rooms/deluxe-king-room-120-1-editorial-2f183103-960.webp 960w" sizes="(max-width: 820px) calc(100vw - 44px), (max-width: 1280px) 30vw, 400px"><img width="1086" height="1448" src="images/deluxe-king-room-120-1-editorial.png" loading="lazy" alt="Deluxe King room with a king bed, crisp white linen and a tall heritage window."></picture></figure>
+        <div class="home-room-copy">
+          <p class="eyebrow sign">Up to 2 guests &middot; 1 king bed</p>
+          <h3>Deluxe King</h3>
+          <a class="btn btn-line" href="room-deluxe-king.html" aria-label="View Deluxe King room">View room</a>
+        </div>
+      </article>
+      <article class="home-room-card">
+        <figure><picture class="room-picture"><source type="image/webp" srcset="images/optimized/rooms/weixin-image-20241226155634-editorial-v2-950ac6f1-480.webp 480w, images/optimized/rooms/weixin-image-20241226155634-editorial-v2-950ac6f1-960.webp 960w, images/optimized/rooms/weixin-image-20241226155634-editorial-v2-950ac6f1-1440.webp 1440w" sizes="(max-width: 820px) calc(100vw - 44px), (max-width: 1280px) 30vw, 400px"><img width="1448" height="1086" src="images/edited/private-rooms/deluxe-twin/ivy-editorial-v2/weixin-image-20241226155634-editorial-v2.png" loading="lazy" alt="Wide view of a Deluxe Twin room with two beds and a kitchenette."></picture></figure>
+        <div class="home-room-copy">
+          <p class="eyebrow sign">Up to 3 guests &middot; King + king single</p>
+          <h3>Deluxe Twin</h3>
+          <a class="btn btn-line" href="room-deluxe-twin.html" aria-label="View Deluxe Twin room">View room</a>
+        </div>
+      </article>
+    </div>
+    <aside class="home-guest-reviews" aria-labelledby="guest-reviews-title">
+      <div class="home-review-heading">
+        <p class="eyebrow sign">Guest reviews</p>
+        <h3 id="guest-reviews-title">In guests' own words</h3>
+        <p class="home-review-score"><strong class="data">7.9<span>/10</span></strong><span>Good<br>Booking.com overall score</span></p>
+      </div>
+      <figure class="home-review-quote">
+        <p class="home-review-rating data">10/10 <span>Individual guest score</span></p>
+        <blockquote><p>“Great stay at a historic building”</p><p class="home-review-excerpt">“The room was well equipped and well sized.”</p></blockquote>
+        <figcaption><strong>Kinga</strong> · Booking.com<br>Standard Double Room · Reviewed <time datetime="2026-06-03">3 June 2026</time></figcaption>
+      </figure>
+      <figure class="home-review-quote">
+        <p class="home-review-rating data">10/10 <span>Individual guest score</span></p>
+        <blockquote><p>“Absolutely stunned with the building itself and its central location. Brilliant!”</p><p class="home-review-excerpt">“Very clean units and easy to access.”</p></blockquote>
+        <figcaption><strong>Newwilbe</strong> · Booking.com<br>Deluxe Twin Room · Reviewed <time datetime="2026-03-02">2 March 2026</time></figcaption>
+      </figure>
+      <p class="home-review-source"><a href="https://www.booking.com/hotel/nz/grand-central.en-gb.html#tab-reviews" target="_blank" rel="noopener noreferrer">Read all reviews and see the current score <span aria-hidden="true">↗</span></a></p>
+    </aside>
+  </section>
 
   <section class="building" id="legacy-building" hidden>
     <div class="building-lead">
@@ -189,16 +243,8 @@
         <div class="mins data">15 min</div>
       </div>
       <div class="stop">
-        <div class="where">Sky Tower<small>Observation deck and casino</small></div>
-        <div class="mins data">9 min</div>
-      </div>
-      <div class="stop">
         <div class="where">Britomart Station<small>Trains and buses citywide</small></div>
         <div class="mins data">11 min</div>
-      </div>
-      <div class="stop">
-        <div class="where">Auckland Domain<small>Museum and parkland</small></div>
-        <div class="mins data">14 min</div>
       </div>
     </div>
   </section>
@@ -207,7 +253,7 @@
     <h2>What's here</h2>
     <dl>
       <dt>Front desk</dt>
-      <dd>Open 9 a.m.–11:30 p.m.<em>Please arrange arrivals outside reception hours in advance.</em></dd>
+      <dd>Open 9 a.m.–11:30 p.m.<em>After 11:30 p.m., use the lockbox/key safe; instructions will be emailed. Arrange arrivals outside reception hours in advance.</em></dd>
 
       <dt>Parking</dt>
       <dd>On site, NZ$15 overnight<em>Request parking when booking or on arrival. Spaces are not guaranteed.</em></dd>
@@ -216,13 +262,16 @@
       <dd>Free fibre throughout<em>No vouchers, no hourly caps, no login page.</em></dd>
 
       <dt>In every room</dt>
-      <dd>Air conditioning, flat-screen TV, fridge, electric blanket, free toiletries</dd>
+      <dd>Air conditioning, flat-screen TV, fridge and kitchenette, microwave, kettle, cutlery, dishes, utensils, iron and ironing board, free toiletries<em>No cookware. Electric blankets are available on request, not provided in every room.</em></dd>
 
       <dt>Luggage</dt>
       <dd>Stored free for guests<em>Before check-in and after check-out.</em></dd>
 
       <dt>Pets</dt>
-      <dd>Not permitted<em>We're unable to accommodate pets in any room type.</em></dd>
+      <dd>Not permitted<em>Pets and service animals are not allowed.</em></dd>
+
+      <dt>Electric blankets</dt>
+      <dd>Available on request<em>Not provided in every room.</em></dd>
 
       <dt>Longer stays</dt>
       <dd>Weekly rates on request<em>Ask the team for a quote on seven nights or more.</em></dd>
@@ -232,13 +281,13 @@
   <section class="concierge" hidden>
     <div>
       <h2>Questions at 2am</h2>
-      <p>Reception is open from 9 a.m. to 11:30 p.m. Contact the team in advance to arrange a late arrival.</p>
+      <p>Reception is open from 9 a.m. to 11:30 p.m. Before 11:30 p.m., go to reception to check in. For arrivals after 11:30 p.m., use the lockbox/key safe; instructions will be sent by email. Please contact reception in advance to arrange an arrival outside reception hours.</p>
     </div>
     <a class="btn btn-brass" href="tel:+6493651428">Call the front desk</a>
   </section>
 
   <section class="overview-intro" aria-labelledby="overview-title">
-    <p class="eyebrow sign">Grand Central Hotel · Auckland</p>
+
     <div class="overview-grid">
       <h2 id="overview-title">A landmark stay, without the ceremony</h2>
       <div>
@@ -254,25 +303,7 @@
     </dl>
   </section>
 
-  <section class="stay-overview" id="stay" aria-labelledby="stay-title">
-    <header class="section-heading">
-      <div><p class="eyebrow sign">Rooms &amp; stays</p><h2 id="stay-title">A room for the way you travel</h2></div>
-      <a class="text-link sign" href="rooms.html">View every room <span aria-hidden="true">→</span></a>
-    </header>
-    <div class="stay-feature">
-      <figure>
-        <img src="images/room-double-editorial.png" width="1156" height="1361" loading="lazy" decoding="async" alt="Standard Double room with white linen and tall heritage windows." srcset="images/optimized/site/room-double-editorial-006dd6f8-480.webp 480w, images/optimized/site/room-double-editorial-006dd6f8-960.webp 960w, images/optimized/site/room-double-editorial-006dd6f8-1156.webp 1156w" sizes="(max-width: 820px) 100vw, 50vw">
-      </figure>
-      <div class="stay-copy">
-        <p class="eyebrow sign">Private rooms</p>
-        <h3>Simple comfort beneath the old station windows</h3>
-        <p>Choose a Standard Double, Deluxe King or Deluxe Twin. Each is air-conditioned and equipped with free Wi-Fi, a television and the practical essentials for a city stay.</p>
-        <a class="btn btn-line" href="rooms.html">Explore private rooms</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="hotel-gallery" id="gallery" aria-labelledby="gallery-title">
+<section class="hotel-gallery" id="gallery" aria-labelledby="gallery-title">
     <header class="section-heading">
       <h2 id="gallery-title">Inside Grand Central Hotel</h2>
     </header>
@@ -353,7 +384,7 @@
 
   <section class="location-overview" id="location" aria-labelledby="location-title">
     <header class="section-heading">
-      <div><p class="eyebrow sign">Our location</p><h2 id="location-title">Auckland is close at hand</h2></div>
+      <div><h2 id="location-title">Auckland is close at hand</h2></div>
       <p>26 Te Taou Crescent<br>Auckland CBD 1010</p>
     </header>
     <div class="location-grid">
@@ -364,92 +395,22 @@
     <figure class="location-art">
       <img src="images/watercolourmap.jpg" width="1306" height="950" loading="lazy" alt="Watercolour view showing Grand Central Hotel beside Spark Arena and the Auckland waterfront.">
     </figure>
-  </section>
-
-  <section class="getting-here" id="getting-here" aria-labelledby="getting-here-title">
-    <header class="getting-intro">
-      <p class="eyebrow sign">Getting here</p>
-      <h2 id="getting-here-title">Arrive through the old station</h2>
-      <p>Grand Central Hotel is inside Auckland's former railway station at 26 Te Taou Crescent, beside Spark Arena. Use the full street address when booking a taxi or rideshare so you arrive at the hotel rather than Auckland's current train station.</p>
-    </header>
-
-    <details class="arrival-details">
-      <summary>Entrance, parking and directions</summary>
-    <div class="getting-guide">
-      <div class="getting-address">
-        <p class="eyebrow sign">Arrival address</p>
-        <address>26 Te Taou Crescent<br>Auckland CBD 1010</address>
-        <p>Te Taou Crescent is reached from Beach Road. On-site parking costs NZ$15 overnight and is subject to availability. Request a space when booking or ask reception on arrival.</p>
-        <a class="text-link sign" href="https://www.google.com/maps/dir/?api=1&amp;destination=26+Te+Taou+Crescent%2C+Auckland+1010" target="_blank" rel="noopener">Open directions <span aria-hidden="true">&#8599;</span></a>
-      </div>
-
-      <ol class="arrival-steps" aria-label="Directions from the street to reception">
-        <li>
-          <span>01</span>
-          <div><h3>Find the red-brick station</h3><p>Follow Te Taou Crescent to number 26. The hotel occupies the large heritage railway building beside Spark Arena.</p></div>
-        </li>
-        <li>
-          <span>02</span>
-          <div><h3>Enter through the heritage lobbies</h3><p>Use the building entrance leading into the Grand and Lesser Lobbies. You are entering the original public spaces of the former station.</p></div>
-        </li>
-        <li>
-          <span>03</span>
-          <div><h3>Continue to the former ticket hall</h3><p>Once inside, follow the Grand Central Hotel signs to the former ticket hall. Hotel reception is located there and is open from 9 a.m. to 11:30 p.m.</p></div>
-        </li>
-      </ol>
-    </div>
-
-    <div class="location-map">
-      <iframe title="Map showing Grand Central Hotel at 26 Te Taou Crescent, Auckland" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=174.7728%2C-36.8507%2C174.7795%2C-36.8463&amp;layer=mapnik&amp;marker=-36.8481144%2C174.7762315"></iframe>
-      <a class="map-directions sign" href="https://www.google.com/maps/dir/?api=1&amp;destination=26+Te+Taou+Crescent%2C+Auckland+1010" target="_blank" rel="noopener">Get directions <span aria-hidden="true">&#8599;</span></a>
-    </div>
-    </details>
-  </section>
-
-  <section class="property-details" id="property-details" aria-labelledby="property-title">
-    <header class="section-heading property-heading">
-      <div><p class="eyebrow sign">At a glance</p><h2 id="property-title">Property details</h2></div>
-      <p>The useful things to know before you arrive.</p>
-    </header>
-    <div class="property-grid">
-      <article>
-        <p class="eyebrow sign">Hotel information</p>
-        <dl>
-          <div><dt>Check-in</dt><dd>From 2 p.m.</dd></div>
-          <div><dt>Check-out</dt><dd>By 10 a.m.</dd></div>
-          <div><dt>Front desk</dt><dd>Open 9 a.m.–11:30 p.m.</dd></div>
-          <div><dt>Address</dt><dd>26 Te Taou Crescent, Auckland CBD 1010</dd></div>
-          <div><dt>Telephone</dt><dd><a href="tel:+6493651428">09 365 1428</a></dd></div>
-          <div><dt>Pets</dt><dd>Not permitted</dd></div>
-        </dl>
-      </article>
-      <article>
-        <p class="eyebrow sign">Featured amenities</p>
-        <ul class="amenity-list">
-          <li>Complimentary Wi-Fi</li>
-          <li>On-site parking: NZ$15 overnight, subject to availability</li>
-          <li>Saffron restaurant</li>
-          <li>Air conditioning</li>
-          <li>Free luggage storage before check-in and after check-out</li>
-          <li>Guest laundry: NZ$3 per wash and NZ$3 per dry</li>
-          <li>Television, fridge and kitchenette</li>
-        </ul>
-      </article>
+    <div class="home-arrival" id="getting-here">
+      <div><h3>Find us at the old station</h3><p>Use 26 Te Taou Crescent when booking a taxi or rideshare, so you arrive at the hotel rather than Auckland's current train station.</p></div>
+      <div class="home-arrival-actions"><a class="text-link sign" href="https://www.google.com/maps/dir/?api=1&amp;destination=26+Te+Taou+Crescent%2C+Auckland+1010" target="_blank" rel="noopener">Open directions <span aria-hidden="true">↗</span></a><a class="text-link sign" href="guest-information.html#getting-here">Entrance &amp; arrival guide <span aria-hidden="true">→</span></a></div>
     </div>
   </section>
+
+
 
   <section class="faq-section" id="faq" aria-labelledby="faq-title">
     <header class="section-heading faq-heading">
-      <div><p class="eyebrow sign">Before you arrive</p><h2 id="faq-title">Frequently asked questions</h2></div>
+      <div><h2 id="faq-title">A few useful things to know</h2></div>
     </header>
     <div class="faq-list">
       <details id="check-in-times">
         <summary>What time are check-in and check-out?</summary>
-        <p>Check-in is from 2 p.m. and check-out is by 10 a.m. Reception is open from 9 a.m. to 11:30 p.m. Please contact reception in advance to arrange an arrival outside these hours.</p>
-      </details>
-      <details id="early-late-fees">
-        <summary>Can I check in early or check out late?</summary>
-        <p>Early check-in costs NZ$30 before noon, or NZ$20 between noon and 2 p.m. Late check-out between 10 a.m. and noon costs NZ$20. Please contact reception to confirm availability and arrange either option.</p>
+        <p>Check-in is from 2 p.m. and check-out is by 10 a.m. Reception is open from 9 a.m. to 11:30 p.m. Before 11:30 p.m., go to reception to check in. For arrivals after 11:30 p.m., use the lockbox/key safe; instructions will be sent by email. Please contact reception in advance to arrange an arrival outside reception hours.</p>
       </details>
       <details id="cancellation-policy">
         <summary>What is the cancellation and no-show policy?</summary>
@@ -459,60 +420,20 @@
       </details>
       <details id="payment-and-id">
         <summary>What do I need for check-in and payment?</summary>
-        <p>Please bring identification for check-in. Depending on your booking terms, payment may be taken when you book; if it has not been taken, you can pay at the hotel. Most major payment cards are accepted. Contact reception if you need to check a particular payment method.</p>
-        <p>The hotel normally places a credit-card pre-authorisation hold of NZ$50–NZ$100. This is a temporary hold, rather than a payment. Ask reception to confirm the amount for your stay.</p>
-        <p>Room prices displayed during booking include taxes and fees. Optional services such as parking, laundry, early check-in and late check-out cost extra at the rates listed here.</p>
-      </details>
-      <details id="check-in-age">
-        <summary>What is the minimum check-in age?</summary>
-        <p>The normal minimum check-in age is 18. Guests aged 16 or 17 must contact the hotel and arrange parental authorisation before making a booking.</p>
-      </details>
-      <details id="housekeeping">
-        <summary>Is housekeeping included during my stay?</summary>
-        <p>Daily housekeeping is automatic and includes emptying bins, replacing towels, making beds and cleaning the bathroom. Please use the &ldquo;Do not disturb&rdquo; sign or let the team know if you do not want service.</p>
-        <p>For very long stays, the housekeeping schedule is agreed with you separately and may be weekly.</p>
-      </details>
-      <details id="online-check-in">
-        <summary>Can I check in online?</summary>
-        <p>Online check-in is not currently available. Please check in at reception, which is open from 9 a.m. to 11:30 p.m. If you expect to arrive outside these hours, contact reception in advance to arrange your arrival.</p>
-      </details>
-      <details id="guest-laundry">
-        <summary>Is there a guest laundry?</summary>
-        <p>Yes. The on-site guest laundry costs NZ$3 per wash and NZ$3 per dry.</p>
-      </details>
-      <details>
-        <summary>How close is Grand Central Hotel to Spark Arena?</summary>
-        <p>The hotel is approximately a three-minute walk from Spark Arena, making it an easy base for concerts, sport and live events.</p>
+        <p>Please bring a passport or New Zealand driver licence for check-in. Depending on your booking terms, payment may be taken when you book; if it has not been taken, you can pay at the hotel. Cash, EFTPOS and most major payment cards are accepted. A 2.5% surcharge applies to all credit cards.</p>
+        <p>The hotel places a credit-card pre-authorisation hold of NZ$50. This is a temporary hold, rather than a payment. It should be automatically released within a week after check-out, or sooner. A release confirmation will be sent.</p>
+        <p>Room prices displayed during booking include taxes and fees. Optional services such as parking, laundry, early check-in, late check-out and an extra bed cost extra at the rates listed here. A cot charge may also apply.</p>
       </details>
       <details>
         <summary>Is parking available at the hotel?</summary>
-        <p>On-site parking costs NZ$15 overnight. Request parking during booking or ask reception on arrival; spaces are subject to availability and cannot be guaranteed. Some parking areas have a 2.2-metre height limit, while others have no height restriction. Contact reception before arrival if you need a space for a taller vehicle.</p>
-      </details>
-      <details>
-        <summary>Does Grand Central Hotel have free Wi-Fi?</summary>
-        <p>Yes. Complimentary Wi-Fi is available throughout the property, including in guest rooms.</p>
-      </details>
-      <details>
-        <summary>Can I arrive late?</summary>
-        <p>Reception is open from 9 a.m. to 11:30 p.m. If you expect to arrive outside these hours, please contact reception in advance to arrange your arrival.</p>
-      </details>
-      <details>
-        <summary>Can the hotel store my luggage?</summary>
-        <p>Yes. Luggage storage is free for guests before check-in and after check-out.</p>
-      </details>
-      <details>
-        <summary>Are pets allowed?</summary>
-        <p>No. Pets cannot be accommodated in the hotel’s guest rooms.</p>
-      </details>
-      <details>
-        <summary>Is there somewhere to eat on site?</summary>
-        <p>Yes. Saffron is an independently operated South Indian restaurant downstairs in the Grand Hall. It is closed Mondays and open Tuesday to Sunday, 11 a.m.–3 p.m. and 5:30–9 p.m. Saffron may stay open later when there are events at Spark Arena. Breakfast is not currently available or included with any room.</p>
+        <p>On-site parking costs NZ$15 overnight, normally until 11 a.m. the following morning. Request parking during booking or ask reception on arrival; spaces are subject to availability and cannot be guaranteed. You may drive in and out. If there is no space available when you return, call the duty manager and parking will be arranged. Some parking areas have a 2.2-metre height limit, while others have no height restriction. Contact reception before arrival if you need a space for a taller vehicle. Accessible parking is not available. EV charging is not currently available; it is planned for the future.</p>
       </details>
     </div>
+    <p class="guest-info-link"><a class="text-link sign" href="guest-information.html">All guest information, fees &amp; facilities <span aria-hidden="true">→</span></a></p>
   </section>
 
   <section class="direct-booking" aria-labelledby="direct-title">
-    <p class="eyebrow sign">Book direct</p>
+
     <h2 id="direct-title">Your Auckland stay starts here</h2>
     <p>Speak directly with the front desk about rooms, late arrivals, parking or longer stays.</p>
     <div><a class="btn btn-brass" href="#book">Check availability</a><a class="text-link sign" href="tel:+6493651428">Call 09 365 1428</a></div>
@@ -524,15 +445,15 @@
   <footer>
     <div class="foot-grid">
       <div>
-        <h3 class="carved" style="font-size:11px">Grand Central Hotel</h3>
+        <h3 class="carved">Grand Central Hotel</h3>
         <p>A restored railway building in the Auckland CBD, three minutes from Spark Arena.</p>
       </div>
       <div>
         <h3>Stay</h3>
         <a href="rooms.html">Rooms &amp; rates</a>
         <a href="#stay">Rooms overview</a>
-        <a href="#book">Book direct</a>
-        <a href="#faq">Guest information &amp; fees</a>
+        <a href="#book">Check availability</a>
+        <a href="guest-information.html#faq">Guest information &amp; fees</a>
       </div>
       <div>
         <h3>Here</h3>
@@ -540,7 +461,7 @@
         <a href="arts-events.html">Arts &amp; Culture</a>
         <a href="#dining">Saffron</a>
         <a href="#getting-here">Getting here</a>
-        <a href="#property-details">Property details</a>
+        <a href="guest-information.html#property-details">Property details</a>
         <a href="#faq">FAQs</a>
       </div>
       <div>

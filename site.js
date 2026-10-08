@@ -131,8 +131,9 @@
     update();
   });
 
-  // Reuse the page's booking destination; enquiry pages keep their own actions.
-  var bookingLink = document.querySelector('.masthead .btn[href$="#book"], .pagehead .btn[href$="#booking-form"]');
+  // The mobile action follows the purpose of the current page.
+  var enquiryLink = document.querySelector('.masthead .btn[href="#venue-enquiry"], .masthead .btn[href="#wedding-enquiry"]');
+  var bookingLink = enquiryLink || document.querySelector('.masthead .btn[href$="#book"], .pagehead .btn[href$="#booking-form"]');
   var mobileBooking = document.querySelector(".mobile-book");
   if (bookingLink || mobileBooking) {
     if (!mobileBooking) {
@@ -141,7 +142,7 @@
       mobileBooking.href = bookingLink.getAttribute("href");
       document.body.appendChild(mobileBooking);
     }
-    mobileBooking.textContent = "Check availability";
+    mobileBooking.textContent = enquiryLink ? "Make an enquiry" : "Check availability";
     document.body.classList.add("has-mobile-booking");
 
     var bookingDestination = new URL(mobileBooking.href, location.href);
@@ -149,9 +150,13 @@
       ? document.getElementById(bookingDestination.hash.slice(1)) : null;
     if (bookingTarget && "IntersectionObserver" in window) {
       // Let the real form take over when it is on screen.
+      var bookingForm = bookingTarget.matches("[data-booking-form]")
+        ? bookingTarget : bookingTarget.querySelector("[data-booking-form]");
+      var observedTarget = bookingForm || bookingTarget.querySelector('button[type="submit"]') || bookingTarget;
       new IntersectionObserver(function (entries) {
-        mobileBooking.classList.toggle("is-at-booking", entries[0].isIntersecting);
-      }, { threshold: 0.8 }).observe(bookingTarget.querySelector('button[type="submit"]') || bookingTarget);
+        var entry = entries[0];
+        mobileBooking.classList.toggle("is-at-booking", entry.isIntersecting && entry.intersectionRatio > 0);
+      }, { threshold: bookingForm ? 0 : 0.8 }).observe(observedTarget);
     }
   }
 
@@ -168,15 +173,64 @@
   Array.prototype.forEach.call(document.querySelectorAll("[data-booking-form]"), function (form) {
     var arrival = form.querySelector('[name="checkin"]');
     var departure = form.querySelector('[name="checkout"]');
+    var summary = document.createElement("p");
+    summary.className = "booking-stay-summary sign";
+    summary.setAttribute("aria-live", "polite");
+    form.insertBefore(summary, form.firstChild);
+
+    var dateDisplays = [arrival, departure].map(function (input) {
+      var control = document.createElement("div");
+      control.className = "booking-date-control";
+      var display = document.createElement("span");
+      display.className = "booking-date-display";
+      display.setAttribute("aria-hidden", "true");
+      input.parentNode.insertBefore(control, input);
+      control.appendChild(input);
+      control.appendChild(display);
+      input.addEventListener("click", function () {
+        if (typeof input.showPicker === "function") {
+          try { input.showPicker(); } catch (error) { /* Native input remains available. */ }
+        }
+      });
+      return display;
+    });
+
+    function updateDisplay() {
+      [arrival, departure].forEach(function (input, index) {
+        if (!input.value) {
+          dateDisplays[index].textContent = "Choose a date";
+          return;
+        }
+        var parts = input.value.split("-").map(Number);
+        var options = { weekday: "short", month: "short", day: "numeric" };
+        if (parts[0] !== new Date().getFullYear()) options.year = "numeric";
+        dateDisplays[index].textContent = new Date(parts[0], parts[1] - 1, parts[2], 12).toLocaleDateString("en-US", options);
+      });
+      // Count calendar days rather than hours so daylight-saving changes stay one night.
+      function dayNumber(value) {
+        var parts = value.split("-").map(Number);
+        return Date.UTC(parts[0], parts[1] - 1, parts[2]) / 86400000;
+      }
+      var nights = arrival.value && departure.value ? dayNumber(departure.value) - dayNumber(arrival.value) : 0;
+      summary.textContent = nights > 0 ? nights + (nights === 1 ? " night" : " nights") : "Choose your stay dates";
+    }
     function updateDates() {
       var today = calendarDate(new Date());
       arrival.min = today;
       departure.min = followingDay(arrival.value && arrival.value >= today ? arrival.value : today);
     }
+    if (!arrival.value) arrival.value = calendarDate(new Date());
+    if (!departure.value) departure.value = followingDay(arrival.value);
     updateDates();
+    updateDisplay();
+    [arrival, departure].forEach(function (input) {
+      input.addEventListener("input", updateDisplay);
+      input.addEventListener("change", updateDisplay);
+    });
     arrival.addEventListener("change", function () {
       updateDates();
-      if (departure.value && departure.value < departure.min) departure.value = departure.min;
+      if (!departure.value || departure.value < departure.min) departure.value = departure.min;
+      updateDisplay();
     });
     form.addEventListener("submit", function (event) {
       updateDates();
