@@ -1,59 +1,6 @@
 (function () {
   "use strict";
 
-  // Offer a webmail fallback before asking the browser to launch an email app.
-  var emailOptions;
-  function showEmailOptions(recipient, subject, body) {
-    if (!emailOptions) {
-      emailOptions = document.createElement("dialog");
-      emailOptions.className = "email-handoff";
-      emailOptions.setAttribute("aria-labelledby", "email-handoff-title");
-      emailOptions.innerHTML = '<button type="button" class="email-handoff-close sign">Close</button>' +
-        '<h2 id="email-handoff-title">Email the team</h2>' +
-        '<p>Choose how to write to us. Review your message and press Send in your email service.</p>' +
-        '<p class="email-handoff-address"></p>' +
-        '<label class="email-handoff-message">Your prepared message<textarea readonly rows="6"></textarea></label>' +
-        '<div class="email-handoff-actions"><a class="btn btn-brass" data-email-gmail target="_blank" rel="noopener noreferrer">Open Gmail</a>' +
-        '<a class="text-link sign" data-email-app>Open email app</a>' +
-        '<button class="text-link sign" type="button" data-email-copy>Copy email address</button></div>' +
-        '<p class="email-handoff-status" role="status"></p>';
-      document.body.appendChild(emailOptions);
-      emailOptions.querySelector(".email-handoff-close").addEventListener("click", function () { emailOptions.close(); });
-      emailOptions.addEventListener("click", function (event) {
-        if (event.target !== emailOptions) return;
-        var bounds = emailOptions.getBoundingClientRect();
-        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) emailOptions.close();
-      });
-      emailOptions.querySelector("[data-email-copy]").addEventListener("click", function () {
-        var status = emailOptions.querySelector(".email-handoff-status");
-        function fallback() { status.textContent = "Select and copy the email address or prepared message above."; }
-        if (!navigator.clipboard) { fallback(); return; }
-        navigator.clipboard.writeText(emailOptions.copyText).then(function () {
-          status.textContent = "Copied. Paste it into your email service to write to the team.";
-        }, fallback);
-      });
-    }
-    subject = subject || "";
-    body = body || "";
-    emailOptions.querySelector(".email-handoff-address").textContent = recipient;
-    emailOptions.querySelector("[data-email-gmail]").href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(recipient) + "&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-    emailOptions.querySelector("[data-email-app]").href = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-    emailOptions.querySelector(".email-handoff-message").hidden = !body;
-    emailOptions.querySelector("textarea").value = body ? "To: " + recipient + "\nSubject: " + subject + "\n\n" + body : "";
-    emailOptions.copyText = body ? emailOptions.querySelector("textarea").value : recipient;
-    emailOptions.querySelector("[data-email-copy]").textContent = body ? "Copy enquiry" : "Copy email address";
-    emailOptions.querySelector(".email-handoff-status").textContent = "Nothing has been sent. Gmail may ask you to sign in.";
-    if (!emailOptions.open) emailOptions.showModal();
-    emailOptions.querySelector("[data-email-gmail]").focus();
-  }
-  document.addEventListener("click", function (event) {
-    var link = event.target.closest('a[href^="mailto:"]');
-    if (!link || link.hasAttribute("data-email-app") || event.defaultPrevented) return;
-    event.preventDefault();
-    var email = new URL(link.href);
-    showEmailOptions(decodeURIComponent(email.pathname), email.searchParams.get("subject"), email.searchParams.get("body"));
-  });
-
   var links = [
     { key: "rooms", href: "rooms.html", label: "Rooms" },
     { key: "arts", href: "arts-events.html", label: "Arts & Culture" },
@@ -199,7 +146,14 @@
     }
     previous.addEventListener("click", function () { move(-1); });
     next.addEventListener("click", function () { move(1); });
-    gallery.addEventListener("keydown", function (event) {
+    gallery.addEventListener("click", function () { gallery.focus({ preventScroll: true }); });
+    document.addEventListener("keydown", function (event) {
+      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+      var target = event.target;
+      var inGallery = gallery.contains(target) || controls.contains(target) || thumbnails.contains(target);
+      var pageFocused = target === document.body || target === document.documentElement;
+      if (!inGallery && !pageFocused) return;
+      if (target.closest("input, textarea, select, a, [contenteditable]")) return;
       if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
         event.preventDefault(); move(event.key === "ArrowLeft" ? -1 : 1);
       }
@@ -212,8 +166,9 @@
   });
 
   // The mobile action follows the purpose of the current page.
-  var enquiryLink = document.querySelector('.masthead .btn[href="#venue-enquiry"], .masthead .btn[href="#wedding-enquiry"]');
+  var enquiryLink = document.querySelector('.masthead .btn[href^="enquire.html"]');
   var bookingLink = enquiryLink || document.querySelector('.masthead .btn[href$="#book"], .pagehead .btn[href$="#booking-form"]');
+  if (document.body.classList.contains("enquiry-page")) bookingLink = null;
   var mobileBooking = document.querySelector(".mobile-book");
   if (bookingLink || mobileBooking) {
     if (!mobileBooking) {
@@ -222,7 +177,7 @@
       mobileBooking.href = bookingLink.getAttribute("href");
       document.body.appendChild(mobileBooking);
     }
-    mobileBooking.textContent = enquiryLink ? "Make an enquiry" : "Check availability";
+    mobileBooking.textContent = enquiryLink ? "Make an enquiry" : "Book a stay";
     document.body.classList.add("has-mobile-booking");
 
     var bookingDestination = new URL(mobileBooking.href, location.href);
@@ -312,56 +267,35 @@
       if (!departure.value || departure.value < departure.min) departure.value = departure.min;
       updateDisplay();
     });
+    // Keep room-specific links usable without JavaScript, and carry chosen dates.
+    var roomLinks = Array.prototype.filter.call(document.querySelectorAll("[data-room-booking-form]"), function (link) {
+      return link.getAttribute("data-room-booking-form") === form.id;
+    });
+    function updateRoomLinks() {
+      roomLinks.forEach(function (link) {
+        var url = new URL(link.href);
+        ["checkin", "checkout", "adults", "currency"].forEach(function (name) {
+          var input = form.querySelector('[name="' + name + '"]');
+          if (input && input.value) url.searchParams.set(name, input.value);
+          else url.searchParams.delete(name);
+        });
+        link.href = url.href;
+      });
+    }
+    updateRoomLinks();
+    form.addEventListener("input", updateRoomLinks);
+    form.addEventListener("change", updateRoomLinks);
+    roomLinks.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        updateDates();
+        updateRoomLinks();
+        if (!form.reportValidity()) event.preventDefault();
+      });
+    });
     form.addEventListener("submit", function (event) {
       updateDates();
       if (!form.reportValidity()) event.preventDefault();
     });
   });
 
-  Array.prototype.forEach.call(document.querySelectorAll("[data-enquiry-form]"), function (form) {
-    var dateField = form.querySelector('input[type="date"]');
-    if (dateField && !dateField.min) {
-      var today = new Date();
-      var localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000);
-      dateField.min = localToday.toISOString().slice(0, 10);
-    }
-
-    function openEnquiryDraft(useGmail) {
-      if (!form.reportValidity()) return;
-      var lines = [];
-      Array.prototype.forEach.call(form.elements, function (field) {
-        if (!field.name || field.disabled || field.type === "submit") return;
-        var label = field.getAttribute("data-label") || field.name;
-        if (field.type === "checkbox") {
-          if (field.checked) lines.push(label + ": Yes");
-          return;
-        }
-        var value = String(field.value || "").trim();
-        if (value) lines.push(label + ": " + value);
-      });
-
-      var recipient = form.getAttribute("data-recipient");
-      var subject = form.getAttribute("data-subject");
-      var body = "Hello Grand Central team,\n\nI would like to make an enquiry.\n\n" + lines.join("\n") + "\n\nKind regards";
-      var status = form.querySelector("[data-enquiry-status]");
-      if (useGmail) {
-        window.open("https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(recipient) + "&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body), "_blank", "noopener,noreferrer");
-        if (status) status.textContent = "A Gmail draft should open in a new tab. Review it and press Send to submit your enquiry.";
-      } else {
-        showEmailOptions(recipient, subject, body);
-        if (status) status.textContent = "Choose Gmail, your email app, or copy your prepared enquiry. Review it and press Send in your email service.";
-      }
-    }
-    var gmailButton = document.createElement("button");
-    gmailButton.type = "button";
-    gmailButton.className = "text-link sign";
-    gmailButton.textContent = "Use Gmail";
-    gmailButton.addEventListener("click", function () { openEnquiryDraft(true); });
-    var actions = form.querySelector(".enquiry-actions");
-    if (actions) actions.insertBefore(gmailButton, actions.querySelector(".enquiry-note"));
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-      openEnquiryDraft(false);
-    });
-  });
 }());

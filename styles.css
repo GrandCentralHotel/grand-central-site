@@ -1579,7 +1579,7 @@ footer .hotel-email { display: block; padding-block: 8px; font-size: 14px; line-
 }
 
 /* Keep pre-booking guest information visibly linked. */
-.booking-handoff a, .direct-booking > p a { text-decoration: underline; text-underline-offset: 3px; }
+.booking-handoff a, .direct-booking > p a { text-decoration: none; }
 
 /* Homepage room choices, immediately after the booking window. */
 .home-page .hero-copy .hero-kicker { font-size: 12px; line-height: 1.6; }
@@ -1592,6 +1592,8 @@ footer .hotel-email { display: block; padding-block: 8px; font-size: 14px; line-
 .home-room-copy .eyebrow { font-size: 11px; line-height: 1.6; letter-spacing: .08em; margin-bottom: 12px; }
 .home-room-copy h3 { font-size: clamp(28px, 2.6vw, 38px); line-height: 1.12; margin: 0 0 24px; }
 .home-room-copy .btn { margin-top: auto; }
+.home-room-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; width: 100%; }
+.home-room-actions .btn { margin-top: 0; }
 @media (max-width: 820px) {
   .home-room-grid { grid-template-columns: 1fr; }
   .home-room-copy { padding: 24px; }
@@ -1641,7 +1643,7 @@ footer .hotel-email { display: block; padding-block: 8px; font-size: 14px; line-
 .home-review-quote blockquote .home-review-excerpt { margin-top: 14px; font-size: 16px; line-height: 1.6; color: var(--cream-dim); }
 .home-review-quote figcaption { color: var(--cream-dim); font-size: 14px; line-height: 1.6; }
 .home-review-source { grid-column: 1 / -1; margin: 0; color: var(--cream-dim); font-size: 13px; line-height: 1.7; }
-.home-review-source a { text-decoration: underline; text-underline-offset: 3px; }
+.home-review-source a { text-decoration: none; }
 @media (max-width: 820px) {
   .home-room-benefits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; font-size: 14px; }
   .home-guest-reviews { grid-template-columns: 1fr; }
@@ -1819,7 +1821,7 @@ main img:is([src$="stationstory_4.jpg"], [src$="SGP09029.jpg"]) {
 body.site-typography .faq-group > h3:not(.carved) {
   width: fit-content; max-width: 100%; margin-bottom: 20px;
   padding: 8px 12px; border-left: 3px solid var(--cta);
-  background: var(--ground-lift); color: var(--cta);
+  background: transparent; color: var(--cta);
   font: 600 14px/1.5 var(--face-sign);
   letter-spacing: .08em; text-transform: uppercase;
 }
@@ -1892,22 +1894,181 @@ body.site-typography .faq-group > h3:not(.carved) {
   .wedding-gallery-grid > figure > img { height: 100%; object-fit: cover; }
 }
 
-/* Email handoff stays on the page until the visitor chooses an email service. */
-.email-handoff {
-  width: min(560px, calc(100vw - 32px)); max-height: calc(100svh - 32px);
-  padding: 32px; border: 1px solid var(--rule); background: var(--ground);
-  color: var(--cream); overflow-y: auto; font-family: var(--face-read);
+/* Shared arts/event enquiry page. */
+.enquiry-page main { padding-top: 48px; padding-bottom: 64px; }
+.enquiry-page h1 { font-size: clamp(36px, 5vw, 60px); }
+.enquiry-page .enquiry-form { max-width: 850px; }
+.enquiry-page .enquiry-error { display: block; color: #9b352c; font: 14px/1.5 var(--face-sign); }
+.enquiry-page [aria-invalid="true"] { border: 2px solid #9b352c; }
+.enquiry-page button:disabled { opacity: .6; cursor: not-allowed; }
+.enquiry-page #enquiry-context { border-left: 3px solid var(--brass); padding: 12px 16px; }
+.enquiry-page #enquiry-privacy { max-width: 70ch; font-size: 15px; }
+body.enquiry-page.site-typography main p a {
+  display: inline; min-height: 0; padding: 0; border: 0;
+  font: inherit; letter-spacing: inherit; color: inherit;
+  text-transform: none; text-decoration: none;
 }
-.email-handoff::backdrop { background: rgba(18,17,14,.65); }
-body.site-typography .email-handoff h2:not(.carved) { font-size: 30px; margin: 8px 0 16px; }
-.email-handoff-close { display: block; margin-left: auto; padding: 10px 0; border: 0; background: transparent; color: inherit; cursor: pointer; min-height: 44px; }
-.email-handoff p { margin: 0 0 20px; }
-.email-handoff-address { font-weight: 600; overflow-wrap: anywhere; user-select: text; }
-.email-handoff-message { display: block; font-size: 14px; margin-bottom: 20px; }
-.email-handoff-message[hidden] { display: none; }
-.email-handoff textarea { display: block; width: 100%; margin-top: 8px; padding: 12px; font: 16px/1.5 var(--face-read); background: var(--ground-lift); color: inherit; border: 1px solid var(--rule); }
-.email-handoff-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
-.email-handoff-actions .text-link { min-height: 44px; padding: 12px 0; }
-.email-handoff-actions button { background: transparent; border: 0; border-bottom: 1px solid var(--rule); color: inherit; cursor: pointer; }
-.email-handoff .email-handoff-status { font-size: 14px; margin-top: 20px; margin-bottom: 0; color: var(--cream-dim); }
-@media (max-width: 560px) { .email-handoff { padding: 20px; } }
+.enquiry-page [hidden] { display: none; }
+.enquiry-page .pagehead .wayfind,
+.enquiry-page .pagehead .callnow { color: var(--cream-dim); }
+.enquiry-page .pagehead .wayfind a:hover,
+.enquiry-page .pagehead .callnow:hover { color: var(--cream); }
+
+@media (min-width: 821px) {
+  .site-footer .foot-grid { grid-template-columns: 1.35fr .8fr 1fr 1.25fr; }
+}
+.enquiry-page .enquiry-grid { gap: 24px 28px; align-items: start; }
+.enquiry-page .enquiry-field :is(input, select) {
+  min-height: 52px; height: 52px; font-size: 17px;
+}
+.enquiry-page .enquiry-field textarea { min-height: 180px; line-height: 1.6; }
+.enquiry-page .enquiry-actions {
+  margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--rule-soft);
+}
+.enquiry-page .enquiry-status:empty { min-height: 0; margin-top: 0; }
+@media (max-width: 560px) {
+  .enquiry-page .enquiry-grid { gap: 22px; }
+  .enquiry-page .enquiry-actions .btn { width: 100%; }
+}
+
+/* A steadier section rhythm, with room for the photographs to lead. */
+@media (min-width: 821px) {
+  .overview-intro, .stay-overview, .hotel-gallery, .heritage-overview,
+  .dining-overview, .location-overview, .getting-here, .property-details,
+  .faq-section, .direct-booking { padding-top: clamp(64px, 7vw, 104px); }
+  .creative-legacy { padding-top: clamp(64px, 7vw, 104px); }
+  .editorial-story { margin-top: clamp(56px, 7vw, 96px); }
+  .station-story-feature {
+    margin-top: clamp(64px, 7vw, 104px);
+    padding-block: clamp(56px, 6vw, 88px);
+  }
+  .venue-detail-use { padding-block: clamp(64px, 7vw, 104px); }
+}
+.arts-intro, .venues-intro, .venue-detail-intro {
+  padding-block: clamp(56px, 7vw, 104px);
+}
+.wedding-intro { padding-block: clamp(56px, 6vw, 88px); }
+.venue-detail-gallery { padding-top: clamp(56px, 7vw, 104px); }
+.venue-detail-gallery-grid { margin-top: clamp(28px, 4vw, 48px); }
+.venue-enquiry, .venue-detail-enquiry, .wedding-enquiry {
+  margin-top: clamp(48px, 7vw, 96px);
+  padding-block: clamp(48px, 6vw, 80px);
+}
+.enquiry-page main {
+  margin-top: clamp(20px, 3vw, 40px);
+  padding-top: clamp(32px, 4vw, 48px);
+}
+
+/* Landscape frames retain more architecture; portraits keep their height. */
+.venue-detail-gallery-grid figure.wide { aspect-ratio: 16 / 10; }
+@media (min-width: 821px) {
+  .wedding-gallery > .wedding-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto repeat(2, clamp(240px, 27vw, 380px));
+    grid-auto-rows: auto;
+  }
+  .wedding-gallery > .wedding-gallery-grid > .wedding-gallery-wide {
+    aspect-ratio: 16 / 10;
+  }
+  .wedding-gallery-more .wedding-gallery-grid {
+    grid-auto-rows: auto;
+  }
+  .wedding-gallery-more .wedding-gallery-grid > figure { aspect-ratio: 3 / 2; }
+}
+@media (max-width: 820px) {
+  .arts-intro, .venues-intro, .venue-detail-intro, .wedding-intro { padding-block: 48px; }
+  .venue-detail-gallery { padding-top: 48px; }
+  .venue-detail-gallery-grid { margin-top: 28px; }
+  .enquiry-page main { margin-top: 16px; padding-top: 28px; }
+}
+@media (max-width: 560px) {
+  .wedding-gallery-grid > figure,
+  .venue-detail-gallery-grid figure,
+  .venue-detail-gallery-grid figure.wide { aspect-ratio: 3 / 2; }
+  .wedding-gallery-grid > .wedding-gallery-tall { aspect-ratio: 2 / 3; }
+  .venue-detail-gallery-grid figure.tall { aspect-ratio: 3 / 4; }
+}
+
+/* Keyboard feedback matches the existing button hover colours. */
+body.site-typography .btn-brass:not(:disabled):focus-visible {
+  background: var(--cta-hover); color: var(--cta-ink); border-color: var(--cta-hover);
+}
+body.site-typography .btn-line:not(:disabled):focus-visible {
+  border-color: var(--brass); color: var(--brass);
+}
+body.site-typography :is(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--cta); outline-offset: 4px;
+}
+body.site-typography :is(.hero, .story-hero, .rooms-hero) :is(a, button):focus-visible {
+  outline-color: var(--cta-ink);
+}
+@media (prefers-reduced-motion: reduce) {
+  body.site-typography .btn { transition: none; }
+}
+@media (max-width: 560px) {
+  :is(.venue-enquiry, .venue-detail-enquiry, .wedding-enquiry, .arts-programme-action) > div {
+    flex-direction: column; align-items: stretch; gap: 16px;
+  }
+  :is(.venue-enquiry, .venue-detail-enquiry, .wedding-enquiry, .arts-programme-action) > div > .btn {
+    width: 100%;
+  }
+  :is(.venue-enquiry, .venue-detail-enquiry, .wedding-enquiry, .arts-programme-action) > div > .text-link {
+    align-self: flex-start;
+  }
+  .home-page .hero-copy > .hero-actions {
+    align-items: stretch;
+  }
+  .home-page .hero-copy > .hero-actions > .btn { width: 100%; }
+}
+
+/* Bring long-page sections closer while preserving the existing type and layout. */
+.direct-booking {
+  margin-top: clamp(48px, 6vw, 88px);
+  padding-block: clamp(40px, 6vw, 80px);
+}
+.site-footer { margin-top: clamp(48px, 6vw, 88px); }
+@media (min-width: 821px) {
+  .overview-intro, .stay-overview, .hotel-gallery, .heritage-overview,
+  .dining-overview, .location-overview, .getting-here, .property-details,
+  .faq-section, .creative-legacy { padding-top: clamp(56px, 5vw, 80px); }
+  .arts-intro, .venues-intro, .venue-detail-intro, .wedding-intro {
+    padding-block: clamp(48px, 5vw, 72px);
+  }
+  .arts-paths, .arts-programme, .venue-services, .wedding-details,
+  .venue-detail-use { padding-block: clamp(56px, 6vw, 88px); }
+  .arts-paths-heading, .venue-catalogue-heading { margin-bottom: clamp(32px, 4vw, 56px); }
+  .venue-catalogue, .wedding-gallery { padding-bottom: clamp(48px, 5vw, 80px); }
+  .venue-detail-gallery { padding-top: clamp(48px, 5vw, 80px); }
+  .station-story-feature {
+    margin-top: clamp(48px, 5vw, 80px);
+    padding-block: clamp(48px, 5vw, 72px);
+  }
+  .venue-enquiry, .venue-detail-enquiry, .wedding-enquiry {
+    margin-top: clamp(48px, 5vw, 80px);
+    padding-block: clamp(40px, 5vw, 72px);
+  }
+}
+
+/* Use the same framing and restrained exposure treatment wherever rooms appear. */
+.home-room-card figure, .roomcard-media { aspect-ratio: 4 / 3; }
+:is(.home-room-card, .roomcard-media) img { object-position: 50% 58%; }
+main img[src="images/room-double-editorial.png"] {
+  filter: brightness(1.035) contrast(.99) saturate(.94);
+}
+main img[src="images/deluxe-king-room-141-editorial.png"] {
+  filter: brightness(1.02) contrast(.99) saturate(.94);
+}
+main img[src="images/edited/private-rooms/deluxe-twin/ivy-editorial-v2/weixin-image-20241226155634-editorial-v2.png"] {
+  filter: brightness(.98) contrast(.99) saturate(.96);
+}
+
+/* Gym information is confined to the guest facilities section. */
+.guest-information-page .gym-facility {
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+  gap: clamp(24px, 5vw, 64px); padding-top: clamp(28px, 4vw, 48px);
+}
+.guest-information-page .gym-facility figure { margin: 0; }
+.guest-information-page .gym-facility img { display: block; width: 100%; height: auto; }
+@media (max-width: 820px) {
+  .guest-information-page .gym-facility { grid-template-columns: 1fr; }
+}

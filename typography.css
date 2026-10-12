@@ -74,7 +74,7 @@ body.site-typography .property-grid dt {
 body.site-typography .property-grid .arrival-time dd { font-weight: 600; }
 body.site-typography .inclusions strong { font-weight: 500; }
 body.site-typography :is(.inclusions, .property-grid) a {
-  text-decoration: underline; text-underline-offset: .2em;
+  text-decoration: none;
 }
 body.site-typography :is(.venue-card, .arts-path-grid article, .story-screen-grid article, .film-legacy) h3 { margin-top: 16px; }
 body.site-typography .story-chronology header { display: block; }
@@ -100,4 +100,78 @@ body.site-typography .dining-description { grid-column: 2; grid-row: 1 / span 2;
   body.site-typography .dining-copy .eyebrow,
   body.site-typography .dining-copy h2,
   body.site-typography .dining-description { grid-column: 1; grid-row: auto; }
+}
+
+/* Customer-page links share one treatment: no text or border underlines. */
+body.site-typography a,
+body.site-typography a:hover { text-decoration: none; }
+body.site-typography .text-link,
+body.site-typography .masthead .callnow,
+body.site-typography .pagehead .callnow,
+body.site-typography .faq-list a,
+body.site-typography .wayfind a[aria-current="page"] { border-bottom-width: 0; }
+
+/* Make text links recognisable without changing headings or buttons. */
+body.site-typography a:not(.nameplate):not(.btn) { font-weight: 600; }
+body.site-typography .venue-shortlist a:not(.btn) { font-weight: 400; }
+body.site-typography .faq-jumps a:not(.btn) { font-weight: 400; }
+body.site-typography .guest-info-navigation .text-link { border: 1px solid var(--rule); }
+body.site-typography .venue-card h3 a:not(.btn) {
+  font: inherit;
+  font-weight: 400;
+  letter-spacing: inherit;
+  color: inherit;
+}
+body.site-typography main p a,
+body.enquiry-page.site-typography main p a { font-weight: 700; }
+
+/* Keep contact labels clear while long email addresses read more quietly. */
+body.site-typography footer a[href^="mailto:"] > span:not(.email-label) {
+  font-weight: 400;
+}
+
+/* Footer links underline on hover or keyboard focus. */
+body.site-typography .site-footer a:not(.btn) {
+  font-weight: 400;
+  text-decoration: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+  text-decoration-color: var(--rule);
+}
+body.site-typography .site-footer a:not(.btn):hover,
+body.site-typography .site-footer a:not(.btn):focus-visible {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+body.site-typography .site-footer a.hotel-email,
+body.site-typography .site-footer a.hotel-email:hover,
+body.site-typography .site-footer a.hotel-email:focus-visible { text-decoration: none; }
+body.site-typography .site-footer .hotel-email > span { font-weight: 400; }
+body.site-typography .site-footer .hotel-email > span:not(.email-label) {
+  text-decoration: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+  text-decoration-color: var(--rule);
+}
+body.site-typography .site-footer a.hotel-email:hover > span:not(.email-label),
+body.site-typography .site-footer a.hotel-email:focus-visible > span:not(.email-label) {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
+/* Quiet feedback keeps link typography stable. */
+body.site-typography main a:not(.btn) {
+  transition: color 160ms ease;
+}
+body.site-typography main a:not(.btn):is(:hover, :focus-visible),
+body.site-typography .venue-card h3 a:not(.btn):is(:hover, :focus-visible) {
+  color: var(--cta);
+}
+body.site-typography main :is(p a:not(.btn), .text-link):is(:hover, :focus-visible) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+}
+@media (prefers-reduced-motion: reduce) {
+  body.site-typography main a:not(.btn) { transition: none; }
 }

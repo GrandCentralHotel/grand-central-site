@@ -4,3 +4,9 @@
 .claude/
 .DS_Store
 Thumbs.db
+
+# Local property masters, audit evidence and hosting workspace
+/Grand Central - Photo Master/
+/output/
+/publish/
+/debug.log

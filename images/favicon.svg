@@ -1,17 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Grand Central">
-  <title>Grand Central</title>
-  <!-- Favicon reduction: strokes thickened for 16-32px. Colours are explicit
-       because a favicon renders standalone, and adapt to the browser chrome. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Grand Central building">
+  <title>Grand Central building</title>
   <style>
-    .ink { stroke: #241813 }
-    @media (prefers-color-scheme: dark) { .ink { stroke: #F3EADA } }
+    .building { stroke: #241813; }
+    @media (prefers-color-scheme: dark) { .building { stroke: #F3EADA; } }
   </style>
-  <g fill="none" stroke-linecap="butt">
-    <path class="ink" d="M8 84h84" stroke-width="6"/>
-    <path class="ink" d="M22 82V50a28 28 0 0 1 56 0v32" stroke-width="5.5"/>
-    <g stroke="#D9A441">
-      <circle cx="50" cy="52" r="14" stroke-width="4.5"/>
-      <path d="M50 52l8-4.6M50 52l-5.7-3.3" stroke-width="3" stroke-linecap="round"/>
-    </g>
+  <!-- Three arches, side columns and the clock dome from the current building logo. -->
+  <g class="building" fill="none" stroke-width="3" stroke-linecap="square" stroke-linejoin="round">
+    <path d="M5 22h54M9 16h14m18 0h14"/>
+    <path d="M26 18v-2a6 6 0 0 1 12 0v2"/>
+    <path d="M9 28v20m7-20v20m32-20v20m7-20v20"/>
+    <path d="M19 48V34a4 4 0 0 1 8 0v14M28 48V34a4 4 0 0 1 8 0v14M37 48V34a4 4 0 0 1 8 0v14"/>
+    <path d="M7 48h50M3 54h58"/>
   </g>
 </svg>
