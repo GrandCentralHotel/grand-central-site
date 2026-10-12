@@ -89,6 +89,7 @@
 .room-detail-hero h1 { font-size: clamp(52px, 8vw, 100px); line-height: .96; max-width: 10ch; }
 .detail-lead { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 5vw, 72px); padding-top: 28px; }
 .detail-lead > p { color: var(--cream-dim); font-size: 19px; margin: 0; }
+.detail-lead .room-detail-book { display: table; margin-top: 28px; }
 .detail-facts { display: grid; grid-template-columns: repeat(2,1fr); margin: 0; }
 .detail-facts div { padding: 15px 0; border-top: 1px solid var(--rule); }
 .detail-facts div:nth-child(even) { padding-left: 20px; }
