@@ -1923,7 +1923,7 @@ body.enquiry-page.site-typography main p a {
 }
 .enquiry-page .enquiry-field textarea { min-height: 180px; line-height: 1.6; }
 .enquiry-page .enquiry-actions {
-  margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--rule-soft);
+  margin-top: 28px; padding-top: 24px; border-top: 0;
 }
 .enquiry-page .enquiry-status:empty { min-height: 0; margin-top: 0; }
 @media (max-width: 560px) {
