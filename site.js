@@ -167,7 +167,8 @@
 
   // The mobile action follows the purpose of the current page.
   var enquiryLink = document.querySelector('.masthead .btn[href^="enquire.html"]');
-  var bookingLink = enquiryLink || document.querySelector('.masthead .btn[href$="#book"], .pagehead .btn[href$="#booking-form"]');
+  var roomBookingLink = document.querySelector(".room-detail-book");
+  var bookingLink = roomBookingLink || enquiryLink || document.querySelector('.masthead .btn[href$="#book"], .pagehead .btn[href$="#booking-form"]');
   if (document.body.classList.contains("enquiry-page")) bookingLink = null;
   var mobileBooking = document.querySelector(".mobile-book");
   if (bookingLink || mobileBooking) {
@@ -177,7 +178,8 @@
       mobileBooking.href = bookingLink.getAttribute("href");
       document.body.appendChild(mobileBooking);
     }
-    mobileBooking.textContent = enquiryLink ? "Make an enquiry" : "Book a stay";
+    if (roomBookingLink) mobileBooking.href = roomBookingLink.getAttribute("href");
+    mobileBooking.textContent = roomBookingLink ? "Book this room" : enquiryLink ? "Make an enquiry" : "Book a stay";
     document.body.classList.add("has-mobile-booking");
 
     var bookingDestination = new URL(mobileBooking.href, location.href);

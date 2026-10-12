@@ -175,3 +175,7 @@ body.site-typography main :is(p a:not(.btn), .text-link):is(:hover, :focus-visib
 @media (prefers-reduced-motion: reduce) {
   body.site-typography main a:not(.btn) { transition: none; }
 }
+body.site-typography main .home-review-source a,
+body.site-typography main .home-review-source a:is(:hover, :focus-visible) {
+  text-decoration: none;
+}

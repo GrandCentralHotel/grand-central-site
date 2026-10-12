@@ -80,7 +80,7 @@
     </div>
 
     <div class="hero-copy">
-      <h1>Stay where Auckland once <em>arrived</em></h1>
+      <h1><span class="home-hero-line">Stay where</span> <span class="home-hero-line">Auckland once</span> <em class="home-hero-line">arrived</em></h1>
       <p>Just a three-minute walk from Spark Arena. Simple comfort in private double, king and twin rooms inside Auckland’s historic railway station.</p>
       <div class="hero-actions">
         <a class="btn btn-brass" href="#stay">Explore the rooms</a>
@@ -175,7 +175,7 @@
         <blockquote><p>“Absolutely stunned with the building itself and its central location. Brilliant!”</p><p class="home-review-excerpt">“Very clean units and easy to access.”</p></blockquote>
         <figcaption><strong>Newwilbe</strong> · Booking.com<br>Deluxe Twin Room · Reviewed <time datetime="2026-03-02">2 March 2026</time></figcaption>
       </figure>
-      <p class="home-review-source"><a href="https://www.booking.com/hotel/nz/grand-central.en-gb.html#tab-reviews" target="_blank" rel="noopener noreferrer">Read all reviews and see the current score <span aria-hidden="true">↗</span></a></p>
+      <p class="home-review-source"><a href="https://www.booking.com/hotel/nz/grand-central.en-gb.html#tab-reviews" target="_blank" rel="noopener noreferrer">Read all reviews and see the current score</a></p>
     </aside>
   </section>
 
@@ -400,7 +400,7 @@
     </figure>
     <div class="home-arrival" id="getting-here">
       <div><h3>Find us at the old station</h3><p>Use 26 Te Taou Crescent when booking a taxi or rideshare, so you arrive at the hotel rather than Auckland's current train station.</p></div>
-      <div class="home-arrival-actions"><a class="text-link sign" href="https://www.google.com/maps/dir/?api=1&amp;destination=26+Te+Taou+Crescent%2C+Auckland+1010" target="_blank" rel="noopener">Open directions <span aria-hidden="true">↗</span></a><a class="text-link sign" href="guest-information.html#getting-here">Entrance &amp; arrival guide <span aria-hidden="true">→</span></a></div>
+      <div class="home-arrival-actions"><a class="text-link sign" href="https://www.google.com/maps/dir/?api=1&amp;destination=26+Te+Taou+Crescent%2C+Auckland+1010" target="_blank" rel="noopener">Open directions <span class="directions-arrow-desktop" aria-hidden="true">↗</span><svg class="directions-arrow-mobile" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 13 13 3M3 3h10v10"/></svg></a><a class="text-link sign" href="guest-information.html#getting-here">Entrance &amp; arrival guide <span aria-hidden="true">→</span></a></div>
     </div>
   </section>
 
@@ -484,17 +484,18 @@
     var index = 0, timer, paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var pauseButton = gallery.querySelector("[data-gallery-pause]");
     var status = gallery.querySelector("[data-gallery-status]");
+    var mobile = window.matchMedia("(max-width: 650px)");
 
     function show(next) {
       index = (next + slides.length) % slides.length;
       track.style.transform = "translateX(-" + (index * 100) + "%)";
       slides.forEach(function (slide, slideIndex) { slide.setAttribute("aria-hidden", String(slideIndex !== index)); });
-      status.textContent = "Image " + (index + 1) + " of " + slides.length;
+      status.textContent = mobile.matches ? (index + 1) + " / " + slides.length : "Image " + (index + 1) + " of " + slides.length;
     }
 
     function start() {
-      if (paused) return;
       clearInterval(timer);
+      if (paused || mobile.matches) return;
       timer = setInterval(function () { show(index + 1); }, 4500);
     }
 
@@ -515,6 +516,7 @@
       clearInterval(timer);
       start();
     });
+    mobile.addEventListener("change", function () { show(index); start(); });
     show(0);
     start();
   })();
@@ -528,17 +530,18 @@
     var index = 0, timer, paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var pauseButton = carousel.querySelector("[data-dining-pause]");
     var status = carousel.querySelector("[data-dining-status]");
+    var mobile = window.matchMedia("(max-width: 650px)");
 
     function show(next) {
       index = (next + slides.length) % slides.length;
       track.style.transform = "translateX(-" + (index * 100) + "%)";
       slides.forEach(function (slide, slideIndex) { slide.setAttribute("aria-hidden", String(slideIndex !== index)); });
-      status.textContent = "Image " + (index + 1) + " of " + slides.length;
+      status.textContent = mobile.matches ? (index + 1) + " / " + slides.length : "Image " + (index + 1) + " of " + slides.length;
     }
 
     function start() {
-      if (paused) return;
       clearInterval(timer);
+      if (paused || mobile.matches) return;
       timer = setInterval(function () { show(index + 1); }, 4500);
     }
 
@@ -563,6 +566,7 @@
     carousel.addEventListener("mouseleave", start);
     carousel.addEventListener("focusin", function () { clearInterval(timer); });
     carousel.addEventListener("focusout", start);
+    mobile.addEventListener("change", function () { show(index); start(); });
     show(0);
     start();
   })();

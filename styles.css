@@ -1536,6 +1536,7 @@ footer .hotel-email { display: block; padding-block: 8px; font-size: 14px; line-
     min-height: 48px; text-align: center; box-shadow: 0 5px 24px rgba(0,0,0,.22);
   }
   .mobile-book.is-at-booking { visibility: hidden; }
+  body:has(> .mobile-book) .room-detail-book { display: none; }
 }
 
 .hero-inner.page { width: 100%; }
@@ -1604,6 +1605,11 @@ footer .hotel-email { display: block; padding-block: 8px; font-size: 14px; line-
 .home-arrival h3 { margin: 0 0 12px; font-size: 28px; }
 .home-arrival p { max-width: 65ch; margin: 0; color: var(--cream-dim); font-size: 16px; line-height: 1.7; }
 .home-arrival-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+.directions-arrow-mobile { display: none; }
+@media (max-width: 650px) {
+  .directions-arrow-desktop { display: none; }
+  .directions-arrow-mobile { display: inline-block; width: 1em; height: 1em; vertical-align: -.1em; }
+}
 .guest-info-link { margin: 28px 0 0; }
 .guest-info-intro { padding-top: clamp(40px, 6vw, 80px); }
 .guest-information-page .pagehead { border-bottom: 1px solid var(--rule); }
@@ -2060,6 +2066,28 @@ main img[src="images/deluxe-king-room-141-editorial.png"] {
 }
 main img[src="images/edited/private-rooms/deluxe-twin/ivy-editorial-v2/weixin-image-20241226155634-editorial-v2.png"] {
   filter: brightness(.98) contrast(.99) saturate(.96);
+}
+
+/* Mobile headings and gallery controls keep the photographs clear. */
+@media (max-width: 650px) {
+  .home-page .hero-copy h1 { font-size: clamp(42px, 13vw, 60px); line-height: 1.04; }
+  .home-page .home-hero-line { display: block; }
+  .home-page .hero-media::after {
+    background: linear-gradient(180deg, rgba(20, 15, 10, .28), rgba(20, 15, 10, .66) 40%, rgba(20, 15, 10, .78));
+  }
+  .home-page :is([data-hotel-gallery], [data-dining-carousel]) {
+    display: grid; grid-template-rows: auto auto; height: auto; aspect-ratio: auto;
+  }
+  .home-page .gallery-slides { height: auto; aspect-ratio: 4 / 3; min-width: 0; }
+  .home-page .dining-slides { height: auto; aspect-ratio: 16 / 9; min-width: 0; }
+  .home-page :is([data-hotel-gallery], [data-dining-carousel]) .gallery-controls {
+    position: static; justify-content: space-between; padding: 8px 0 0;
+    background: var(--ground); color: var(--cream);
+  }
+  .home-page .gallery-controls button { border-color: var(--rule); }
+  .home-page .gallery-controls button:hover { background: var(--ground-lift); }
+  .home-page :is([data-gallery-pause], [data-dining-pause]) { display: none; }
+  .home-page .gallery-status { font-size: 12px; letter-spacing: .04em; }
 }
 
 /* Gym information is confined to the guest facilities section. */
