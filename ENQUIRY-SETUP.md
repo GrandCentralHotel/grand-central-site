@@ -1,5 +1,26 @@
 # Arts and event enquiries
 
+## Formspree delivery — 13 October 2026
+
+The owner chose Formspree on 12 October 2026. The seven-field form in enquire.html now uses enquiry-config.js and enquiry.js for direct submission, without opening an email app.
+
+- Endpoint: https://formspree.io/f/xrpeavko
+- Dashboard: https://formspree.io/forms/xrpeavko/submissions
+- Recipient: bm.cityaparts@gmail.com, verified in Formspree.
+- Reply-To: the submitter's `email` field.
+- Spam protection: Formshield enabled and the `_gotcha` honeypot retained. CAPTCHA is disabled in the provider's default settings.
+- Free allowance observed: 50 submissions per month.
+- Privacy: the form explains the recipient/purpose and links to Formspree's privacy policy. Do not collect payment details or sensitive information.
+- Verification: one clearly labelled launch test returned `ok: true`, appeared in the Formspree inbox, and the owner confirmed notification receipt on 13 October 2026.
+- Published: https://grand-central-hotel.shiping106106.chatgpt.site/enquire.html (13 October 2026, Sites version 8).
+- Hosted form test: empty required fields rejected; the live form showed “Enquiry received” and the record appeared in Formspree with source `venue-grand-hall` and venue `grand-hall`. The 390px mobile layout had no horizontal overflow. The initial delivery test was confirmed in the business inbox by the owner; notification receipt for the additional hosted test was not separately confirmed.
+
+Manage enquiries in Formspree's Submissions dashboard and the business inbox. The form preserves entered details on failure and does not confirm bookings. Hotel reservations and Cloudbeds remain separate. No provider credentials are included in browser code.
+
+## Previous Wix setup — rollback reference
+
+The details below record the former published setup. Both paid Wix subscriptions have auto-renew off. The Wix form/account is retained; no Wix records or automations were deleted during this migration.
+
 Activated with Wix on 12 October 2026.
 
 - Public form: https://gccityaparts.wixforms.com/f/7515236832171263168

@@ -35,8 +35,8 @@
     privacy.id = "enquiry-privacy";
     var link = document.createElement("a");
     link.href = config.privacyPolicy;
-    link.textContent = "Privacy policy";
-    privacy.appendChild(link);
+    link.textContent = "Formspree privacy policy";
+    privacy.append("Your details are sent through Formspree to the Auckland Heritage Art Centre team to respond to your enquiry. Please do not include payment details or sensitive information. ", link);
     form.insertBefore(privacy, form.querySelector(".enquiry-actions"));
   }
   var fields = Array.prototype.slice.call(form.elements).filter(function (field) { return field.name && field.name !== "_gotcha"; });

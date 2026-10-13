@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-NZ"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Arts, Events &amp; Wedding Enquiries | Grand Central Auckland</title><meta name="description" content="Enquire about weddings, venue hire, arts and culture at Grand Central Auckland."><link rel="canonical" href="https://www.grandcentralhotel.co.nz/enquire.html"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="typography.css"><link rel="icon" href="images/favicon.svg?v=building-20261010"><script src="site.js" defer></script></head>
+<html lang="en-NZ"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Arts, Events &amp; Wedding Enquiries | Grand Central Auckland</title><meta name="description" content="Enquire about weddings, venue hire, arts and culture at Grand Central Auckland."><link rel="canonical" href="https://www.grandcentralhotel.co.nz/enquire.html"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="typography.css"><link rel="icon" href="images/favicon.svg?v=building-20261010"><script src="site.js" defer></script><script src="enquiry-config.js" defer></script><script src="enquiry.js" defer></script></head>
 <body class="site-typography enquiry-page"><a class="skiplink" href="#enquiry-content">Skip to enquiry</a><div class="page"><header class="pagehead">
       <a class="nameplate" href="index.html" aria-label="Grand Central Auckland home"><span class="brand-building" aria-hidden="true"><img src="images/grand-central-logo-web.png" width="320" height="117" alt="" decoding="async"></span><span class="nameplate-words"><strong class="carved">Grand Central</strong><span class="nameplate-place sign">Auckland</span></span></a>
       <nav class="wayfind sign" aria-label="Main navigation"><a href="rooms.html">Rooms</a><a href="arts-events.html">Arts &amp; Culture</a><a href="venues.html">Events &amp; Venues</a><a href="weddings.html">Weddings</a><a href="index.html#location">Location</a></nav>
@@ -9,11 +9,24 @@
       </span>
     </header></div>
 <main id="enquiry-content" class="venue-enquiry page"><h1>Make an enquiry</h1><p>Tell the Auckland Heritage Art Centre team about your wedding, event, venue hire or creative project at Grand Central.</p><p>For hotel stays, <a class="text-link" href="rooms.html#booking-form">check availability</a> or <a class="text-link" href="mailto:reservation@grandcentralhotel.co.nz">contact hotel reservations</a>.</p>
-<div class="enquiry-form">
-<p>Use our enquiry form to share your preferred dates, guest numbers and plans. Your enquiry goes to the Auckland Heritage Art Centre team and does not confirm a booking.</p>
-<div class="enquiry-actions"><a class="btn btn-brass" href="https://gccityaparts.wixforms.com/f/7515236832171263168">Open enquiry form</a></div>
+<p id="enquiry-context" hidden></p>
+<form class="enquiry-form" id="shared-enquiry" method="post" novalidate>
+<input type="text" name="_gotcha" hidden tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="enquiry-grid">
+<div class="enquiry-field"><label for="enquiry-type">Enquiry type (required)</label><select id="enquiry-type" name="type" required><option value="">Select enquiry type</option><option value="wedding">Weddings</option><option value="venue">Venue hire &amp; private events</option><option value="arts">Arts &amp; culture</option><option value="other">Other arts or venue enquiry</option></select></div>
+<div class="enquiry-field"><label for="enquiry-name">Full name (required)</label><input id="enquiry-name" name="name" autocomplete="name" maxlength="200" required></div>
+<div class="enquiry-field"><label for="enquiry-email">Email address (required)</label><input id="enquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+<div class="enquiry-field"><label for="enquiry-phone">Phone number (optional)</label><input id="enquiry-phone" name="phone" type="tel" autocomplete="tel" maxlength="60"></div>
+<div class="enquiry-field"><label for="enquiry-dates">Preferred dates (optional)</label><input id="enquiry-dates" name="dates" maxlength="200" placeholder="For example, a Saturday in March"></div>
+<div class="enquiry-field"><label for="enquiry-people">Approximate number of people (optional)</label><input id="enquiry-people" name="people" type="number" min="1" step="1" inputmode="numeric"></div>
+<div class="enquiry-field enquiry-field-wide"><label for="enquiry-message">How can we help? (required)</label><textarea id="enquiry-message" name="message" rows="6" maxlength="10000" required></textarea></div>
+</div>
+<div class="enquiry-actions"><button class="btn btn-brass" type="submit" disabled>Online sending unavailable</button></div>
+<p id="enquiry-status" class="enquiry-status" role="status" aria-live="polite"></p>
+<noscript><p>To send an enquiry without JavaScript, please use the email address below.</p></noscript>
+</form>
 <p>Or email <a class="text-link" href="mailto:bm.cityaparts@gmail.com">bm.cityaparts@gmail.com</a>. Please include the venue or room you are enquiring about.</p>
-</div></main><footer class="site-footer page">
+</main><footer class="site-footer page">
   <div class="foot-grid">
     <div class="footer-about"><h3 class="carved">Grand Central Auckland</h3><p>A stay inside Auckland's former railway station, three minutes from Spark Arena.</p></div>
     <div><h3>Stay</h3><a href="rooms.html">Rooms</a><a href="rooms.html#booking-form">Check availability</a><a href="guest-information.html">Guest information</a></div>
