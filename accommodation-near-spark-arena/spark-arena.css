@@ -1,7 +1,10 @@
 .spark-page .rooms-hero-copy h1 { max-width: 18ch; font-size: clamp(40px, 5.6vw, 78px); }
 .spark-page .rooms-intro p + p { margin-top: 18px; }
 .spark-page .rooms-intro .text-link { display: inline-block; margin-top: 24px; }
-.spark-directions { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; }
+.spark-directions { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
 .spark-directions > p, .spark-room-intro { color: var(--cream-dim); max-width: 65ch; }
+.spark-directions > p { margin: 0; }
+.spark-directions > div { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.spark-directions > div > p { margin: 0; }
 .spark-room-intro { margin-bottom: 28px; }
 @media (max-width: 650px) { .spark-directions { grid-template-columns: 1fr; gap: 20px; } .spark-page .rooms-hero-copy h1 { font-size: clamp(36px, 10vw, 52px); } }
