@@ -30,7 +30,7 @@
     nav.setAttribute("aria-label", "Main navigation");
     nav.innerHTML = links.map(function (item) {
       var state = item.key === current ? ' aria-current="page"' : "";
-      return '<a href="' + item.href + '"' + state + ">" + item.label + "</a>";
+      return '<a href="/' + item.href + '"' + state + ">" + item.label + "</a>";
     }).join("");
 
     var button = document.createElement("button");
@@ -70,7 +70,7 @@
     Array.prototype.forEach.call(document.querySelectorAll(".wayfind"), function (nav) {
       Array.prototype.forEach.call(nav.querySelectorAll("a"), function (anchor) {
         var item = links.filter(function (candidate) {
-          return candidate.href === anchor.getAttribute("href");
+          return "/" + candidate.href === anchor.getAttribute("href");
         })[0];
         if (item && item.key === current) anchor.setAttribute("aria-current", "page");
         else anchor.removeAttribute("aria-current");
