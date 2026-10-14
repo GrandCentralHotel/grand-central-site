@@ -3,6 +3,7 @@
 .spark-page .rooms-intro .text-link { display: inline-block; margin-top: 16px; }
 .spark-page :is(.rooms-intro, .location-overview, .stay-overview, .faq-section) { padding-top: clamp(40px, 6vw, 80px); }
 .spark-page .section-heading { margin-bottom: 28px; }
+.spark-page .location-overview .section-heading { margin-bottom: 48px; }
 .spark-directions { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
 .spark-directions > p, .spark-room-intro { color: var(--cream-dim); max-width: 65ch; }
 .spark-directions > p { margin: 0; }
@@ -14,4 +15,5 @@
   .spark-page .rooms-hero-copy h1 { font-size: clamp(36px, 10vw, 52px); }
   .spark-page .rooms-hero-copy > p:last-of-type { margin-bottom: 22px; }
   .spark-page .section-heading { gap: 16px; margin-bottom: 24px; }
+  .spark-page .location-overview .section-heading { margin-bottom: 28px; }
 }
