@@ -11,13 +11,14 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const origin = 'https://www.grandcentralhotel.co.nz';
 const sitemap = await fs.readFile(path.join(root, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-assert.equal(new Set(urls).size, 17);
+assert.equal(urls.length, 18);
+assert.equal(new Set(urls).size, 18);
 const files = await fs.readdir(root);
 const pages = files.filter(f => f.endsWith('.html'));
 const rules = (await fs.readFile(path.join(root, '_redirects'), 'utf8')).split(/\r?\n/).filter(l => l && !l.startsWith('#')).map(l => l.split(/\s+/));
 assert.equal(new Set(rules.map(r => r[0])).size, rules.length);
 const redirects = new Map(rules.map(([source, target, status]) => {assert.equal(status, '301'); assert.notEqual(source, target); return [source, target];}));
-const bulkRows = (await fs.readFile(path.join(root, 'docs/cloudflare-legacy-redirects.csv'), 'utf8')).trim().split('\n').map(l => l.split(','));
+const bulkRows = (await fs.readFile(path.join(root, 'docs/cloudflare-legacy-redirects.csv'), 'utf8')).trim().split(/\r?\n/).map(l => l.split(','));
 assert.equal(bulkRows.length, rules.length * 4);
 assert.equal(new Set(bulkRows.map(r => r[0])).size, bulkRows.length);
 const bulkSources = new Set(bulkRows.map(r => r[0]));
@@ -37,11 +38,12 @@ for (const file of pages) {
   assert.ok(!redirects.has(route), `redirect chain: ${route}`);
   if (route !== '/') assert.equal(redirects.get(route + '/'), route);
 }
-const base = 'origin/main';
-function baseline(file) { return execFileSync('git', ['show', `${base}:${file}`], {cwd: root, encoding: 'utf8', maxBuffer: 8e6}); }
+// Preserve the reviewed PR #1 content and booking links while integrating PR #2 URLs.
+const base = '2f558b06f8f3f2aa56e1263aae390041afa217ea';
+function baseline(file) { const source = file === 'accommodation-near-spark-arena.html' ? 'accommodation-near-spark-arena/index.html' : file; return execFileSync('git', ['show', `${base}:${source}`], {cwd: root, encoding: 'utf8', maxBuffer: 8e6}); }
 function bookingValues(html) { return [...html.matchAll(/(?:href|action)="(https:\/\/[^" ]*cloudbeds\.com[^" ]*)"/g)].map(m => m[1]); }
 function preservedMarkup(html) {
-  return html.replace(/\r\n/g, '\n').replace(/<link[^>]+rel="canonical"[^>]*>/g, '').replace(/<meta[^>]+property="og:url"[^>]*>/g, '').replace(/\n<meta name="robots" content="noindex, nofollow">/g, '').replace(/href="[^"]*"/g, 'href=""');
+  return html.replace(/\r\n/g, '\n').replaceAll('/accommodation-near-spark-arena/', '/accommodation-near-spark-arena').replace(/<link[^>]+rel="canonical"[^>]*>/g, '').replace(/<meta[^>]+property="og:url"[^>]*>/g, '').replace(/\n<meta name="robots" content="noindex, nofollow">/g, '').replace(/href="[^"]*"/g, 'href=""');
 }
 for (const file of pages) {
   const html = await fs.readFile(path.join(root, file), 'utf8');
@@ -76,7 +78,13 @@ try {
   page.on('pageerror', error => errors.push(error.message));
   await page.goto(local + '/sitemap.xml');
   const xml = await page.evaluate(async () => {const text = await (await fetch('/sitemap.xml')).text(); const doc = new DOMParser().parseFromString(text, 'application/xml'); return {errors: doc.querySelectorAll('parsererror').length, namespace: doc.documentElement.namespaceURI, count: doc.querySelectorAll('loc').length};});
-  assert.deepEqual(xml, {errors:0, namespace:'http://www.sitemaps.org/schemas/sitemap/0.9', count:17});
+  assert.deepEqual(xml, {errors:0, namespace:'http://www.sitemaps.org/schemas/sitemap/0.9', count:18});
+  for (const [source, target] of redirects) {
+    const response = await fetch(local + source + '?source=regression', {redirect:'manual'});
+    assert.equal(response.status, 301);
+    assert.equal(response.headers.get('location'), target + '?source=regression');
+    assert.equal((await fetch(local + target, {redirect:'manual'})).status, 200);
+  }
   const titles = new Set(); const descriptions = new Set();
   for (const url of urls) {
     const route = new URL(url).pathname;
@@ -93,12 +101,22 @@ try {
       await page.setViewportSize({width, height:900});
       const response = await page.goto(local + route);
       assert.equal(response.status(), 200);
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `overflow: ${route} at ${width}`);
       assert.equal(await page.locator('link[rel=canonical]').count(), 1);
       assert.equal(await page.locator('link[rel=canonical]').getAttribute('href'), url);
       const og = page.locator('meta[property="og:url"]');
       if (await og.count()) assert.equal(await og.getAttribute('content'), url);
       assert.equal(await page.locator('img:not([alt])').count(), 0, `missing image alt: ${route}`);
       assert.equal(await page.locator('img[alt=""]').evaluateAll(images => images.filter(img => img.getAttribute('src') && !img.closest('[aria-hidden="true"]') && !img.closest('.room-photo-thumbnails button[aria-label]')).length), 0, `unlabelled meaningful image: ${route}`);
+      if (route === '/accommodation-near-spark-arena') {
+        await page.locator('footer').scrollIntoViewIfNeeded();
+        await page.waitForTimeout(250);
+        assert.deepEqual(await page.locator('img').evaluateAll(images => images.filter(img => !img.naturalWidth).map(img => img.src)), []);
+        if (process.env.SEO_SCREENSHOT_DIR) {
+          await fs.mkdir(process.env.SEO_SCREENSHOT_DIR, {recursive:true});
+          await page.screenshot({path:path.join(process.env.SEO_SCREENSHOT_DIR, `merged-spark-arena-${width}.png`), fullPage:true});
+        }
+      }
       const links = await page.locator('a[href]').evaluateAll(elements => elements.map(e => e.getAttribute('href')));
       for (const href of links) {
         const target = new URL(href, url);
@@ -127,13 +145,23 @@ try {
   assert.equal(schema['@context'], 'https://schema.org'); assert.equal(schema['@type'], 'Hotel'); assert.equal(schema.url, origin + '/'); assert.equal(schema.address['@type'], 'PostalAddress');
   assert.ok(schema.name && schema.address.streetAddress && schema.telephone); assert.ok(schema.amenityFeature.every(item => item['@type'] === 'LocationFeatureSpecification' && typeof item.value === 'boolean'));
   assert.deepEqual(schema, JSON.parse(baseline('index.html').match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]));
+  await page.locator('#location .spark-location-link').click();
+  assert.equal(new URL(page.url()).pathname, '/accommodation-near-spark-arena');
+  assert.equal(await page.locator('h1').count(), 1);
+  const arenaSchema = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
+  assert.equal(arenaSchema['@graph'][0].url, origin + '/accommodation-near-spark-arena');
+  await page.locator('.faq-list summary').first().click();
+  assert.equal(await page.locator('.faq-list details[open]').count(), 1);
+  await page.route('https://us2.cloudbeds.com/**', route => route.fulfill({status:200, contentType:'text/html', body:'<title>Booking navigation verified</title>'}));
+  await page.locator('.rooms-hero-copy .btn').click();
+  assert.equal(page.url(), 'https://us2.cloudbeds.com/en/reservation/1hynWi?currency=nzd');
   for (const file of pages.filter(f => !urls.includes(origin + '/' + f.slice(0, -5)) && f !== 'index.html')) {
     assert.ok(blocked.includes('/' + file)); assert.ok(blocked.includes('/' + file.slice(0, -5)));
     assert.ok((await fs.readFile(path.join(root,file),'utf8')).includes('content="noindex, nofollow"'));
   }
   assert.deepEqual(errors, []);
   await context.close();
-  console.log('PASS: 17 public pages, 34 desktop/mobile visits, XML sitemap, 41 permanent path rules, active navigation, location anchor, image alt attributes, utility exclusions, Hotel JSON-LD shape and unchanged booking/design assets.');
+  console.log('PASS: 18 public pages, 36 desktop/mobile visits without overflow, XML sitemap, 44 permanent path rules, 176 bulk redirect rows, active navigation, homepage Spark Arena link, FAQ, Cloudbeds click, image alt attributes, utility exclusions, Hotel/WebPage JSON-LD and preserved PR #1 content/booking/design assets.');
 } finally {
   await browser?.close();
   server.closeAllConnections();

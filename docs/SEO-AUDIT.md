@@ -6,10 +6,10 @@ Repository: `GrandCentralHotel/grand-central-site` only. Branch: `fix/seo-canoni
 
 The read-only HTTP audit recorded 48 requested URL variants in [seo-live-before.json](seo-live-before.json). Its UTC timestamp falls on 15 October in Australia/Sydney.
 
-- All 17 public pages return HTTP 200 at their preferred clean HTTPS www routes. Their SEO metadata is present in static HTML, without requiring JavaScript.
+- All 18 public pages return HTTP 200 at their preferred clean HTTPS www routes. Their SEO metadata is present in static HTML, without requiring JavaScript.
 - All 16 non-homepage pages declare `.html` canonicals and Open Graph URLs where present, while their `.html` routes redirect to clean URLs using **307**, not a permanent status. `/index.html` and the tested `/rooms/` alias also use 307. This disagreement is confirmed; its effect on Google's indexing decisions is unknown.
 - HTTP www, HTTP non-www and HTTPS non-www homepage/Rooms variants serve HTTP 200 instead of redirecting to HTTPS www. HTTPS requests passed certificate validation in the HTTP client.
-- No `X-Robots-Tag` or meta robots restriction was found on the 17 public pages. The four pre-existing robots exclusions cover `.html` utility URLs but omit their extensionless variants.
+- No `X-Robots-Tag` or meta robots restriction was found on the 18 public pages. The four pre-existing robots exclusions cover `.html` utility URLs but omit their extensionless variants.
 - The live sitemap returns 200 with `application/xml`, contains 17 URLs, and includes 16 redirected `.html` URLs. Robots.txt returns 200 and points to the correct HTTPS www sitemap.
 - The tested unknown URL returns 404. No new fallback page or routing rewrite is needed.
 - There is no separate Location HTML page on this `main`: navigation targets the existing homepage `#location` section. Guest information is an additional public location/arrival resource.
@@ -43,7 +43,7 @@ The administrator should confirm that both site hostnames are proxied in the exi
 
 To combine host, protocol and legacy-path redirects into a single hop without paid regular-expression support:
 
-1. Review and import [cloudflare-legacy-redirects.csv](cloudflare-legacy-redirects.csv) into a new Bulk Redirect List, then enable its Bulk Redirect Rule. This is **164 exact source URLs**: every path alias in `_redirects` across HTTP/HTTPS and www/non-www, each targeting its final HTTPS www clean URL. Status is 301, query preservation is TRUE, and subdomain/subpath/suffix matching are FALSE. No header row is included, matching [Cloudflare's CSV format](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/csv-file-format/).
+1. Review and import [cloudflare-legacy-redirects.csv](cloudflare-legacy-redirects.csv) into a new Bulk Redirect List, then enable its Bulk Redirect Rule. This is **176 exact source URLs**: every path alias in `_redirects` across HTTP/HTTPS and www/non-www, each targeting its final HTTPS www clean URL. Status is 301, query preservation is TRUE, and subdomain/subpath/suffix matching are FALSE. No header row is included, matching [Cloudflare's CSV format](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/csv-file-format/).
 2. Create one Single Redirect named `Grand Central preferred HTTPS www origin`. Use the exact custom filter in [cloudflare-origin-rule.txt](cloudflare-origin-rule.txt), dynamic destination expression `concat("https://www.grandcentralhotel.co.nz", http.request.uri.path)`, status **301**, and **Preserve query string** enabled. It covers either site hostname when the host is non-www or the request is HTTP, excluding aliases handled by the Bulk list. It leaves HTTPS www clean URLs untouched.
 3. The exclusion list matters because [Single Redirects run before Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/). A generic host-only rule ahead of the alias list would create two hops for non-www legacy URLs. Review overlapping existing redirect/HTTPS/cache rules and retain their recovery configuration before enabling the reviewed rules together.
 4. Verify with GET requests: `http://grandcentralhotel.co.nz/rooms.html?source=test` should return one 301 directly to `https://www.grandcentralhotel.co.nz/rooms?source=test`, followed by 200. Repeat with `/`, `/index.html`, `/rooms/`, `/weddings.html`, `/venues.html`, www HTTP and non-www HTTPS. Confirm no redirect for clean HTTPS www pages and no loops, query loss or altered booking destinations.
@@ -54,11 +54,11 @@ These handoff files are reviewable proposed settings, not remotely validated or 
 
 Run `node scripts/test-seo.mjs` with Playwright available to Node (`NODE_PATH` can point to an existing installation). Optional `PLAYWRIGHT_CHROMIUM_EXECUTABLE` selects an installed isolated Playwright Chromium binary. Do not select a Chrome channel or a personal browser profile. No new project dependency is installed.
 
-- Headless isolated Chromium: all 17 public pages at desktop 1440px and mobile 390px; 34 viewport/page checks.
-- Static and rendered canonical tags, matching Open Graph URLs, public indexability, valid XML parsed by DOMParser, 17 distinct sitemap entries and correct robots sitemap reference.
-- Local fixture tests 41 permanent path rules, one-hop legacy URLs, query preservation and final HTTP 200. CSV regression checks cover 164 direct targets with no chains and complete origin-rule alias exclusions.
+- Headless isolated Chromium: all 18 public pages at desktop 1440px and mobile 390px; 36 viewport/page checks.
+- Static and rendered canonical tags, matching Open Graph URLs, public indexability, valid XML parsed by DOMParser, 18 distinct sitemap entries and correct robots sitemap reference.
+- Local fixture tests 44 permanent path rules, one-hop legacy URLs, query preservation and final HTTP 200. CSV regression checks cover 176 direct targets with no chains and complete origin-rule alias exclusions.
 - Desktop/mobile navigation, active page labels, menu opening and following the Rooms link, homepage location anchor and mobile enquiry actions.
-- Public image alt attributes, unique nonempty titles/descriptions, Hotel JSON-LD shape, unchanged Cloudbeds link values, unchanged page content/design markup and CSS/enquiry assets compared with base main.
+- Public image alt attributes, unique nonempty titles/descriptions, Hotel JSON-LD shape, unchanged Cloudbeds link values, unchanged page content/design markup and CSS/enquiry assets compared with the reviewed PR #1 head before merging main.
 - JavaScript syntax checks and `git diff --check`. This static repository has no package manifest, build, lint, typecheck, CI workflow or pre-existing automated test command.
 - Read-only GET checks of the main Cloudbeds booking URL and all three room-ID links returned HTTP 200 with HTML; evidence is in [seo-booking-check.json](seo-booking-check.json). No availability search, reservation or payment was submitted; this does not verify a completed transaction.
 
