@@ -2102,5 +2102,5 @@ main img[src="images/edited/private-rooms/deluxe-twin/ivy-editorial-v2/weixin-im
 }
 
 /* Spark Arena link within the existing Location card. */
-.location-grid .spark-location-link { display: inline-block; margin-top: 16px; color: var(--brass); font-size: 14px; line-height: 1.6; border-bottom: 1px solid var(--rule); }
+.location-grid .spark-location-link { display: inline-block; margin-top: 16px; color: var(--brass); font-size: 14px; line-height: 1.6; }
 .location-grid .spark-location-link span { color: inherit; }
