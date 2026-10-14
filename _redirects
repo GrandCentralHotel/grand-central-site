@@ -1,0 +1,47 @@
+# Permanent redirects for existing HTML pages; Cloudflare Pages serves clean routes.
+# Hostname and HTTPS redirects require zone rules; see docs/SEO-AUDIT.md.
+/arts-events.html /arts-events 301
+/arts-events/ /arts-events 301
+/bedroom-product-review.html /bedroom-product-review 301
+/bedroom-product-review/ /bedroom-product-review 301
+/enquire.html /enquire 301
+/enquire/ /enquire 301
+/guest-information.html /guest-information 301
+/guest-information/ /guest-information 301
+/index.html / 301
+/ivy-photos-review.html /ivy-photos-review 301
+/ivy-photos-review/ /ivy-photos-review 301
+/logo.html /logo 301
+/logo/ /logo 301
+/owner-information-questionnaire.html /owner-information-questionnaire 301
+/owner-information-questionnaire/ /owner-information-questionnaire 301
+/room-deluxe-king.html /room-deluxe-king 301
+/room-deluxe-king/ /room-deluxe-king 301
+/room-deluxe-twin.html /room-deluxe-twin 301
+/room-deluxe-twin/ /room-deluxe-twin 301
+/room-standard-double.html /room-standard-double 301
+/room-standard-double/ /room-standard-double 301
+/rooms.html /rooms 301
+/rooms/ /rooms 301
+/station-story.html /station-story 301
+/station-story/ /station-story 301
+/venue-art-share-space.html /venue-art-share-space 301
+/venue-art-share-space/ /venue-art-share-space 301
+/venue-grand-foyer.html /venue-grand-foyer 301
+/venue-grand-foyer/ /venue-grand-foyer 301
+/venue-grand-hall.html /venue-grand-hall 301
+/venue-grand-hall/ /venue-grand-hall 301
+/venue-meeting-room.html /venue-meeting-room 301
+/venue-meeting-room/ /venue-meeting-room 301
+/venue-photography-studio.html /venue-photography-studio 301
+/venue-photography-studio/ /venue-photography-studio 301
+/venue-waiting-room.html /venue-waiting-room 301
+/venue-waiting-room/ /venue-waiting-room 301
+/venues.html /venues 301
+/venues/ /venues 301
+/weddings.html /weddings 301
+/weddings/ /weddings 301
+
+/accommodation-near-spark-arena.html /accommodation-near-spark-arena 301
+/accommodation-near-spark-arena/ /accommodation-near-spark-arena 301
+/accommodation-near-spark-arena/index.html /accommodation-near-spark-arena 301
