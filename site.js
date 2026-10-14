@@ -2,20 +2,20 @@
   "use strict";
 
   var links = [
-    { key: "rooms", href: "rooms.html", label: "Rooms" },
-    { key: "arts", href: "arts-events.html", label: "Arts & Culture" },
-    { key: "venues", href: "venues.html", label: "Events & Venues" },
-    { key: "weddings", href: "weddings.html", label: "Weddings" },
-    { key: "location", href: "index.html#location", label: "Location" }
+    { key: "rooms", href: "/rooms", label: "Rooms" },
+    { key: "arts", href: "/arts-events", label: "Arts & Culture" },
+    { key: "venues", href: "/venues", label: "Events & Venues" },
+    { key: "weddings", href: "/weddings", label: "Weddings" },
+    { key: "location", href: "/#location", label: "Location" }
   ];
 
   function activeKey() {
-    var page = location.pathname.split("/").pop() || "index.html";
-    if (page === "rooms.html" || page.indexOf("room-") === 0) return "rooms";
-    if (page === "weddings.html") return "weddings";
-    if (page === "venues.html" || page.indexOf("venue-") === 0) return "venues";
-    if (page === "arts-events.html" || page === "station-story.html") return "arts";
-    if (page === "index.html" && location.hash === "#location") return "location";
+    var page = location.pathname.replace(/\/$/, "").split("/").pop().replace(/\.html$/, "") || "index";
+    if (page === "rooms" || page.indexOf("room-") === 0) return "rooms";
+    if (page === "weddings") return "weddings";
+    if (page === "venues" || page.indexOf("venue-") === 0) return "venues";
+    if (page === "arts-events" || page === "station-story") return "arts";
+    if (page === "index" && location.hash === "#location") return "location";
     return "";
   }
 
@@ -166,7 +166,7 @@
   });
 
   // The mobile action follows the purpose of the current page.
-  var enquiryLink = document.querySelector('.masthead .btn[href^="enquire.html"]');
+  var enquiryLink = document.querySelector('.masthead .btn[href^="/enquire"]');
   var roomBookingLink = document.querySelector(".room-detail-book");
   var bookingLink = roomBookingLink || enquiryLink || document.querySelector('.masthead .btn[href$="#book"], .pagehead .btn[href$="#booking-form"]');
   if (document.body.classList.contains("enquiry-page")) bookingLink = null;

@@ -1,7 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /owner-information-questionnaire.html
+Disallow: /owner-information-questionnaire
 Disallow: /bedroom-product-review.html
+Disallow: /bedroom-product-review
 Disallow: /ivy-photos-review.html
+Disallow: /ivy-photos-review
 Disallow: /logo.html
+Disallow: /logo
 Sitemap: https://www.grandcentralhotel.co.nz/sitemap.xml

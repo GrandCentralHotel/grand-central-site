@@ -1,0 +1,833 @@
+{
+  "checkedAt": "2026-10-14T14:56:52.916Z",
+  "results": [
+    {
+      "url": "https://www.grandcentralhotel.co.nz/",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/index.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/index.html",
+          "status": 307,
+          "location": "/",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/rooms",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/rooms",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/rooms.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/rooms.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/rooms.html",
+          "status": 307,
+          "location": "/rooms",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/rooms",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/rooms.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/guest-information",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/guest-information",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/guest-information.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/guest-information.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/guest-information.html",
+          "status": 307,
+          "location": "/guest-information",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/guest-information",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/guest-information.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/room-standard-double",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/room-standard-double",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/room-standard-double.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/room-standard-double.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/room-standard-double.html",
+          "status": 307,
+          "location": "/room-standard-double",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/room-standard-double",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/room-standard-double.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/room-deluxe-king",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/room-deluxe-king",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/room-deluxe-king.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/room-deluxe-king.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/room-deluxe-king.html",
+          "status": 307,
+          "location": "/room-deluxe-king",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/room-deluxe-king",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/room-deluxe-king.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/room-deluxe-twin",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/room-deluxe-twin",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/room-deluxe-twin.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/room-deluxe-twin.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/room-deluxe-twin.html",
+          "status": 307,
+          "location": "/room-deluxe-twin",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/room-deluxe-twin",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/room-deluxe-twin.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/arts-events",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/arts-events",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/arts-events.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/arts-events.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/arts-events.html",
+          "status": 307,
+          "location": "/arts-events",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/arts-events",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/arts-events.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/station-story",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/station-story",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/station-story.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/station-story.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/station-story.html",
+          "status": 307,
+          "location": "/station-story",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/station-story",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/station-story.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venues",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venues",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venues.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venues.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venues.html",
+          "status": 307,
+          "location": "/venues",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venues",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venues.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/weddings",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/weddings",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/weddings.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/weddings.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/weddings.html",
+          "status": 307,
+          "location": "/weddings",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/weddings",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/weddings.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-grand-hall",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-grand-hall",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-grand-hall.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-grand-hall.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-grand-hall.html",
+          "status": 307,
+          "location": "/venue-grand-hall",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-grand-hall",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-grand-hall.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-grand-foyer",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-grand-foyer",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-grand-foyer.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-grand-foyer.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-grand-foyer.html",
+          "status": 307,
+          "location": "/venue-grand-foyer",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-grand-foyer",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-grand-foyer.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-waiting-room",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-waiting-room",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-waiting-room.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-waiting-room.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-waiting-room.html",
+          "status": 307,
+          "location": "/venue-waiting-room",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-waiting-room",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-waiting-room.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-meeting-room",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-meeting-room",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-meeting-room.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-meeting-room.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-meeting-room.html",
+          "status": 307,
+          "location": "/venue-meeting-room",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-meeting-room",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-meeting-room.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-art-share-space",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-art-share-space",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-art-share-space.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-art-share-space.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-art-share-space.html",
+          "status": 307,
+          "location": "/venue-art-share-space",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-art-share-space",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-art-share-space.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-photography-studio",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-photography-studio",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-photography-studio.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/venue-photography-studio.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-photography-studio.html",
+          "status": 307,
+          "location": "/venue-photography-studio",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/venue-photography-studio",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/venue-photography-studio.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/enquire",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/enquire",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/enquire.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/enquire.html",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/enquire.html",
+          "status": 307,
+          "location": "/enquire",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/enquire",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/enquire.html",
+      "robots": null
+    },
+    {
+      "url": "http://grandcentralhotel.co.nz/",
+      "hops": [
+        {
+          "url": "http://grandcentralhotel.co.nz/",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/",
+      "robots": null
+    },
+    {
+      "url": "http://grandcentralhotel.co.nz/rooms",
+      "hops": [
+        {
+          "url": "http://grandcentralhotel.co.nz/rooms",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/rooms.html",
+      "robots": null
+    },
+    {
+      "url": "http://grandcentralhotel.co.nz/rooms.html?seo-audit=1",
+      "hops": [
+        {
+          "url": "http://grandcentralhotel.co.nz/rooms.html?seo-audit=1",
+          "status": 307,
+          "location": "/rooms?seo-audit=1",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "http://grandcentralhotel.co.nz/rooms?seo-audit=1",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/rooms.html",
+      "robots": null
+    },
+    {
+      "url": "https://grandcentralhotel.co.nz/",
+      "hops": [
+        {
+          "url": "https://grandcentralhotel.co.nz/",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/",
+      "robots": null
+    },
+    {
+      "url": "https://grandcentralhotel.co.nz/rooms",
+      "hops": [
+        {
+          "url": "https://grandcentralhotel.co.nz/rooms",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/rooms.html",
+      "robots": null
+    },
+    {
+      "url": "https://grandcentralhotel.co.nz/rooms.html?seo-audit=1",
+      "hops": [
+        {
+          "url": "https://grandcentralhotel.co.nz/rooms.html?seo-audit=1",
+          "status": 307,
+          "location": "/rooms?seo-audit=1",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://grandcentralhotel.co.nz/rooms?seo-audit=1",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/rooms.html",
+      "robots": null
+    },
+    {
+      "url": "http://www.grandcentralhotel.co.nz/",
+      "hops": [
+        {
+          "url": "http://www.grandcentralhotel.co.nz/",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/",
+      "robots": null
+    },
+    {
+      "url": "http://www.grandcentralhotel.co.nz/rooms",
+      "hops": [
+        {
+          "url": "http://www.grandcentralhotel.co.nz/rooms",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/rooms.html",
+      "robots": null
+    },
+    {
+      "url": "http://www.grandcentralhotel.co.nz/rooms.html?seo-audit=1",
+      "hops": [
+        {
+          "url": "http://www.grandcentralhotel.co.nz/rooms.html?seo-audit=1",
+          "status": 307,
+          "location": "/rooms?seo-audit=1",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "http://www.grandcentralhotel.co.nz/rooms?seo-audit=1",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/rooms.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/rooms.html?seo-audit=1",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/rooms.html?seo-audit=1",
+          "status": 307,
+          "location": "/rooms?seo-audit=1",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/rooms?seo-audit=1",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/rooms.html",
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/robots.txt",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/robots.txt",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/plain"
+        }
+      ],
+      "canonical": null,
+      "robots": null,
+      "body": "User-agent: *\nAllow: /\nDisallow: /owner-information-questionnaire.html\nDisallow: /bedroom-product-review.html\nDisallow: /ivy-photos-review.html\nDisallow: /logo.html\nSitemap: https://www.grandcentralhotel.co.nz/sitemap.xml\n"
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/sitemap.xml",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/sitemap.xml",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "application/xml"
+        }
+      ],
+      "canonical": null,
+      "robots": null,
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url><loc>https://www.grandcentralhotel.co.nz/</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/rooms.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/guest-information.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/room-standard-double.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/room-deluxe-king.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/room-deluxe-twin.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/arts-events.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/station-story.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/venues.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/weddings.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/venue-grand-hall.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/venue-grand-foyer.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/venue-waiting-room.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/venue-meeting-room.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/venue-art-share-space.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/venue-photography-studio.html</loc></url>\n  <url><loc>https://www.grandcentralhotel.co.nz/enquire.html</loc></url>\n</urlset>\n"
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/seo-audit-missing-page",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/seo-audit-missing-page",
+          "status": 404,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": null
+        }
+      ],
+      "canonical": null,
+      "robots": null
+    },
+    {
+      "url": "https://www.grandcentralhotel.co.nz/rooms/",
+      "hops": [
+        {
+          "url": "https://www.grandcentralhotel.co.nz/rooms/",
+          "status": 307,
+          "location": "/rooms",
+          "xRobotsTag": null,
+          "contentType": null
+        },
+        {
+          "url": "https://www.grandcentralhotel.co.nz/rooms",
+          "status": 200,
+          "location": null,
+          "xRobotsTag": null,
+          "contentType": "text/html"
+        }
+      ],
+      "canonical": "https://www.grandcentralhotel.co.nz/rooms.html",
+      "robots": null
+    }
+  ]
+}
