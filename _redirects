@@ -45,3 +45,14 @@
 /accommodation-near-spark-arena.html /accommodation-near-spark-arena 301
 /accommodation-near-spark-arena/ /accommodation-near-spark-arena 301
 /accommodation-near-spark-arena/index.html /accommodation-near-spark-arena 301
+
+# Preserve former About, Contact and FAQ landing pages.
+/about /station-story 301
+/about/ /station-story 301
+/about.html /station-story 301
+/contact /guest-information 301
+/contact/ /guest-information 301
+/contact.html /guest-information 301
+/faq /guest-information#faq 301
+/faq/ /guest-information#faq 301
+/faq.html /guest-information#faq 301

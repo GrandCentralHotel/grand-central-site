@@ -1,5 +1,7 @@
 # Technical SEO and indexing audit — 15 October 2026
 
+> Rooms SEO PR #3 adds nine former About/Contact/FAQ aliases to the merged baseline: 53 path rules and 212 bulk rows in total. See [the current PR review](rooms-seo/README.md#heritage-opening-copy-and-legacy-urls) for mappings and integration notes. The earlier audit evidence below remains historical; no Cloudflare account changes are made by these repository updates.
+
 ## Scope and confirmed findings
 
 Repository: `GrandCentralHotel/grand-central-site` only. Branch: `fix/seo-canonical-indexing`, based on fetched `main` at `bbe529682e1d8ba6f32cc7969d1bf4dff6e157ae`. The separate `feature/spark-arena-seo` branch was observed at `2f558b06f8f3f2aa56e1263aae390041afa217ea` and was not modified. No merge, production deployment, Cloudflare configuration change, or Search Console submission was performed.
