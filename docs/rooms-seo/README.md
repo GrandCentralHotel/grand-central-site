@@ -45,7 +45,13 @@ Base: `19cf8c5` (merged technical SEO and Spark Arena work).
 
 ## Protected content
 
-Bed configurations, occupancy, variable-view wording, feature lists, approved hero/gallery pictures and order, navigation, footer, styles, scripts, forms and all source Cloudbeds URLs remain unchanged. No prices, discounts, availability or extra-bed claims have been added. Existing primary, secondary and mobile room-specific booking paths already work, so CTA wording and placement remain unchanged.
+Bed configurations, occupancy, variable-view wording, feature lists, approved hero/gallery pictures and order, navigation, footer, typography, colours, scripts, forms and all source Cloudbeds URLs remain unchanged. No prices, discounts, availability or extra-bed claims have been added. Existing primary, secondary and mobile room-specific booking paths already work, so CTA wording and placement remain unchanged.
+
+## Card alignment follow-up
+
+At the owner's request, `rooms.css` now shares content rows across adjacent room cards. Descriptions, bed/guest facts, amenities and action buttons align even when text wraps to different lengths. Single-column mobile cards retain their natural layout. No photography, content or booking destinations changed in this adjustment.
+
+Verified at 1920, 1440, 1100, 820, 651, 650, 390 and 320px, with no horizontal overflow. The existing SEO suite also asserts row alignment.
 
 ## Structured data and assumptions
 

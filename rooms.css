@@ -55,6 +55,24 @@
 .roomactions { display: flex; gap: 12px; margin-top: auto; }
 .roomactions .btn { flex: 1; }
 
+/* Share content rows so different copy lengths keep adjacent cards aligned. */
+@media (min-width: 651px) {
+  .roomcard {
+    display: grid;
+    grid-row: span 6;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+  .roomcard-body {
+    display: grid;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+    min-width: 0;
+  }
+  .roomactions { margin-top: 0; }
+}
+
 .room-section { padding-top: clamp(48px, 6vw, 88px); }
 .room-section > h2 { font-size: clamp(36px, 4.5vw, 62px); margin-bottom: 18px; }
 .room-section > p { max-width: 62ch; color: var(--cream-dim); margin: 0 0 38px; font-size: 17px; }

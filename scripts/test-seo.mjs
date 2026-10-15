@@ -62,7 +62,8 @@ for (const file of pages) {
     assert.equal(preservedMarkup(html), preservedMarkup(before), `content or design changes: ${file}`);
   }
 }
-for (const file of ['styles.css', 'rooms.css', 'typography.css', 'site.js', 'enquiry.js', 'enquiry-config.js', '_redirects', 'sitemap.xml', 'robots.txt', 'docs/cloudflare-legacy-redirects.csv', 'docs/cloudflare-origin-rule.txt']) {
+// rooms.css has a scoped, owner-requested card alignment adjustment.
+for (const file of ['styles.css', 'typography.css', 'site.js', 'enquiry.js', 'enquiry-config.js', '_redirects', 'sitemap.xml', 'robots.txt', 'docs/cloudflare-legacy-redirects.csv', 'docs/cloudflare-origin-rule.txt']) {
   assert.equal((await fs.readFile(path.join(root, file), 'utf8')).replace(/\r\n/g, '\n'), baseline(file).replace(/\r\n/g, '\n'), `${file} changed`);
 }
 const types = {'.html':'text/html', '.css':'text/css', '.js':'text/javascript', '.xml':'application/xml', '.svg':'image/svg+xml', '.avif':'image/avif', '.webp':'image/webp', '.jpg':'image/jpeg', '.png':'image/png'};
@@ -150,6 +151,16 @@ try {
           }
           await page.goto(local + route);
         } else {
+          const cardRows = await page.locator('.roomcard').evaluateAll(cards => cards.map(card => {
+            const rect = element => { const box = element.getBoundingClientRect(); return {top:box.top, bottom:box.bottom}; };
+            return {card:rect(card), rows:['h3', '.room-position', '.room-specs', '.room-amenities', '.roomactions'].map(selector => rect(card.querySelector(selector)))};
+          }));
+          for (const card of cardRows) for (const other of cardRows.filter(other => Math.abs(other.card.top - card.card.top) < 1)) {
+            card.rows.forEach((row, i) => {
+              assert.ok(Math.abs(row.top - other.rows[i].top) < 1, `room row ${i} top alignment at ${width}`);
+              if (i >= 2) assert.ok(Math.abs(row.bottom - other.rows[i].bottom) < 1, `room row ${i} bottom alignment at ${width}`);
+            });
+          }
           assert.equal(await page.locator('.rooms-intro a[href="/accommodation-near-spark-arena"]').count(), 1);
           // Existing overview booking links must carry dates, occupancy and the original room ID.
           await page.locator('#in').fill('2027-02-10');
