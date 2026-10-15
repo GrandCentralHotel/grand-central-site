@@ -46,6 +46,12 @@ function bookingValues(html) { return [...html.matchAll(/(?:href|action)="(https
 function preservedMarkup(html) {
   return html.replace(/\r\n/g, '\n').replaceAll('/accommodation-near-spark-arena/', '/accommodation-near-spark-arena').replace(/<link[^>]+rel="canonical"[^>]*>/g, '').replace(/<meta[^>]+property="og:url"[^>]*>/g, '').replace(/\n<meta name="robots" content="noindex, nofollow">/g, '').replace(/href="[^"]*"/g, 'href=""');
 }
+function preservedHomepage(html) {
+  return html.replace(/<title>[^<]*<\/title>/, '<title/>')
+    .replace(/<meta (?:name="description"|property="og:(?:title|description)") content="[^"]*">/g, '<meta content/>')
+    .replace(/(<div class="hero-copy">[\s\S]*?<\/h1>\s*)<p>[^<]*<\/p>/, '$1<p/>')
+    .replace('Compare Auckland CBD hotel rooms', 'Compare all rooms');
+}
 for (const file of pages) {
   const html = (await fs.readFile(path.join(root, file), 'utf8')).replace(/\r\n/g, '\n');
   assert.deepEqual(bookingValues(html), bookingValues(baseline(file)), `Cloudbeds changes: ${file}`);
@@ -57,21 +63,38 @@ for (const file of pages) {
     }
     assert.equal(html.match(/<dd>Varies by room<\/dd>/)?.[0], before.match(/<dd>Varies by room<\/dd>/)?.[0]);
   } else if (file === 'index.html') {
-    assert.equal(html.replace('Compare Auckland CBD hotel rooms', 'Compare all rooms'), before);
+    assert.equal(preservedHomepage(html), preservedHomepage(before), 'homepage changes outside approved metadata and copy');
   } else {
     assert.equal(preservedMarkup(html), preservedMarkup(before), `content or design changes: ${file}`);
   }
 }
 // rooms.css has a scoped, owner-requested card alignment adjustment.
-for (const file of ['styles.css', 'typography.css', 'site.js', 'enquiry.js', 'enquiry-config.js', '_redirects', 'sitemap.xml', 'robots.txt', 'docs/cloudflare-legacy-redirects.csv', 'docs/cloudflare-origin-rule.txt']) {
+for (const file of ['styles.css', 'typography.css', 'site.js', 'enquiry.js', 'enquiry-config.js', 'sitemap.xml', 'robots.txt']) {
   assert.equal((await fs.readFile(path.join(root, file), 'utf8')).replace(/\r\n/g, '\n'), baseline(file).replace(/\r\n/g, '\n'), `${file} changed`);
+}
+// Keep all previously reviewed redirects and add only the approved legacy aliases.
+const oldRules = baseline('_redirects').split(/\r?\n/).filter(line => line && !line.startsWith('#'));
+for (const rule of oldRules) {
+  const [source, target] = rule.split(/\s+/);
+  assert.equal(redirects.get(source), target, `existing redirect changed: ${source}`);
+}
+const legacyMappings = [['about', '/station-story'], ['contact', '/guest-information'], ['faq', '/guest-information#faq']];
+assert.equal(rules.length, oldRules.length + legacyMappings.length * 3);
+for (const [source, target] of legacyMappings) {
+  for (const suffix of ['', '/', '.html']) assert.equal(redirects.get('/' + source + suffix), target);
+}
+// Query parameters precede fragments in redirect destinations.
+function redirectLocation(target, search) {
+  const destination = new URL(target, origin);
+  destination.search = search;
+  return destination.pathname + destination.search + destination.hash;
 }
 const types = {'.html':'text/html', '.css':'text/css', '.js':'text/javascript', '.xml':'application/xml', '.svg':'image/svg+xml', '.avif':'image/avif', '.webp':'image/webp', '.jpg':'image/jpeg', '.png':'image/png'};
 // Test fixture models explicit path rules and static extensionless serving.
 // It does not prove Cloudflare has deployed or applied those rules.
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
-  if (redirects.has(url.pathname)) { res.writeHead(301, {Location: redirects.get(url.pathname) + url.search}); res.end(); return; }
+  if (redirects.has(url.pathname)) { res.writeHead(301, {Location: redirectLocation(redirects.get(url.pathname), url.search)}); res.end(); return; }
   let name = decodeURIComponent(url.pathname).slice(1) || 'index.html';
   if (!path.extname(name)) name += '.html';
   const file = path.resolve(root, name);
@@ -96,8 +119,19 @@ try {
   for (const [source, target] of redirects) {
     const response = await fetch(local + source + '?source=regression', {redirect:'manual'});
     assert.equal(response.status, 301);
-    assert.equal(response.headers.get('location'), target + '?source=regression');
+    assert.equal(response.headers.get('location'), redirectLocation(target, '?source=regression'));
     assert.equal((await fetch(local + target, {redirect:'manual'})).status, 200);
+    const destination = new URL(target, local);
+    if (destination.hash) {
+      const destinationSource = await (await fetch(destination)).text();
+      assert.ok(destinationSource.includes(`id="${destination.hash.slice(1)}"`), `missing redirect fragment: ${target}`);
+    }
+  }
+  // Check browser handling of the full legacy transition, including queries and the FAQ anchor.
+  for (const [source, target] of legacyMappings) {
+    await page.goto(local + '/' + source + '?source=legacy-check');
+    assert.equal(page.url(), local + redirectLocation(target, '?source=legacy-check'));
+    assert.equal(await page.locator('h1').count(), 1);
   }
   const titles = new Set(); const descriptions = new Set();
   for (const url of urls) {
@@ -120,6 +154,17 @@ try {
       assert.equal(await page.locator('link[rel=canonical]').getAttribute('href'), url);
       const og = page.locator('meta[property="og:url"]');
       if (await og.count()) assert.equal(await og.getAttribute('content'), url);
+      if (file === 'index.html') {
+        assert.equal(await page.title(), 'Heritage Hotel in Auckland CBD | Grand Central Hotel');
+        assert.equal(await page.locator('h1').count(), 1);
+        assert.equal(await page.locator('meta[property="og:title"]').getAttribute('content'), await page.title());
+        assert.equal(await page.locator('meta[property="og:description"]').getAttribute('content'), await page.locator('meta[name=description]').getAttribute('content'));
+        assert.match(await page.locator('.hero-copy > p').innerText(), /Heritage accommodation in Auckland CBD/);
+        if (process.env.ROOMS_SCREENSHOT_DIR) {
+          await fs.mkdir(process.env.ROOMS_SCREENSHOT_DIR, {recursive:true});
+          await page.screenshot({path:path.join(process.env.ROOMS_SCREENSHOT_DIR, `homepage-${width}.jpg`), type:'jpeg', quality:75});
+        }
+      }
       if (roomPages.includes(file)) {
         assert.equal(await page.locator('h1').count(), 1);
         assert.match(await page.locator('h1').textContent(), /Hotel rooms in Auckland CBD|Standard Double|Deluxe King|Deluxe Twin/);
@@ -151,6 +196,7 @@ try {
           }
           await page.goto(local + route);
         } else {
+          assert.match(await page.locator('.rooms-hero-copy > p').innerText(), /Stay inside Auckland’s historic former railway station/);
           const cardRows = await page.locator('.roomcard').evaluateAll(cards => cards.map(card => {
             const rect = element => { const box = element.getBoundingClientRect(); return {top:box.top, bottom:box.bottom}; };
             return {card:rect(card), rows:['h3', '.room-position', '.room-specs', '.room-amenities', '.roomactions'].map(selector => rect(card.querySelector(selector)))};

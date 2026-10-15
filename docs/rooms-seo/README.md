@@ -6,6 +6,15 @@ Base: `19cf8c5` (merged technical SEO and Spark Arena work).
 
 ## Metadata before and after
 
+### Homepage
+
+- Previous title: Grand Central Hotel Auckland
+- New title: Heritage Hotel in Auckland CBD | Grand Central Hotel
+- Previous description: A hotel inside one of Auckland's original railway buildings. Private double, king and twin rooms, within walking distance of Spark Arena. Book direct.
+- New description: Stay at Grand Central Hotel in Auckland CBD's historic former railway station. Private rooms with kitchenettes and bathrooms, near Spark Arena. Book direct.
+- Open Graph title and description match the new homepage metadata. The existing heritage H1, photography and layout remain unchanged.
+
+
 ### /rooms
 
 - Previous title: Rooms in Auckland CBD | Grand Central Hotel
@@ -34,13 +43,23 @@ Base: `19cf8c5` (merged technical SEO and Spark Arena work).
 - Previous description: A flexible Deluxe Twin room for up to three guests at Grand Central Hotel in Auckland CBD.
 - New description: Stay together in Auckland CBD with one king bed and one king-single bed for up to three guests. Enjoy a kitchenette and private bathroom at Grand Central Hotel.
 
+## Heritage opening copy and legacy URLs
+
+Homepage introduction: “Heritage accommodation in Auckland CBD, inside the historic former Auckland Railway Station. Stay in a private double, king or twin room, within walking distance of Spark Arena.”
+
+Rooms hero: “Stay inside Auckland’s historic former railway station. Choose a Standard Double, Deluxe King or Deluxe Twin room, each with a kitchenette and private bathroom, in Auckland CBD.”
+
+The former About page redirects to `/station-story`; Contact redirects to `/guest-information` (hotel arrival information, address and footer contact details); FAQ redirects to `/guest-information#faq`. Each mapping covers the clean, trailing-slash and `.html` paths, with 301 status and query preservation. Historical page bodies are unavailable, so these mappings use current page intent rather than claiming exact content equivalence.
+
+The existing 44 path rules remain unchanged; nine new aliases bring the total to 53. The Cloudflare handoff CSV has 212 entries (four origins per path), and its origin-rule exclusion list includes the nine new aliases. These are repository/handoff changes, not changes to the Cloudflare account. Since HTTPS redirects are being handled separately, the administrator should reconcile these additions with the active rules, rather than replacing their configuration. [Cloudflare Pages redirect documentation](https://developers.cloudflare.com/pages/configuration/redirects/) supports destination fragments; [Bulk Redirect target components](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/url-components/) also support fragments with preserved request queries.
+
 ## Content and linking
 
 - Overview: a descriptive H1, clearer room comparisons, named room-detail links and a contextual Spark Arena link. Open Graph image now uses the existing approved overview hero.
 - Standard Double: practical private accommodation for two, one king bed, kitchenette benefits and a useful equipment FAQ.
 - Deluxe King: extra space for two and a sofa in every room; replaces a duplicate extra-bed FAQ with a room comparison.
 - Deluxe Twin: explicitly one king bed plus one king-single bed for up to three, with practical benefits for friends and small families.
-- Homepage: existing comparison link now names Auckland CBD hotel rooms.
+- Homepage: title, description and opening copy now explain heritage accommodation in Auckland CBD; the existing comparison link names Auckland CBD hotel rooms.
 - Detail pages: a comparison link back to Rooms near the secondary booking CTA; relevant guest-information equipment/cot links.
 
 ## Protected content
@@ -67,9 +86,13 @@ Passed on 15 October 2026: the extended `node scripts/test-seo.mjs` checks all 1
 
 Local fixture tests do not prove deployed Cloudflare behaviour. No merge, deployment, DNS or provider configuration changes are part of this PR.
 
+Additional homepage/Rooms hero checks passed at 320, 390, 820 and 1440px: no horizontal overflow and all copy stays inside its hero. The refreshed local preview also passes the FAQ query-plus-fragment redirect.
+
 JavaScript syntax checks passed for `site.js`, `enquiry.js`, `enquiry-config.js` and `scripts/test-seo.mjs`; `git diff --check` passed. Playwright used isolated headless Chromium from the bundled runtime, with no new dependencies. All browser contexts and the local fixture server close on completion.
 
 ## Screenshots
+
+Homepage hero: [Desktop](screenshots/homepage-1440.jpg) · [Mobile](screenshots/homepage-390.jpg)
 
 Full-page mobile captures include the existing fixed booking button at the bottom of the captured viewport.
 
