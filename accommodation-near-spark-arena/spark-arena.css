@@ -9,6 +9,7 @@
 .spark-directions > p { margin: 0; }
 .spark-directions > div { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; text-align: right; }
 .spark-directions > div > p { margin: 0; }
+.spark-directions a { align-items: baseline; gap: .5em; }
 .spark-room-intro { margin-bottom: 28px; }
 @media (max-width: 650px) {
   .spark-directions { grid-template-columns: 1fr; gap: 20px; }
@@ -16,4 +17,11 @@
   .spark-page .rooms-hero-copy > p:last-of-type { margin-bottom: 22px; }
   .spark-page .section-heading { gap: 16px; margin-bottom: 24px; }
   .spark-page .location-overview .section-heading { margin-bottom: 28px; }
+}
+@media (max-width: 640px) {
+  .spark-directions > div { align-items: flex-start; gap: 12px; text-align: left; min-width: 0; }
+  .spark-directions > div > p { display: contents; }
+  .spark-directions a { min-height: 44px; max-width: 100%; white-space: nowrap; }
+  .spark-directions .btn { width: 100%; }
+  .spark-directions .text-link { align-items: baseline; padding-block: 12px; }
 }

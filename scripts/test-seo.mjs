@@ -64,6 +64,13 @@ for (const file of pages) {
     assert.equal(html.match(/<dd>Varies by room<\/dd>/)?.[0], before.match(/<dd>Varies by room<\/dd>/)?.[0]);
   } else if (file === 'index.html') {
     assert.equal(preservedHomepage(html), preservedHomepage(before), 'homepage changes outside approved metadata and copy');
+  } else if (file === 'accommodation-near-spark-arena.html') {
+    // Only the three directions CTA arrows may differ from the reviewed markup.
+    const updatedArrows = before
+      .replace('Walking directions ↗</a>', 'Walking directions <span aria-hidden="true">→</span></a>')
+      .replace('Spark Arena transport guide ↗</a>', 'Spark Arena transport guide <span aria-hidden="true">→</span></a>')
+      .replace('Explore our Auckland location →</a>', 'Explore our Auckland location <span aria-hidden="true">→</span></a>');
+    assert.equal(preservedMarkup(html), preservedMarkup(updatedArrows), `content or design changes: ${file}`);
   } else {
     assert.equal(preservedMarkup(html), preservedMarkup(before), `content or design changes: ${file}`);
   }
