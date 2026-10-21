@@ -33,7 +33,7 @@ Activated with Wix on 12 October 2026.
 
 The website enquiry page opens the Wix-hosted form. Existing arts, venue and wedding enquiry links continue through this page. Guests choose their enquiry category and enter required name, email and message; phone, preferred dates and approximate guest count are optional. Ask guests to include the venue in their message. No payment, booking confirmation or marketing subscription is created.
 
-Hotel reservations remain separate: reservation@grandcentralhotel.co.nz and Info@grandcentralhotel.co.nz. Cloudbeds booking links remain unchanged.
+Hotel reservations remain separate: reservations@grandcentralhotel.co.nz and Info@grandcentralhotel.co.nz. Cloudbeds booking links remain unchanged.
 
 Verification: the public form rejected empty required fields, accepted the clearly labelled WEBSITE LAUNCH TEST, displayed its receipt message, and retained the record in Wix Forms & Submissions. The owner confirmed notification receipt at bm.cityaparts@gmail.com. Desktop/mobile enquiry links were checked on the deployed website.
 
